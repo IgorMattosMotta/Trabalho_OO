@@ -8,9 +8,16 @@ package com.mycompany.trabalho_oo2;
  *
  * @author igorm
  */
-public class Admin extends Pessoa{
-    public Gols
-    public void setNumGols(int cpf, int addNum){
-         
+public class Time {
+    private String nomeTime;
+    private String cidade;
+
+    public String getNomeTime() {
+        return nomeTime;
     }
+
+    public String getCidade() {
+        return cidade;
+    }
+    
 }

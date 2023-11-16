@@ -13,11 +13,11 @@ public class Jogadores extends Pessoa{
     private int numGols;
     private int numCamisa;
     private String time;
-
+    private boolean titular;
+    
     public String getTime() {
         return time;
     }
-    private boolean titular;
 
     public String getPosicao() {
         return posicao;
