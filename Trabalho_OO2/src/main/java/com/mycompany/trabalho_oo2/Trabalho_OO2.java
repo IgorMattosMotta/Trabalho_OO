@@ -4,6 +4,7 @@
  */
 
 package com.mycompany.trabalho_oo2;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,6 +13,7 @@ package com.mycompany.trabalho_oo2;
 public class Trabalho_OO2 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+         ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+         Cadastro eu = new Cadastro("02355164657", "Igor", "Admin");
     }
 }
