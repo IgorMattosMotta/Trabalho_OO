@@ -4,6 +4,8 @@
  */
 package com.mycompany.trabalho_oo2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author igorm
@@ -14,6 +16,7 @@ public class Pessoa {
     private Cargo cargo;
     private String senha;
     private Cadastro cadastro;
+    private ArrayList<Pessoa> lista=new ArrayList<>();
 
     public CPF getCpf() {
         return cpf;
@@ -29,10 +32,6 @@ public class Pessoa {
 
     public String getSenha() {
         return senha;
-    }
-
-    public Cadastro getCadastro() {
-        return cadastro;
     }
 
     public void setNome(Nome nome) {
@@ -54,17 +53,19 @@ public class Pessoa {
 
      
 
-    public Pessoa(String cpf, String nome, String cargo, String senha) {
+    public Pessoa(String cpf, String nome, String cargo, String senha, ArrayList<Pessoa> pessoasLista) {
+        for(Pessoa e: pessoasLista){
+            this.lista.add(e);
+        }
         validaPessoa(cpf, nome, cargo);
         this.cpf = new CPF(cpf);
         this.nome = new Nome(nome);
         this.cargo = new Cargo(cargo);  
         this.senha = senha;
-        
     }
         
     public void validaPessoa(String cpf, String nome, String cargo){
-            cadastro = new Cadastro(cpf, nome, cargo);
+            cadastro = new Cadastro(cpf, nome, cargo, this.lista);
             cadastro.validaCadastro(cpf, nome);
     }
     

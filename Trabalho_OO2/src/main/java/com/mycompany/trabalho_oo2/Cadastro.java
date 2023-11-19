@@ -4,6 +4,8 @@
  */
 package com.mycompany.trabalho_oo2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author igorm
@@ -12,17 +14,25 @@ public class Cadastro {
     private CPF cpf;
     private Nome nome;
     private Cargo cargo;
-
-    public Cadastro(String cpf, String nome, String cargo) {
+    ArrayList<Pessoa> lista2 =new ArrayList<>();
+    public Cadastro(String cpf, String nome, String cargo, ArrayList<Pessoa> lista) {
+        for(Pessoa e: lista){
+            this.lista2.add(e);
+        }
         this.cpf = new CPF(cpf);
         this.nome = new Nome(nome);
         this.cargo = new Cargo(cargo);  
+       
     }
     
     public void validaCadastro(String cpf, String nome){
         this.cpf.validacpf(cpf);
         this.nome.validaNome();
-
+        for(Pessoa e: this.lista2){
+            if(e.getCpf().getCpf().equals(cpf)){
+                throw new RuntimeException("Usuário já cadastrado!");
+            }
+        }
     }
     
     

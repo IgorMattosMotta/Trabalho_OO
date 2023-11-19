@@ -15,8 +15,10 @@ public class CPF {
         return cpf;
     }
     
-     public boolean validacpf(String cpf){
-        return ehValido(cpf);
+     public void validacpf(String cpf){
+         if(!ehValido(cpf)){
+             throw new RuntimeException("CPF inválido!");
+         }
     }
 
     public CPF(String cpf) {
