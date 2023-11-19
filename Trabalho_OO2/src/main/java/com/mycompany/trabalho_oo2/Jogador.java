@@ -8,9 +8,9 @@ package com.mycompany.trabalho_oo2;
  *
  * @author igorm
  */
-public class Jogadores extends Pessoa{
+public class Jogador extends Pessoa{
     private String posicao;
-    private int numGols;
+    private Gols numGols;
     private int numCamisa;
     private String time;
     private boolean titular;
@@ -23,7 +23,7 @@ public class Jogadores extends Pessoa{
         return posicao;
     }
 
-    public int getNumGols() {
+    public Gols getNumGols() {
         return numGols;
     }
 

@@ -13,7 +13,16 @@ import java.util.ArrayList;
 public class Trabalho_OO2 {
 
     public static void main(String[] args) {
-         ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
-         Cadastro eu = new Cadastro("02355164657", "Igor", "Admin");
+         ArrayList<Pessoa> pessoasLista = new ArrayList<Pessoa>();
+         try{
+            Pessoa eu = new Pessoa("02355164657", "Igor MMDmasdmasd", "Admin", "dasdasdasdas");
+            pessoasLista.add(eu);
+            for(Pessoa e: pessoasLista){
+                System.out.println(e.getCpf().getCpf());
+            }
+         }
+         catch(RuntimeException e){
+             System.out.println(e.getMessage());
+         }
     }
 }

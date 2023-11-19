@@ -8,9 +8,20 @@ package com.mycompany.trabalho_oo2;
  *
  * @author igorm
  */
-public class Admin extends Pessoa{
-    private Jogador jogador;
-    public void setNumGols(Jogador jogador, int addNum){
-         
+public class Cargo {
+    private String cargo;
+
+    public Cargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 }
