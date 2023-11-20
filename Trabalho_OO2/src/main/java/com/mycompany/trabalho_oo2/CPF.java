@@ -22,12 +22,12 @@ public class CPF {
     }
 
     public CPF(String cpf) {
-        this.cpf = cpf;
+        this.cpf = retiraCaracEspecial(cpf);
     }
 
 
     private boolean ehValido(String cpf){
-        this.retiraCaracEspecial(cpf);
+        cpf = retiraCaracEspecial(cpf);
         int[] arrayCpf = this.transformaCpfArrayInt(cpf);
         
         if(verificaCodigo(1, arrayCpf) == true){
@@ -46,11 +46,12 @@ public class CPF {
         return arrayCpf;
     }
     
-    private void retiraCaracEspecial(String cpf){
+    private String retiraCaracEspecial(String cpf){
         if(cpf.contains(".") || cpf.contains("-")){
             cpf = cpf.replace(".", "");
             cpf = cpf.replace("-", "");
     }
+        return cpf;
     }
         
     private boolean  verificaCodigo(int posicaoCod, int[] cpf){
