@@ -26,7 +26,11 @@ public class Cadastro {
     }
     
     public void validaCadastro(String cpf, String nome){
-        this.cpf.validacpf(cpf);
+        try{
+            this.cpf.validacpf(cpf);
+        }catch(RuntimeException e){
+            throw new RuntimeException("Uso de caracteres inválidos (CPF)!");
+        }
         this.nome.validaNome();
         for(Pessoa e: this.lista2){
             if(e.getCpf().getCpf().equals(cpf)){

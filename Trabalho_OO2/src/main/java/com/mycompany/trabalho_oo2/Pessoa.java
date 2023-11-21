@@ -65,8 +65,13 @@ public class Pessoa {
     }
         
     public void validaPessoa(String cpf, String nome, String cargo){
-            cadastro = new Cadastro(cpf, nome, cargo, this.lista);
+        cadastro = new Cadastro(cpf, nome, cargo, this.lista);
+        try{
+            
             cadastro.validaCadastro(cpf, nome);
+        }catch(RuntimeException e){
+             throw new RuntimeException(e.getMessage()+"\nCadastro inválido! Verifique se os campos foram preenchidos corretamente!");
+        }
     }
     
 }
