@@ -9,10 +9,10 @@ package com.mycompany.trabalho_oo2;
  * @author igorm
  */
 public class Login {
-    Pessoa p;
+    Pessoas p;
     
     
-    public Login(Pessoa pessoa) {
+    public Login(Pessoas pessoa) {
         this.p = pessoa;
     }
     

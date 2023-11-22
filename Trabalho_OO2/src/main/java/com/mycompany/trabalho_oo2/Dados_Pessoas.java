@@ -12,11 +12,11 @@ public class Dados_Pessoas {
     private String cpf;
     private String senha;
     private String cargo;
-    final Pessoa p;
+    final Pessoas p;
     
    
 
-    public Dados_Pessoas(Pessoa pessoa) {
+    public Dados_Pessoas(Pessoas pessoa) {
         this.p = pessoa;
         this.cpf = pessoa.getCpf();
         this.cargo =pessoa.getCargo();

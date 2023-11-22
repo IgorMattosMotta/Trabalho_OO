@@ -10,6 +10,12 @@ package com.mycompany.trabalho_oo2;
  */
 public class Admin extends Pessoa{
     private Jogador jogador;
+
+  
+
+    private Admin(CPF cpf, Nome nome, Cargo cargo, String senha) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     public void setNumGols(Jogador jogador, int addNum){
          
     }

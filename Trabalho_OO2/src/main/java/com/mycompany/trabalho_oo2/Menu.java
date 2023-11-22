@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author igorm
  */
 public class Menu {
-        private ArrayList<Pessoa> pessoasLista = new ArrayList<>();
+        private ArrayList<Pessoas> pessoasLista = new ArrayList<>();
         private int escolha;
         private Scanner sc = new Scanner(System.in);
 
@@ -37,15 +37,15 @@ public class Menu {
                                 String nome = s.nextLine();
                                 String cargo = s.nextLine();
                                 String senha = s.nextLine();
-                                Pessoa eu = new Pessoa(cpf, nome, cargo, senha, pessoasLista);
+                                Pessoas eu = new Pessoas(cpf, nome, cargo, senha, pessoasLista);
                                 pessoasLista.add(eu);
                            }catch(RuntimeException e){
                                System.out.println(e.getMessage());
                            }
                             }
                     case 2 -> {
-                        for(Pessoa e: pessoasLista){
-                            System.out.println(e.getCpf().getCpf());
+                        for(Pessoas e: pessoasLista){
+                            System.out.println(e.getCpf());
                         }
                         }
                     case 3 -> {
@@ -54,8 +54,8 @@ public class Menu {
                         int i = 0;
                         cpf = cpf.replace(".", "");
                         cpf = cpf.replace("-", "");
-                        for(Pessoa e: pessoasLista){
-                            if(e.getCpf().getCpf().equals(cpf)){
+                        for(Pessoas e: pessoasLista){
+                            if(e.getCpf().equals(cpf)){
                                 pessoasLista.remove(i);
                             }
                             i++;
