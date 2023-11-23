@@ -4,25 +4,46 @@
  */
 package com.mycompany.trabalho_oo2;
 
+import java.util.Scanner;
+
 /**
  *
  * @author igorm
  */
 public class Login {
-    Pessoas p;
-    
-    
-    public Login(Pessoas pessoa) {
-        this.p = pessoa;
+    private Pessoas p;
+    private Scanner sc = new Scanner(System.in);
+    private String senha;
+    private final String cpf;
+
+    public Pessoas getP() {
+        return p;
     }
     
-    public String RetornaCargo(){
-        if(p.getCargo().equals("Admin")){
-            return "Admin";
-        }else if(p.getCargo().equals("Tecnico")){
-            return "Tecnico";
-        }else{
-            return "Jogador";
+    
+    
+    public Login(String cpf) {
+        this.p = null;
+        this.cpf = cpf;
+    }
+    
+     public void Loga(){
+         ehLogavel();
+         if(this.p == null){
+             throw new RuntimeException();
+         }
+     }
+    
+    private void ehLogavel(){
+        for(Pessoas e: p.lista){
+            System.out.println(e.getCpf() + "="+this.cpf);
+            if(e.getCpf().equals(this.cpf)){
+                System.out.println("Senha:");
+                senha = sc.nextLine();
+                if(senha.equals(e.getSenha())){
+                    this.p = e;
+                }
+            }
         }
     }
     
