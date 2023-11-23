@@ -49,18 +49,16 @@ public class Menu {
                         }
                         }
                     case 3 -> {
-                        Scanner sc1 = new Scanner(System.in);
-                        String cpf = sc1.nextLine();
-                        int i = 0;
+                        String cpf = sc.nextLine();
                         cpf = cpf.replace(".", "");
                         cpf = cpf.replace("-", "");
                         for(Pessoas e: pessoasLista){
                             if(e.getCpf().equals(cpf)){
-                                pessoasLista.remove(i);
+                                pessoasLista.remove(e);
+                                break;
                             }
-                            i++;
                         }
-                        }
+                    }
                     case 4 -> {
                         System.out.println("Saindo do programa...");
                     }
