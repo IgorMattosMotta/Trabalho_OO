@@ -15,6 +15,7 @@ public class Menu {
         private ArrayList<Pessoas> pessoasLista = new ArrayList<>();
         private int escolha;
         private Scanner sc = new Scanner(System.in);
+        private Pessoa user;
 
     public Menu() {
         this.escolha = 0;
@@ -27,6 +28,8 @@ public class Menu {
                 System.out.println("2. Listar pessoas");
                 System.out.println("3. Apagar Pessoa");
                 System.out.println("4. Sair");
+                System.out.println("5. Login");
+                System.out.println("6. Ver usuário:");
                 System.out.print("Escolha uma opção: ");
                 escolha = Integer.parseInt(sc.nextLine());
                 switch (escolha) {
@@ -61,6 +64,23 @@ public class Menu {
                     }
                     case 4 -> {
                         System.out.println("Saindo do programa...");
+                    }
+                    case 5->{
+                        Scanner s = new Scanner(System.in); 
+                         String cpf = s.nextLine();
+                         try{
+                            Login login = new Login(cpf);
+                            login.Loga();
+                            user = login.getP();
+                         }catch(RuntimeException e){
+                             System.out.println("Login inválido!!!");
+                         }
+                         
+                    }
+                    case 6->{
+                        if(user != null){
+                            System.out.println(user.getCpf());
+                        }
                     }
                     default -> throw new RuntimeException("Opção inválida. Tente novamente.");
                 }
