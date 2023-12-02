@@ -13,8 +13,6 @@ public class Dados_Pessoas {
     private String senha;
     private String cargo;
     final Pessoas p;
-    
-   
 
     public Dados_Pessoas(Pessoas pessoa) {
         this.p = pessoa;

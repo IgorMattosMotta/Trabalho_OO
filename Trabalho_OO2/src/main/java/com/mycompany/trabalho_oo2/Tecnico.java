@@ -12,7 +12,9 @@ public class Tecnico extends Pessoa{
     private String time;
 
 
-    private Tecnico(CPF cpf, Nome nome, Cargo cargo, String senha) {
+    public Tecnico(String cpf, String nome, String cargo, String senha, String time) {
+        super(cpf, nome, cargo, senha);
+        this.time = time;
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

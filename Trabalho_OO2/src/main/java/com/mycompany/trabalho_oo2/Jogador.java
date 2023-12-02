@@ -16,8 +16,14 @@ public class Jogador extends Pessoa{
     private boolean titular;
 
 
-    private Jogador(CPF cpf, Nome nome, Cargo cargo, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private Jogador(String cpf, String nome, String cargo, String senha, String posicao, Gols numGols, int numCamisa, String time, boolean titular) {
+        super(cpf, nome, cargo, senha);
+        this.posicao = posicao;
+        this.numGols = numGols;
+        this.numCamisa = numCamisa;
+        this.time = time;
+        this.titular = titular;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public String getTime() {
