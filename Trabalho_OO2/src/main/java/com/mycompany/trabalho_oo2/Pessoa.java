@@ -10,10 +10,10 @@ import java.util.ArrayList;
  *
  * @author igorm
  */
-public abstract class Pessoa {
+public class Pessoa {
     private final String cpf;
-    private String nome;
-    private String cargo;
+    private Nome nome;
+    private Cargo cargo;
     private String senha;
     public ArrayList<Pessoas> lista=new ArrayList<>();
     
@@ -23,11 +23,11 @@ public abstract class Pessoa {
 
      
      
-    public String getNome() {
+    public Nome getNome() {
         return nome;
     }
 
-    public String getCargo() {
+    public Cargo getCargo() {
         return cargo;
     }
 
@@ -35,11 +35,11 @@ public abstract class Pessoa {
         return senha;
     }
 
-    public void setNome(String nome) {
+    public void setNome(Nome nome) {
         this.nome = nome;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
 
@@ -49,14 +49,14 @@ public abstract class Pessoa {
 
 
 
-    public Pessoa(String cpf, String nome, String cargo, String senha) {
+    public Pessoa(CPF cpf, Nome nome, Cargo cargo, String senha) {
         Cadastro cadastro = new Cadastro(cpf, nome, cargo, this.lista);
         try{
             cadastro.validaCadastro(cpf, nome);
         }catch(RuntimeException e){
             throw new RuntimeException("Cadastro inválido!!!"); 
         }
-        this.cpf = cpf;
+        this.cpf = CPF.getCpf();
         this.cargo =cargo;
         this.nome = nome;
         this.senha = senha;
@@ -64,7 +64,7 @@ public abstract class Pessoa {
 
     
     
-    public void validaPessoa(String cpf, String nome, String cargo){
+    public void validaPessoa(CPF cpf, Nome nome, Cargo cargo){
         Cadastro cadastro = new Cadastro(cpf, nome, cargo, this.lista);
         try{
             cadastro.validaCadastro(cpf, nome);

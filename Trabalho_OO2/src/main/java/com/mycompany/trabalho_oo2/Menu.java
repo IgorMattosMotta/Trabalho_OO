@@ -36,9 +36,10 @@ public class Menu {
                     case 1 -> {
                             try{
                                 Scanner s = new Scanner(System.in); 
-                                String cpf = s.nextLine();
-                                String nome = s.nextLine();
-                                String cargo = s.nextLine();
+                                CPF cpf = new CPF(s.nextLine());
+                                Nome nome = new Nome(s.nextLine());
+                                Cargo cargo = new Cargo(s.nextLine());
+                                //String cargo = s.nextLine();
                                 String senha = s.nextLine();
                                 Pessoas eu = new Pessoas(cpf, nome, cargo, senha, pessoasLista);
                                 pessoasLista.add(eu);

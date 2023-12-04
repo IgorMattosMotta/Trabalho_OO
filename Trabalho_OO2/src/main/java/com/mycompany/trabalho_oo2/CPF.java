@@ -9,9 +9,9 @@ package com.mycompany.trabalho_oo2;
  * @author igorm
  */
 public class CPF {
-        private String cpf;
+        private static String cpf;
 
-    public String getCpf() {
+    public static String getCpf() {
         return cpf;
     }
     
@@ -22,7 +22,7 @@ public class CPF {
     }
 
     public CPF(String cpf) {
-        this.cpf = retiraCaracEspecial(cpf);
+        CPF.cpf = retiraCaracEspecial(cpf);
     }
 
 
@@ -30,13 +30,19 @@ public class CPF {
         cpf = retiraCaracEspecial(cpf);
         int[] arrayCpf = this.transformaCpfArrayInt(cpf);
         
-        if(verificaCodigo(1, arrayCpf) == true){
-            return true;
-        }else{
-            return false;
-        }
+            return verificaCodigo(1, arrayCpf) == true;
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private int[] transformaCpfArrayInt(String cpf){
         int[] arrayCpf = new int[11];
@@ -55,7 +61,7 @@ public class CPF {
     }
         
     private boolean  verificaCodigo(int posicaoCod, int[] cpf){
-        int j = 0;
+        int j;
         if(posicaoCod == 1){
             j = 10;
         }else{

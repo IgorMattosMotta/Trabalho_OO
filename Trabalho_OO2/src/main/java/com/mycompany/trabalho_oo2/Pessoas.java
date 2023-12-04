@@ -16,14 +16,14 @@ public class Pessoas extends Pessoa{
 
     
 
-    public Pessoas(String cpf, String nome, String cargo, String senha, ArrayList<Pessoas> lista) {
+    public Pessoas(CPF cpf, Nome nome, Cargo cargo, String senha, ArrayList<Pessoas> lista) {
 
         super(cpf, nome, cargo, senha);
     }
 
 
     @Override
-    public void validaPessoa(String cpf, String nome, String cargo) {
+    public void validaPessoa(CPF cpf, Nome nome, Cargo cargo) {
         super.validaPessoa(cpf, nome, cargo); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 

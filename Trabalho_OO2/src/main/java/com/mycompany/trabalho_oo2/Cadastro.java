@@ -15,19 +15,19 @@ public class Cadastro {
     private Nome nome;
     private Cargo cargo;
     ArrayList<Pessoas> lista2 =new ArrayList<>();
-    public Cadastro(String cpf, String nome, String cargo, ArrayList<Pessoas> lista) {
+    public Cadastro(CPF cpf, Nome nome, Cargo cargo, ArrayList<Pessoas> lista) {
         for(Pessoas e: lista){
             this.lista2.add(e);
         }
-        this.cpf = new CPF(cpf);
-        this.nome = new Nome(nome);
-        this.cargo = new Cargo(cargo);  
+        this.cpf = new CPF(CPF.getCpf());
+        this.nome = new Nome(Nome.getNome());
+        this.cargo = new Cargo(Cargo.getCargo());  
        
     }
     
-    public void validaCadastro(String cpf, String nome){
+    public void validaCadastro(CPF cpf, Nome nome){
         try{
-            this.cpf.validacpf(cpf);
+            this.cpf.validacpf(CPF.getCpf());
         }catch(RuntimeException e){
             throw new RuntimeException("Uso de caracteres inválidos (CPF)!");
         }

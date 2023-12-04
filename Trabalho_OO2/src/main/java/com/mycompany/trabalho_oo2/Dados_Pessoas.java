@@ -11,7 +11,7 @@ package com.mycompany.trabalho_oo2;
 public class Dados_Pessoas {
     private String cpf;
     private String senha;
-    private String cargo;
+    private Cargo cargo;
     final Pessoas p;
     
    
@@ -19,8 +19,8 @@ public class Dados_Pessoas {
     public Dados_Pessoas(Pessoas pessoa) {
         this.p = pessoa;
         this.cpf = pessoa.getCpf();
-        this.cargo =pessoa.getCargo();
-        this.senha = pessoa.getNome();
+        this.cargo = pessoa.getCargo();
+        this.senha = pessoa.getSenha();
     }
     
     
@@ -32,7 +32,7 @@ public class Dados_Pessoas {
         return senha;
     }
 
-    public String getCargo() {
+    public Cargo getCargo() {
         return cargo;
     }
 
@@ -44,7 +44,7 @@ public class Dados_Pessoas {
         this.senha = senha;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
     

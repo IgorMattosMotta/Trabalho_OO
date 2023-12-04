@@ -10,22 +10,22 @@ package com.mycompany.trabalho_oo2;
  */
 public class Nome {
     
-    private String nome;
+    private static String nome;
 
-    public String getNome() {
+    public static String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public static void setNome(String nome) {
+        Nome.nome = nome;
     }
   
     public void validaNome(){
-         ehValido(this.nome);
+         ehValido(Nome.nome);
     }
 
     public Nome(String nome) {
-        this.nome = nome;
+        Nome.nome = nome;
     }
     
      // Verifica se o nome não está vazio

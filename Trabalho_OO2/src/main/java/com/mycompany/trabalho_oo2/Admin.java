@@ -13,10 +13,10 @@ public class Admin extends Pessoa{
 
   
 
-    private Admin(CPF cpf, Nome nome, Cargo cargo, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Admin(CPF cpf, Nome nome, Cargo cargo, String senha) {
+        super(cpf,nome,cargo,senha);
     }
     public void setNumGols(Jogador jogador, int addNum){
-         
+         this.jogador = jogador;
     }
 }
