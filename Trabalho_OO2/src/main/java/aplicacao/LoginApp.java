@@ -4,6 +4,7 @@ import java.awt.*;
 
 public abstract class LoginApp extends JFrame{
 
+    private static final int TAMANHO_TXT = 20;
     //formulario
     protected JPanel pnlFormulario;
     //rodape
@@ -23,7 +24,7 @@ public abstract class LoginApp extends JFrame{
     }
     private void inicializar(){
         this.setTitle("Login");
-        this.setSize(300, 200);
+        //this.setSize(300, 200);
         this.getContentPane().setLayout(new BorderLayout());
 
         this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);
@@ -32,15 +33,17 @@ public abstract class LoginApp extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.setResizable(false);
+        this.pack();
     }
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
             pnlFormulario = new JPanel(new GridLayout(2,2));
             lblUsuario = new JLabel("Usuário");
-            txtUsuario = new JTextField(20);
+            txtUsuario = new JTextField(TAMANHO_TXT);
             lblSenha = new JLabel("Senha");
-            txtSenha = new JPasswordField(20);
+            txtSenha = new JPasswordField(TAMANHO_TXT);
 
             pnlFormulario.add(lblUsuario);
             pnlFormulario.add(txtUsuario);
