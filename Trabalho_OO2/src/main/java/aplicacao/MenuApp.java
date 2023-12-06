@@ -2,6 +2,7 @@ package aplicacao;
 import javax.swing.*;
 import java.awt.*;
 public abstract class MenuApp extends JFrame{
+    protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     //botao sair
     protected JButton btnSair;
@@ -26,6 +27,7 @@ public abstract class MenuApp extends JFrame{
     private void inicializar(){
         this.setTitle("Menu");
         this.getContentPane().setLayout(new BorderLayout());
+        this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
         this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);
         this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,5 +64,14 @@ public abstract class MenuApp extends JFrame{
             pnlRodape.add(btnSair);
         }
         return pnlRodape;
+    }
+
+    public JPanel getPnlTopo(){
+        if(pnlTopo == null){
+            pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            JLabel lblTitulo = new JLabel("Nome: Álvaro | Administrador");
+            pnlTopo.add(lblTitulo);
+        }
+        return pnlTopo;
     }
 }

@@ -2,13 +2,13 @@ package aplicacao;
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class TimesApp extends JFrame{
+public abstract class JogadoresApp extends JFrame{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
     protected JPanel pnlFormulario;
 
-    public TimesApp(){
+    public JogadoresApp(){
         inicializar();
     }
 
@@ -27,7 +27,7 @@ public abstract class TimesApp extends JFrame{
     public JPanel getPnlTitulo(){
         if(pnlTitulo == null){
             pnlTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel("Times");
+            JLabel lblTitulo = new JLabel("Jogadores");
             pnlTitulo.add(lblTitulo);
         }
         return pnlTitulo;
@@ -35,27 +35,34 @@ public abstract class TimesApp extends JFrame{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,4));
-            JLabel lblId = new JLabel("Id");
+            pnlFormulario = new JPanel(new GridLayout(0,6));
+            JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
-            JLabel lblCidade = new JLabel("Cidade");
+            JLabel lblNumGols = new JLabel("Num Gols");
+            JLabel lblNumCamisa = new JLabel("Num Camisa");
+            JLabel lblTime = new JLabel("Time");
             JLabel lblEditar = new JLabel("Editar");
-
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
-            pnlFormulario.add(lblCidade);
+            pnlFormulario.add(lblNumGols);
+            pnlFormulario.add(lblNumCamisa);
+            pnlFormulario.add(lblTime);
             pnlFormulario.add(lblEditar);
 
             for(int i = 0; i < 10; i++){
                 JLabel lblId2 = new JLabel(""+i);
-                JLabel lblNome2 = new JLabel("Time "+1);
-                JLabel lblCidade2 = new JLabel("Cidade "+1);
+                JLabel lblNome2 = new JLabel("Gabriel Barbosa");
+                JLabel lblNumGols2 = new JLabel(" 3 ");
+                JLabel lblNumCamisa2 = new JLabel("10");
+                JLabel lblTime2 = new JLabel("Varmengo");
                 JButton btnEditar = new JButton("Editar");
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblNome2);
-                pnlFormulario.add(lblCidade2);
+                pnlFormulario.add(lblNumGols2);
+                pnlFormulario.add(lblNumCamisa2);
+                pnlFormulario.add(lblTime2);
                 pnlFormulario.add(btnEditar);
             }
         }
@@ -68,7 +75,7 @@ public abstract class TimesApp extends JFrame{
 
             JButton btnVoltar = new JButton("Voltar");
             JButton btnSair = new JButton("Sair");
-            JButton btnCadastro = new JButton("Cadastrar Time");
+            JButton btnCadastro = new JButton("Cadastrar Jogador");
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnCadastro);
             pnlRodape.add(btnSair);
