@@ -4,11 +4,11 @@
  */
 package com.mycompany.trabalho_oo2;
 
-/**
- *
- * @author igorm
- */
-public class Jogador extends Pessoa{
+//Grupo:
+//Igor Mattos da Motta - 202276006
+//Álvaro Davi Carneiro dos Santos - 202176037
+//Davi Laranjo Villa 202235025
+public abstract class Jogador extends Pessoa{
     private String posicao;
     private Gols numGols;
     private int numCamisa;
@@ -16,7 +16,7 @@ public class Jogador extends Pessoa{
     private boolean titular;
 
 
-    private Jogador(String cpf, String nome, String cargo, String senha, String posicao, Gols numGols, int numCamisa, String time, boolean titular) {
+    protected Jogador(String cpf, String nome, String cargo, String senha, String posicao, Gols numGols, int numCamisa, String time, boolean titular) {
         super(cpf, nome, cargo, senha);
         this.posicao = posicao;
         this.numGols = numGols;
@@ -46,5 +46,11 @@ public class Jogador extends Pessoa{
         return titular;
     }
     
-    
+    /**
+     *
+     * @param jogador
+     * @return
+     */
+    public abstract float calculaNotaGeral(Jogador jogador);
+   
 }

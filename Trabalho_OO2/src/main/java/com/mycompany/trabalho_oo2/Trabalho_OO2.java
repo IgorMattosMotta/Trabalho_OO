@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
- *
- * @author igorm
- */
+//Grupo:
+//Igor Mattos da Motta - 202276006
+//Álvaro Davi Carneiro dos Santos - 202176037
+//Davi Laranjo Villa 202235025
 public class Trabalho_OO2 {
 
     public static void main(String[] args) {
