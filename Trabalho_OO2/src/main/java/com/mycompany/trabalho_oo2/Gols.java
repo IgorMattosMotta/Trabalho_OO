@@ -13,6 +13,13 @@ public class Gols {
     private Jogador jogador;
     private String minutoMarcou;
 
+    
+    public Gols(Partida partida, Jogador jogador, String minutoMarcou)
+    {
+        this.partida = partida;
+        this.jogador = jogador;
+        this.minutoMarcou = minutoMarcou;
+    }
     public Partida getPartida() {
         return partida;
     }
@@ -24,5 +31,6 @@ public class Gols {
     public String getMinutoMarcou() {
         return minutoMarcou;
     }
+    
     
 }

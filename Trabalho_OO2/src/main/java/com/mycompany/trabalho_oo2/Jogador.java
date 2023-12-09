@@ -46,6 +46,7 @@ public abstract class Jogador extends Pessoa{
         return titular;
     }
     
+    
     /**
      *
      * @param jogador
@@ -53,4 +54,5 @@ public abstract class Jogador extends Pessoa{
      */
     public abstract float calculaNotaGeral(Jogador jogador);
    
+    
 }

@@ -13,6 +13,7 @@ public class Partida {
     private Time timeVisitante;
     private String placar;
     private String horario;
+   
 
     public Time getTimeCasa() {
         return timeCasa;
@@ -30,5 +31,5 @@ public class Partida {
         return horario;
     }
     
-    
+
 }
