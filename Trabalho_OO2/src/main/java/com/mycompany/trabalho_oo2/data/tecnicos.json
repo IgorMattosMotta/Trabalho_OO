@@ -2,7 +2,10 @@
   "tecnicos": [
     {
       "time": 1,
-      "cpf": "986.652.321-01"
+      "cpf": "986.652.321-01",
+      "nome": "Tomé Santos",
+      "cargo": 2,
+      "senha": "senha455"
     }
   ]
 }

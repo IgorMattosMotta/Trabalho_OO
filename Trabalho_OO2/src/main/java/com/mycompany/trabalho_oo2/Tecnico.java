@@ -9,14 +9,14 @@ package com.mycompany.trabalho_oo2;
  * @author igorm
  */
 public class Tecnico extends Pessoa{
-    private String time;
+    private Time time;
 
-
-    public Tecnico(CPF cpf, Nome nome, Cargo cargo, String senha) {
+    public Tecnico(CPF cpf, Nome nome, Cargo cargo, String senha, Time time) {
         super(cpf,nome,cargo,senha);
+        this.time = time;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
     

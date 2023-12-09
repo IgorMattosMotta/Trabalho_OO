@@ -1,7 +1,10 @@
 {
   "administradores": [
     {
-      "CPFPessoa": "111.444.333-22"
+      "cpf": "111.444.333-22",
+      "nome": "Pablo Veggeti",
+      "cargo": 1,
+      "senha": "vascao"
     }
   ]
 }

@@ -1,34 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.trabalho_oo2;
-
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author igorm
  */
 public class Jogador extends Pessoa{
     private String posicao;
-    private Gols numGols;
     private int numCamisa;
-    private String time;
+    private Time time;
     private boolean titular;
+    private List<Gols> gols;
 
 
-    public Jogador(CPF cpf, Nome nome, Cargo cargo, String senha) {
-        super(cpf,nome,cargo,senha);
+    public Jogador(CPF cpf, Nome nome, Cargo cargo, String senha, String posicao, int numCamisa, Time time, boolean titular) {
+        super(cpf, nome, cargo, senha);
+        this.posicao = posicao;
+        this.numCamisa = numCamisa;
+        this.time = time;
+        this.titular = titular;
+        this.gols = new ArrayList<>();
     }
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
     public String getPosicao() {
         return posicao;
-    }
-
-    public Gols getNumGols() {
-        return numGols;
     }
 
     public int getNumCamisa() {
@@ -38,6 +36,8 @@ public class Jogador extends Pessoa{
     public boolean isTitular() {
         return titular;
     }
-    
-    
+
+    public void adicionarGol(Gols gol) {
+        this.gols.add(gol);
+    }
 }

@@ -38,6 +38,6 @@ public class Partida {
     public String getHorario() {
         return horario;
     }
-    
-    
+
+    public int getId() { return id; }
 }

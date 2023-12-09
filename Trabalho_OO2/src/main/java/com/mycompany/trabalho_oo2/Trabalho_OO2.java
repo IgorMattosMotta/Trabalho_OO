@@ -24,14 +24,16 @@ public class Trabalho_OO2 {
             menu.menu();
         }*/
 
-        ArrayList<Pessoas> pessoasLista = new ArrayList<>();
         ArrayList<Time> timesLista = new ArrayList<>();
         ArrayList<Partida> partidasLista = new ArrayList<>();
+        ArrayList<Tecnico> tecnicosLista = new ArrayList<>();
+        ArrayList<Jogador> jogadoresLista = new ArrayList<>();
         LeJson leJson = new LeJson();
         leJson.getTimes(timesLista);
         leJson.getPartidas(partidasLista, timesLista);
+        leJson.getTecnico(tecnicosLista,timesLista);
+        leJson.getJogador(jogadoresLista,timesLista);
 
-        
     }
 }
         
