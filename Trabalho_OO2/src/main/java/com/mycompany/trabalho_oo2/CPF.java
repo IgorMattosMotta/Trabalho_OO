@@ -16,7 +16,7 @@ public class CPF {
     }
     
      public void validacpf(String cpf){
-         if(!ehValido(cpf)){
+         if(!this.ehValido(cpf)){
              throw new RuntimeException("CPF inválido!");
          }
     }

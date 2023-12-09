@@ -24,7 +24,9 @@ public class Trabalho_OO2 {
             menu.menu();
         }*/
 
-        LeJson.leJson(args);
+        ArrayList<Pessoas> pessoasLista = new ArrayList<>();
+        LeJson leJson = new LeJson();
+        leJson.getPessoa(pessoasLista);
     }
 }
         

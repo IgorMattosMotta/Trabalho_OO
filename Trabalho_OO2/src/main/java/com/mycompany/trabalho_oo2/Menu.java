@@ -38,7 +38,7 @@ public class Menu {
                                 Scanner s = new Scanner(System.in); 
                                 CPF cpf = new CPF(s.nextLine());
                                 Nome nome = new Nome(s.nextLine());
-                                Cargo cargo = new Cargo(s.nextLine());
+                                Cargo cargo = new Cargo(Integer.parseInt(s.nextLine()));
                                 //String cargo = s.nextLine();
                                 String senha = s.nextLine();
                                 Pessoas eu = new Pessoas(cpf, nome, cargo, senha, pessoasLista);

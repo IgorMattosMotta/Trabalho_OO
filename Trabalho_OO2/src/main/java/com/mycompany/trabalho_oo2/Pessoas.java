@@ -11,13 +11,8 @@ import java.util.ArrayList;
  * @author igorm
  */
 public class Pessoas extends Pessoa{
-    
-        
-
-    
 
     public Pessoas(CPF cpf, Nome nome, Cargo cargo, String senha, ArrayList<Pessoas> lista) {
-
         super(cpf, nome, cargo, senha);
     }
 

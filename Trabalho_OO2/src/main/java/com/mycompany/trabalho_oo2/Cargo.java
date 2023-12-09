@@ -9,19 +9,19 @@ package com.mycompany.trabalho_oo2;
  * @author igorm
  */
 public class Cargo {
-    private static String cargo;
+    private static int cargo;
 
-    public Cargo(String cargo) {
+    public Cargo(int cargo) {
         Cargo.cargo = cargo;
     }
 
     
 
-    public static String getCargo() {
+    public static int getCargo() {
         return cargo;
     }
 
-    public static void setCargo(String cargo) {
+    public static void setCargo(int cargo) {
         Cargo.cargo = cargo;
     }
 }
