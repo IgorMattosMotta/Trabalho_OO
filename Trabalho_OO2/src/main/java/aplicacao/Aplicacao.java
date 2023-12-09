@@ -27,5 +27,11 @@ public class Aplicacao {
             };
             jogadoresApp.setVisible(true);
         });
+
+        SwingUtilities.invokeLater(() -> {
+            PartidasApp partidasApp = new PartidasApp() {
+            };
+            partidasApp.setVisible(true);
+        });
     }
 }

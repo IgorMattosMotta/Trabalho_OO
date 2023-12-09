@@ -1,0 +1,16 @@
+{
+  "pessoas": [
+    {
+      "cpf": "123.456.789-01",
+      "nome": "João Silva",
+      "cargo": 3,
+      "senha": "senha123"
+    },
+    {
+      "cpf": "987.654.321-00",
+      "nome": "Maria Santos",
+      "cargo": 3,
+      "senha": "senha456"
+    }
+  ]
+}

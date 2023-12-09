@@ -1,0 +1,18 @@
+{
+  "jogadores": [
+    {
+      "posicao": "AT",
+      "numCamisa": 10,
+      "idTime": 3,
+      "titular": true,
+      "CPFPessoa": "123.456.789-01"
+    },
+    {
+      "posicao": "MC",
+      "numCamisa": 8,
+      "idTime": 1,
+      "titular": true,
+      "CPFPessoa": "987.654.321-00"
+    }
+  ]
+}

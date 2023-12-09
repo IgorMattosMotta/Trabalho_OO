@@ -1,0 +1,19 @@
+{
+  "times": [
+    {
+      "id": 1,
+      "nomeTime": "Time A",
+      "cidade": "Cidade A"
+    },
+    {
+      "id": 2,
+      "nomeTime": "Time B",
+      "cidade": "Cidade B"
+    },
+    {
+      "id": 3,
+      "nomeTime": "Time C",
+      "cidade": "Cidade C"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ package com.mycompany.trabalho_oo2;
  * @author igorm
  */
 public class Time {
+    private int id;
     private String nomeTime;
     private String cidade;
 
