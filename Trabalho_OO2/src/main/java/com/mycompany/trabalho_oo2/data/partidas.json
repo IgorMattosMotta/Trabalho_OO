@@ -1,0 +1,10 @@
+{
+  "partidas": [
+    {
+      "timeCasa": 1,
+      "timeVisitante": 2,
+      "placar": "1x2",
+      "horario": "15:00"
+    }
+  ]
+}

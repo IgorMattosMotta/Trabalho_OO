@@ -15,14 +15,16 @@ import java.util.Scanner;
 public class Trabalho_OO2 {
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        /*Menu menu = new Menu();
         
          try{
              menu.menu();
         }catch (RuntimeException e) {
             System.out.println("Método inválido!");
             menu.menu();
-        }
+        }*/
+
+        LeJson.leJson(args);
     }
 }
         

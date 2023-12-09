@@ -11,6 +11,18 @@
       "nome": "Maria Santos",
       "cargo": 3,
       "senha": "senha456"
+    },
+    {
+      "cpf": "986.652.321-01",
+      "nome": "Tomé Santos",
+      "cargo": 2,
+      "senha": "senha455"
+    },
+    {
+      "cpf": "111.444.333-22",
+      "nome": "Pablo Veggeti",
+      "cargo": 1,
+      "senha": "vascao"
     }
   ]
 }

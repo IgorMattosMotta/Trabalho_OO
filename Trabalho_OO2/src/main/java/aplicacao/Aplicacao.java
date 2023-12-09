@@ -4,17 +4,17 @@ import javax.swing.*;
 
 public class Aplicacao {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
+        /*SwingUtilities.invokeLater(() -> {
                 LoginApp login = new LoginApp() {
                 };
                 login.setVisible(true);
-        });
+        });*/
 
-        SwingUtilities.invokeLater(() -> {
+        /*SwingUtilities.invokeLater(() -> {
             TimesApp login = new TimesApp() {
             };
             login.setVisible(true);
-        });
+        });*/
 
         SwingUtilities.invokeLater(() -> {
             MenuApp menuApp = new MenuApp() {
@@ -22,16 +22,22 @@ public class Aplicacao {
             menuApp.setVisible(true);
         });
 
-        SwingUtilities.invokeLater(() -> {
+        /*SwingUtilities.invokeLater(() -> {
             JogadoresApp jogadoresApp = new JogadoresApp() {
             };
             jogadoresApp.setVisible(true);
-        });
+        });*/
 
-        SwingUtilities.invokeLater(() -> {
+        /*SwingUtilities.invokeLater(() -> {
             PartidasApp partidasApp = new PartidasApp() {
             };
             partidasApp.setVisible(true);
-        });
+        });*/
+
+        /*SwingUtilities.invokeLater(() -> {
+            TecnicosApp tecnicosApp = new TecnicosApp() {
+            };
+            tecnicosApp.setVisible(true);
+        });*/
     }
 }
