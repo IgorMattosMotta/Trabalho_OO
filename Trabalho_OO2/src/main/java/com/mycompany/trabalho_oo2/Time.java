@@ -13,6 +13,12 @@ public class Time {
     private String nomeTime;
     private String cidade;
 
+    public Time(int id, String nomeTime, String cidade) {
+        this.id = id;
+        this.nomeTime = nomeTime;
+        this.cidade = cidade;
+    }
+
     public String getNomeTime() {
         return nomeTime;
     }
@@ -20,5 +26,6 @@ public class Time {
     public String getCidade() {
         return cidade;
     }
-    
+
+    public int getId() { return id; }
 }

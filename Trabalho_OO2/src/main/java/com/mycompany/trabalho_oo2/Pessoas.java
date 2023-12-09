@@ -16,10 +16,9 @@ public class Pessoas extends Pessoa{
         super(cpf, nome, cargo, senha);
     }
 
-
     @Override
     public void validaPessoa(CPF cpf, Nome nome, Cargo cargo) {
-        super.validaPessoa(cpf, nome, cargo); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.validaPessoa(cpf, nome, cargo);
     }
 
 

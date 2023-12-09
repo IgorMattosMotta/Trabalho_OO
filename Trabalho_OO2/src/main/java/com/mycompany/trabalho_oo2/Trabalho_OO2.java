@@ -25,8 +25,13 @@ public class Trabalho_OO2 {
         }*/
 
         ArrayList<Pessoas> pessoasLista = new ArrayList<>();
+        ArrayList<Time> timesLista = new ArrayList<>();
+        ArrayList<Partida> partidasLista = new ArrayList<>();
         LeJson leJson = new LeJson();
-        leJson.getPessoa(pessoasLista);
+        leJson.getTimes(timesLista);
+        leJson.getPartidas(partidasLista, timesLista);
+
+        
     }
 }
         

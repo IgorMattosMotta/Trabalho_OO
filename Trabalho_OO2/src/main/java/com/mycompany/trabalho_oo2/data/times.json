@@ -2,18 +2,18 @@
   "times": [
     {
       "id": 1,
-      "nomeTime": "Time A",
-      "cidade": "Cidade A"
+      "nomeTime": "Vasco da Gama",
+      "cidade": "Rio de Janeiro"
     },
     {
       "id": 2,
-      "nomeTime": "Time B",
-      "cidade": "Cidade B"
+      "nomeTime": "Cruzeiro Esporte Clube",
+      "cidade": "Belo Horizonte"
     },
     {
       "id": 3,
-      "nomeTime": "Time C",
-      "cidade": "Cidade C"
+      "nomeTime": "São Paulo Futebol Clube",
+      "cidade": "São Paulo"
     }
   ]
 }

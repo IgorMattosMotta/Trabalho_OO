@@ -9,10 +9,19 @@ package com.mycompany.trabalho_oo2;
  * @author igorm
  */
 public class Partida {
+    private int id;
     private Time timeCasa;
     private Time timeVisitante;
     private String placar;
     private String horario;
+
+    public Partida(int id, Time timeCasa, Time timeVisitante, String placar, String horario) {
+        this.id = id;
+        this.timeCasa = timeCasa;
+        this.timeVisitante = timeVisitante;
+        this.placar = placar;
+        this.horario = horario;
+    }
 
     public Time getTimeCasa() {
         return timeCasa;
