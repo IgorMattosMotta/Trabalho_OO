@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author igorm
  */
-public class Pessoa {
+public abstract class Pessoa {
     private final String cpf;
     private Nome nome;
     private Cargo cargo;
@@ -21,8 +21,6 @@ public class Pessoa {
         return cpf;
     }
 
-     
-     
     public Nome getNome() {
         return nome;
     }
@@ -54,7 +52,7 @@ public class Pessoa {
         try{
             cadastro.validaCadastro(cpf, nome);
         }catch(RuntimeException e){
-            throw new RuntimeException("Cadastro inválido!!!"); 
+            throw new RuntimeException(e.getMessage());
         }
         this.cpf = CPF.getCpf();
         this.cargo =cargo;
@@ -62,8 +60,6 @@ public class Pessoa {
         this.senha = senha;
     }
 
-    
-    
     public void validaPessoa(CPF cpf, Nome nome, Cargo cargo){
         Cadastro cadastro = new Cadastro(cpf, nome, cargo, this.lista);
         try{
@@ -72,5 +68,4 @@ public class Pessoa {
              throw new RuntimeException(e.getMessage()+"\nCadastro inválido! Verifique se os campos foram preenchidos corretamente!");
         }
     }
-  
 }

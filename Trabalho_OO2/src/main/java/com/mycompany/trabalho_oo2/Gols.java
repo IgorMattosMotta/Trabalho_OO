@@ -12,16 +12,14 @@ public class Gols {
 
     private int id;
 
-    private String tempo;
     private Partida partida;
     private Jogador jogador;
     private String minutoMarcou;
 
-    public Gols(int id, Jogador jogadorGol, Partida partidaGol, String tempo) {
-        this.partida = partida;
-        this.jogador = jogador;
+    public Gols(int id, Jogador jogadorGol, Partida partidaGol, String minutoMarcou) {
+        this.partida = partidaGol;
+        this.jogador = jogadorGol;
         this.minutoMarcou = minutoMarcou;
-        this.tempo = tempo;
         this.id = id;
     }
 

@@ -9,8 +9,10 @@ package com.mycompany.trabalho_oo2;
  * @author igorm
  */
 public class CPF {
-        private static String cpf;
-
+    private static String cpf;
+    public CPF(String cpf) {
+        this.cpf = retiraCaracEspecial(cpf);
+    }
     public static String getCpf() {
         return cpf;
     }
@@ -21,10 +23,6 @@ public class CPF {
          }
     }
 
-    public CPF(String cpf) {
-        CPF.cpf = retiraCaracEspecial(cpf);
-    }
-
 
     private boolean ehValido(String cpf){
         cpf = retiraCaracEspecial(cpf);
@@ -33,17 +31,7 @@ public class CPF {
             return verificaCodigo(1, arrayCpf) == true;
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     private int[] transformaCpfArrayInt(String cpf){
         int[] arrayCpf = new int[11];
         for(int i = 0; i <= 10; i++){

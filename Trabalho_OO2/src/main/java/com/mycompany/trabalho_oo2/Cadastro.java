@@ -21,17 +21,16 @@ public class Cadastro {
         }
         this.cpf = new CPF(CPF.getCpf());
         this.nome = new Nome(Nome.getNome());
-        this.cargo = new Cargo(Cargo.getCargo());  
-       
+        this.cargo = new Cargo(Cargo.getCargo());
     }
     
     public void validaCadastro(CPF cpf, Nome nome){
         try{
-            this.cpf.validacpf(cpf.getCpf());
+            cpf.validacpf(cpf.getCpf());
         }catch(RuntimeException e){
             throw new RuntimeException("Uso de caracteres inválidos (CPF)!");
         }
-        this.nome.validaNome();
+        nome.validaNome();
         for(Pessoas e: this.lista2){
             if(e.getCpf().equals(cpf)){
                 throw new RuntimeException("Usuário já cadastrado!");

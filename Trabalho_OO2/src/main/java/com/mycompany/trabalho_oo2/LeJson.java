@@ -129,7 +129,7 @@ public class LeJson {
                 JsonObject jogadorObject = jogadorElement.getAsJsonObject();
                 //pego os atributos de cada jogador
                 String cpf = jogadorObject.get("cpf").getAsString();
-                int idTime = jogadorObject.get("time").getAsInt();
+                int idTime = jogadorObject.get("idTime").getAsInt();
                 String nome = jogadorObject.get("nome").getAsString();
                 String senha = jogadorObject.get("senha").getAsString();
                 int numCamisa = jogadorObject.get("numCamisa").getAsInt();
@@ -192,14 +192,19 @@ public class LeJson {
                 JsonObject golObject = golElement.getAsJsonObject();
                 //pego os atributos de cada jogador
                 int id = golObject.get("id").getAsInt();
+                //System.out.println(id);
                 String cpf = golObject.get("cpf").getAsString();
+                //System.out.println(cpf);
                 int idPartida = golObject.get("partida").getAsInt();
+                //System.out.println(idPartida);
                 String tempo = golObject.get("tempo").getAsString();
+                //System.out.println(tempo);
 
                 //acho o jogador do gol
+                String cpfJogador = cpf.replaceAll("[^0-9]", "");
                 Jogador jogadorGol = null;
                 for (Jogador jogador : jogadoresLista){
-                    if (jogador.getCpf() == cpf){
+                    if (jogador.getCpf().equals(cpfJogador)){
                         jogadorGol = jogador;
                     }
                 }

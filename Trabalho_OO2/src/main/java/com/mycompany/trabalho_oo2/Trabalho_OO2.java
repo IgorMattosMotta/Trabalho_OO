@@ -28,11 +28,15 @@ public class Trabalho_OO2 {
         ArrayList<Partida> partidasLista = new ArrayList<>();
         ArrayList<Tecnico> tecnicosLista = new ArrayList<>();
         ArrayList<Jogador> jogadoresLista = new ArrayList<>();
+        ArrayList<Admin> adminLista = new ArrayList<>();
+        ArrayList<Gols> golsLista = new ArrayList<>();
         LeJson leJson = new LeJson();
         leJson.getTimes(timesLista);
         leJson.getPartidas(partidasLista, timesLista);
         leJson.getTecnico(tecnicosLista,timesLista);
         leJson.getJogador(jogadoresLista,timesLista);
+        leJson.getAdministrdor(adminLista);
+        leJson.getGols(golsLista,jogadoresLista,partidasLista);
 
     }
 }
