@@ -28,7 +28,7 @@ public class AdicionaJson {
         Nome nome = new Nome("Bruno Guimaraes");
         CPF cpf = new CPF("072.491.550-83");
         Cargo cargo = new Cargo(3);
-        Jogador jogador = new Jogador(cpf, nome, cargo, "Guimaraesbrabo", "AT", 10, timeJogador, true);
+        Jogador jogador = new Jogador(cpf, nome.toString(), cargo.getCargo(), "Guimaraesbrabo", "AT", 10, timeJogador, true);
 
         jogadoresLista.add(jogador);
     }

@@ -11,26 +11,26 @@ import java.util.ArrayList;
  * @author igorm
  */
 public class Cadastro {
-    private CPF cpf;
-    private Nome nome;
-    private Cargo cargo;
+    private final CPF cpf;
+    private String nome;
+    private int cargo;
     ArrayList<Pessoas> lista2 =new ArrayList<>();
-    public Cadastro(CPF cpf, Nome nome, Cargo cargo, ArrayList<Pessoas> lista) {
+    public Cadastro(CPF cpf, String nome, int cargo, ArrayList<Pessoas> lista) {
         for(Pessoas e: lista){
             this.lista2.add(e);
         }
         this.cpf = new CPF(CPF.getCpf());
-        this.nome = new Nome(Nome.getNome());
-        this.cargo = new Cargo(Cargo.getCargo());
+        this.nome = nome;
+        this.cargo = cargo;
     }
     
-    public void validaCadastro(CPF cpf, Nome nome){
+    public void validaCadastro(CPF cpf, String nome){
         try{
             cpf.validacpf(cpf.getCpf());
         }catch(RuntimeException e){
             throw new RuntimeException("Uso de caracteres inválidos (CPF)!");
         }
-        nome.validaNome();
+        Nome.ehValido(nome);
         for(Pessoas e: this.lista2){
             if(e.getCpf().equals(cpf)){
                 throw new RuntimeException("Usuário já cadastrado!");

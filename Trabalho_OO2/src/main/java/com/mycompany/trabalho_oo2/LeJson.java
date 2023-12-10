@@ -10,7 +10,7 @@ public class LeJson {
     private String nomeArquivo;
 
     public LeJson(){
-        this.nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/";
+        this.nomeArquivo = "C:\\Users\\igorm\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2/data/";
     }
 
     public void getTimes(ArrayList<Time> timesLista){
@@ -108,7 +108,7 @@ public class LeJson {
                     }
                 }
                 //crio uma nova partida com os atributos pegos
-                Tecnico novoTecnico = new Tecnico(new CPF(cpf),new Nome(nome), new Cargo(3), senha, timeTecnico);
+                Tecnico novoTecnico = new Tecnico(new CPF(cpf), nome, 3, senha, timeTecnico);
                 tecnicosLista.add(novoTecnico);
             }
         } catch (Exception e) {
@@ -146,7 +146,7 @@ public class LeJson {
                     }
                 }
                 //crio um novo jogador com os atributos pegos
-                Jogador novoJogador = new Jogador(new CPF(cpf),new Nome(nome), new Cargo(1), senha, posicao, numCamisa, timeJogador, titular);
+                Jogador novoJogador = new Jogador(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
                 jogadoresLista.add(novoJogador);
             }
         } catch (Exception e) {
@@ -172,7 +172,7 @@ public class LeJson {
                 String senha = administradorObject.get("senha").getAsString();
 
                 //crio um novo admin com os atributos pegos
-                Admin novoAdmin = new Admin(new CPF(cpf),new Nome(nome), new Cargo(1), senha);
+                Admin novoAdmin = new Admin(new CPF(cpf), nome, 1, senha);
                 administradoresLista.add(novoAdmin);
             }
         } catch (Exception e) {

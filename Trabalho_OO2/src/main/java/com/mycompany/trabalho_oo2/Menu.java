@@ -41,7 +41,7 @@ public class Menu {
                                 Cargo cargo = new Cargo(Integer.parseInt(s.nextLine()));
                                 //String cargo = s.nextLine();
                                 String senha = s.nextLine();
-                                Pessoas eu = new Pessoas(cpf, nome, cargo, senha, pessoasLista);
+                                Pessoas eu = new Pessoas(cpf, nome.toString(), cargo.getCargo(), senha, pessoasLista);
                                 pessoasLista.add(eu);
                            }catch(RuntimeException e){
                                System.out.println(e.getMessage());

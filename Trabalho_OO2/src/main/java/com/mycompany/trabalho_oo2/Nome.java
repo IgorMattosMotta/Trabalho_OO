@@ -12,11 +12,11 @@ public class Nome {
     
     private static String nome;
 
-    public static String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public static void setNome(String nome) {
+    public void setNome(String nome) {
         Nome.nome = nome;
     }
   

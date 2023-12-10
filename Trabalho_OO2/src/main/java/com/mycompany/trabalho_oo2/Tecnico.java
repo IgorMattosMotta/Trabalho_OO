@@ -11,7 +11,7 @@ package com.mycompany.trabalho_oo2;
 public class Tecnico extends Pessoa{
     private Time time;
 
-    public Tecnico(CPF cpf, Nome nome, Cargo cargo, String senha, Time time) {
+    public Tecnico(CPF cpf, String nome, int cargo, String senha, Time time) {
         super(cpf,nome,cargo,senha);
         this.time = time;
     }

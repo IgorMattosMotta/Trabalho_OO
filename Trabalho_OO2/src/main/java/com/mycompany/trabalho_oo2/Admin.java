@@ -13,7 +13,7 @@ public class Admin extends Pessoa{
 
   
 
-    public Admin(CPF cpf, Nome nome, Cargo cargo, String senha) {
+    public Admin(CPF cpf, String nome, int cargo, String senha) {
         super(cpf,nome,cargo,senha);
     }
     public void setNumGols(Jogador jogador, int addNum){

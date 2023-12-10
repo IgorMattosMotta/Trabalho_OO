@@ -23,17 +23,17 @@ public class Trabalho_OO2 {
 
         System.out.println("Tecnicos Cadastrados:");
         for(Tecnico tecnico : tecnicosLista){
-            System.out.println(tecnico.getCpf());
+            System.out.println(tecnico.getNome());
         }
 
         System.out.println("Jogadores Cadastrados:");
         for(Jogador jogador : jogadoresLista){
-            System.out.println(jogador.getCpf());
+            System.out.println(jogador.getNome());
         }
 
         System.out.println("Times Cadastrados:");
         for(Time time : timesLista){
-            System.out.println(time.getId());
+            System.out.println(time.getCidade());
         }
 
 

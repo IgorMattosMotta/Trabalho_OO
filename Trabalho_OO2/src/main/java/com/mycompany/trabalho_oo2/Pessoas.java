@@ -12,12 +12,12 @@ import java.util.ArrayList;
  */
 public class Pessoas extends Pessoa{
 
-    public Pessoas(CPF cpf, Nome nome, Cargo cargo, String senha, ArrayList<Pessoas> lista) {
+    public Pessoas(CPF cpf, String nome, int cargo, String senha, ArrayList<Pessoas> lista) {
         super(cpf, nome, cargo, senha);
     }
 
     @Override
-    public void validaPessoa(CPF cpf, Nome nome, Cargo cargo) {
+    public void validaPessoa(CPF cpf, String nome, int cargo) {
         super.validaPessoa(cpf, nome, cargo);
     }
 
