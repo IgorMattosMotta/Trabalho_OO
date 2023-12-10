@@ -12,7 +12,7 @@ public class Admin extends Pessoa{
 
     private Admin(String cpf, String nome, String cargo, String senha) {
         super(cpf, nome, cargo, senha);
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
     public void setNumGols(Jogador jogador, int addNum){
          

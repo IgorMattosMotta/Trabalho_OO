@@ -15,9 +15,17 @@ public class Time {
     public String getNomeTime() {
         return nomeTime;
     }
-
+    
+    public void setNomeTime(String nomeTime)
+    {
+        this.nomeTime = nomeTime;
+    }
     public String getCidade() {
         return cidade;
+    }
+     public void setCidade(String cidade)
+    {
+        this.cidade = cidade;
     }
     
 }

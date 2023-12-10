@@ -71,11 +71,13 @@ public class Goleiro extends Jogador{
       
     /**
      *
-     * @param jogador
+   
      * @return
      */
+      // Função que calcula a nota geral do jogador, com diferentes pesos nos atributos
+      // baseado nas necessidades da posição do jogador
     @Override
-      public float calculaNotaGeral(Jogador jogador)
+      public float calculaNotaGeral()
       {
           
           this.notaGeral = (float) (reflexo*5+chute+marcação+passe*2+velocidade);

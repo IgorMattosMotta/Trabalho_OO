@@ -9,16 +9,19 @@ package com.mycompany.trabalho_oo2;
 //Álvaro Davi Carneiro dos Santos - 202176037
 //Davi Laranjo Villa 202235025
 public class Tecnico extends Pessoa{
-    private String time;
+    private final Time time;
 
 
-    public Tecnico(String cpf, String nome, String cargo, String senha, String time) {
+    public Tecnico(String cpf, String nome, String cargo, String senha, Time time) {
         super(cpf, nome, cargo, senha);
         this.time = time;
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public String getTime() {
+    /**
+     *
+     * @return
+     */
+    public Time getTime() {
         return time;
     }
     

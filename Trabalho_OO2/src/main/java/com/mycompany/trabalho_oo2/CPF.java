@@ -14,7 +14,7 @@ public class CPF {
     public String getCpf() {
         return cpf;
     }
-    
+    // Função que trata a excessão de invalidez do CPF
      public void validacpf(String cpf){
          if(!ehValido(cpf)){
              throw new RuntimeException("CPF inválido!");
@@ -25,7 +25,7 @@ public class CPF {
         this.cpf = retiraCaracEspecial(cpf);
     }
 
-
+    // Função que verifica a validez do CPF
     private boolean ehValido(String cpf){
         cpf = retiraCaracEspecial(cpf);
         int[] arrayCpf = this.transformaCpfArrayInt(cpf);
@@ -37,7 +37,7 @@ public class CPF {
         }
         
     }
-    
+    // Função que transforma String CPF em int para verificação da validez
     private int[] transformaCpfArrayInt(String cpf){
         int[] arrayCpf = new int[11];
         for(int i = 0; i <= 10; i++){

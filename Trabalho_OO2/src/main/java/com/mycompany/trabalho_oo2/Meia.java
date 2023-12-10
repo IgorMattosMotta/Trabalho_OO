@@ -71,11 +71,13 @@ public class Meia extends Jogador{
       
     /**
      *
-     * @param jogador
+     
      * @return
      */
+      // Função que calcula a nota geral do jogador, com diferentes pesos nos atributos
+      // baseado nas necessidades da posição do jogador
     @Override
-      public float calculaNotaGeral(Jogador jogador)
+      public float calculaNotaGeral()
       {
           
           this.notaGeral = (float) (reflexo*2+chute*1.5+marcação*3+passe*2+velocidade*1.5);

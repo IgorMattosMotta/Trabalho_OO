@@ -23,7 +23,6 @@ public abstract class Jogador extends Pessoa{
         this.numCamisa = numCamisa;
         this.time = time;
         this.titular = titular;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public String getTime() {
@@ -49,10 +48,11 @@ public abstract class Jogador extends Pessoa{
     
     /**
      *
-     * @param jogador
+     
      * @return
      */
-    public abstract float calculaNotaGeral(Jogador jogador);
+    // Função polimórfica que calcula o valor geral do jogador, variando de 0 a 100
+    public abstract float calculaNotaGeral();
    
     
 }
