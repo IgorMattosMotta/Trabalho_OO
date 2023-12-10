@@ -12,12 +12,12 @@ public class Cargo {
     private static int cargo;
 
     public Cargo(int cargo) {
-        Cargo.cargo = cargo;
+        Cargo.setCargo(cargo);
     }
 
     
 
-    public static int getCargo() {
+    public int getCargo() {
         return cargo;
     }
 

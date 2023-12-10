@@ -23,6 +23,7 @@ public class Trabalho_OO2 {
         for(Tecnico tecnico : tecnicosLista){
             System.out.println(tecnico.getCpf());
             System.out.println(tecnico.getCargo().getCargo());
+            System.out.println(tecnico.getNome());
         }
 
         System.out.println("Jogadores Cadastrados:");
@@ -35,6 +36,15 @@ public class Trabalho_OO2 {
         //adicionaJson.adicionaJogador(jogadoresLista,timesLista,"693.241.520-84","Jogador Teste",1,"123456","Atacante",10,1,true);
         //adicionaJson.adicionaTecnico(tecnicosLista,timesLista,"693.241.520-84","Tecnico Teste",1,"123456",1);
         //adicionaJson.adicionaTime(timesLista,1,"Teste","Teste");
+            System.out.println(jogador.getNome());
+        }
+
+        System.out.println("Times Cadastrados:");
+        for(Time time : timesLista){
+            System.out.println(time.getCidade());
+        }
+
+
 
     }
 }

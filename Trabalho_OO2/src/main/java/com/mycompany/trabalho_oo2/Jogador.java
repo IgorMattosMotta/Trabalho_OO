@@ -13,7 +13,7 @@ public class Jogador extends Pessoa{
     private List<Gols> gols;
 
 
-    public Jogador(CPF cpf, Nome nome, Cargo cargo, String senha, String posicao, int numCamisa, Time time, boolean titular) {
+    public Jogador(CPF cpf, String nome, int cargo, String senha, String posicao, int numCamisa, Time time, boolean titular) {
         super(cpf, nome, cargo, senha);
         this.posicao = posicao;
         this.numCamisa = numCamisa;

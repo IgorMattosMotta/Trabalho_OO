@@ -11,7 +11,7 @@ package com.mycompany.trabalho_oo2;
 public class Dados_Pessoas {
     private String cpf;
     private String senha;
-    private Cargo cargo;
+    private int cargo;
     final Pessoas p;
     
    
@@ -32,7 +32,7 @@ public class Dados_Pessoas {
         return senha;
     }
 
-    public Cargo getCargo() {
+    public int getCargo() {
         return cargo;
     }
 
@@ -44,7 +44,7 @@ public class Dados_Pessoas {
         this.senha = senha;
     }
 
-    public void setCargo(Cargo cargo) {
+    public void setCargo(int cargo) {
         this.cargo = cargo;
     }
     

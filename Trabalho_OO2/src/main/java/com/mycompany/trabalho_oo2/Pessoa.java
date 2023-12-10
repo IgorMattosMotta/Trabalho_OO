@@ -12,20 +12,20 @@ import java.util.ArrayList;
  */
 public abstract class Pessoa {
     private final String cpf;
-    private Nome nome;
-    private Cargo cargo;
+    private String nome;
+    private int cargo;
     private String senha;
     public ArrayList<Pessoas> lista=new ArrayList<>();
-    
+
      public String getCpf() {
         return cpf;
     }
 
-    public Nome getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public Cargo getCargo() {
+    public int getCargo() {
         return cargo;
     }
 
@@ -33,11 +33,11 @@ public abstract class Pessoa {
         return senha;
     }
 
-    public void setNome(Nome nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setCargo(Cargo cargo) {
+    public void setCargo(int cargo) {
         this.cargo = cargo;
     }
 
@@ -47,7 +47,7 @@ public abstract class Pessoa {
 
 
 
-    public Pessoa(CPF cpf, Nome nome, Cargo cargo, String senha) {
+    public Pessoa(CPF cpf, String nome, int cargo, String senha) {
         Cadastro cadastro = new Cadastro(cpf, nome, cargo, this.lista);
         try{
             cadastro.validaCadastro(cpf, nome);
@@ -60,10 +60,10 @@ public abstract class Pessoa {
         this.senha = senha;
     }
 
-    public void validaPessoa(CPF cpf, Nome nome, Cargo cargo){
+    public void validaPessoa(CPF cpf, String nome, int cargo){
         Cadastro cadastro = new Cadastro(cpf, nome, cargo, this.lista);
         try{
-            cadastro.validaCadastro(cpf, nome);
+            cadastro.validaCadastro(cpf, nome.toString());
         }catch(RuntimeException e){
              throw new RuntimeException(e.getMessage()+"\nCadastro inválido! Verifique se os campos foram preenchidos corretamente!");
         }
