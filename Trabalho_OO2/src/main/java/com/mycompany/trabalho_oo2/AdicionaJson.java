@@ -11,7 +11,7 @@ public class AdicionaJson {
     private String nomeArquivo;
 
     public AdicionaJson() {
-        this.nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/";
+        this.nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
     }
 
     public void adicionaJogador(
@@ -106,6 +106,39 @@ public class AdicionaJson {
                 gson.toJson(jsonObject, fileWriter);
             }
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void adicionaAdmin(
+            List<Admin> administradoresLista,
+            String cpf,String nome,int cargo,String senha
+    ){
+        CPF classCpf = new CPF(cpf);
+        Admin admin = new Admin(classCpf, nome, cargo, senha);
+        administradoresLista.add(admin);
+
+        String nomeArquivo = this.nomeArquivo+"/administradores.json";
+        try(FileReader fileReader = new FileReader(nomeArquivo)) {
+            JsonElement jsonElement = JsonParser.parseReader(fileReader);
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+            JsonArray administradoresArray = jsonObject.getAsJsonArray("administradores");
+
+            JsonObject novoAdmin = new JsonObject();
+            novoAdmin.addProperty("cpf", cpf);
+            novoAdmin.addProperty("nome", nome);
+            novoAdmin.addProperty("cargo", cargo);
+
+            administradoresArray.add(novoAdmin);
+
+            jsonObject.add("administradores", administradoresArray);
+
+            try(FileWriter fileWriter = new FileWriter(nomeArquivo)){
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                gson.toJson(jsonObject, fileWriter);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

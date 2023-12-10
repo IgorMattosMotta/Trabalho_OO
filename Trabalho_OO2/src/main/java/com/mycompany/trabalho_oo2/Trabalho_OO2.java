@@ -11,15 +11,15 @@ public class Trabalho_OO2 {
         ArrayList<Jogador> jogadoresLista = new ArrayList<>();
         ArrayList<Admin> adminLista = new ArrayList<>();
         ArrayList<Gols> golsLista = new ArrayList<>();
-        LeJson leJson = new LeJson();
+        /*LeJson leJson = new LeJson();
         leJson.getTimes(timesLista);
         leJson.getPartidas(partidasLista, timesLista);
         leJson.getTecnico(tecnicosLista,timesLista);
         leJson.getJogador(jogadoresLista,timesLista);
         leJson.getAdministrdor(adminLista);
-        leJson.getGols(golsLista,jogadoresLista,partidasLista);
+        leJson.getGols(golsLista,jogadoresLista,partidasLista);*/
 
-        System.out.println("Tecnicos Cadastrados:");
+        /*System.out.println("Tecnicos Cadastrados:");
         for(Tecnico tecnico : tecnicosLista){
             System.out.println(tecnico.getCpf());
             System.out.println(tecnico.getCargo());
@@ -30,14 +30,13 @@ public class Trabalho_OO2 {
         for(Jogador jogador : jogadoresLista){
             System.out.println(jogador.getCpf());
             System.out.println(jogador.getCargo());
-        }
+        }*/
 
         AdicionaJson adicionaJson = new AdicionaJson();
         //adicionaJson.adicionaJogador(jogadoresLista,timesLista,"693.241.520-84","Jogador Teste",1,"123456","Atacante",10,1,true);
         //adicionaJson.adicionaTecnico(tecnicosLista,timesLista,"693.241.520-84","Tecnico Teste",1,"123456",1);
         //adicionaJson.adicionaTime(timesLista,1,"Teste","Teste");
-
-
+        //adicionaJson.adicionaAdmin(adminLista,"693.241.520-84","Admin Teste",1,"123456");
 
     }
 }
