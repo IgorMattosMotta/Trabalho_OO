@@ -51,18 +51,17 @@ public class Aplicacao {
             };
             edicaoJogador.setVisible(true);
         });
-
         SwingUtilities.invokeLater(() -> {
             EdicaoPartida edicaoPartida = new EdicaoPartida() {
             };
             edicaoPartida.setVisible(true);
-        });
-     */
-        SwingUtilities.invokeLater(() -> {
+        });*/
+
+        /*SwingUtilities.invokeLater(() -> {
             EdicaoTime edicaoTime = new EdicaoTime() {
             };
             edicaoTime.setVisible(true);
-        });
+        });*/
     }
 
 

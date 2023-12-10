@@ -142,6 +142,7 @@ public class LeJson {
                 for (Time time : timesLista){
                     if (time.getId() == idTime){
                         timeJogador = time;
+                        break;
                     }
                 }
                 //crio um novo jogador com os atributos pegos
@@ -228,6 +229,5 @@ public class LeJson {
             e.printStackTrace();
         }
     }
-
 
 }

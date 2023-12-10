@@ -18,28 +18,25 @@ public class Trabalho_OO2 {
         leJson.getJogador(jogadoresLista,timesLista);
         leJson.getAdministrdor(adminLista);
         leJson.getGols(golsLista,jogadoresLista,partidasLista);
-        AdicionaJson adicionaJson = new AdicionaJson();
-        adicionaJson.adicionaJogador(jogadoresLista,timesLista);
+        //AdicionaJson adicionaJson = new AdicionaJson();
+        //adicionaJson.adicionaJogador(jogadoresLista,timesLista);
+
+        System.out.println("Tecnicos Cadastrados:");
+        for(Tecnico tecnico : tecnicosLista){
+            System.out.println(tecnico.getCpf());
+        }
+
+        System.out.println("Jogadores Cadastrados:");
+        for(Jogador jogador : jogadoresLista){
+            System.out.println(jogador.getCpf());
+        }
+
+        System.out.println("Times Cadastrados:");
+        for(Time time : timesLista){
+            System.out.println(time.getId());
+        }
 
 
-
-
-
-        /*String cpf = "11545693064";
-        String senha = "senha123";
-        ValidaLogin validaLogin = new ValidaLogin(tecnicosLista, adminLista, jogadoresLista);
-        if(validaLogin.autenticarTecnico(cpf, senha) != null){
-            Tecnico userLogado = validaLogin.autenticarTecnico(cpf, senha);
-            System.out.println("Tecnico logado");
-        }else if(validaLogin.autenticarAdmin(cpf,senha) != null){
-            Admin userLogado = validaLogin.autenticarAdmin(cpf, senha);
-            System.out.println("Admin logado");
-        } else if(validaLogin.autenticarJogador(cpf,senha) != null){
-            Jogador userLogado = validaLogin.autenticarJogador(cpf, senha);
-            System.out.println("Jogador logado");
-        } else{
-            System.out.println("Login inválido");
-        }*/
 
     }
 }

@@ -6,6 +6,13 @@
       "nome": "Tome Santos",
       "cargo": 2,
       "senha": "senha455"
+    },
+    {
+      "time": 3,
+      "cpf": "376.846.940-90",
+      "nome": "Dante Nogueira",
+      "cargo": 2,
+      "senha": "senha55"
     }
   ]
 }
