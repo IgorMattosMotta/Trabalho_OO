@@ -25,15 +25,8 @@ public class AdicionaJson {
                 break;
             }
         }
-        Nome classNome = new Nome(nome);
         CPF classCpf = new CPF(cpf);
-        Cargo classCargo = new Cargo(cargo);
-        Jogador jogador = new Jogador(classCpf, classNome, classCargo, senha, posicao, numCamisa, timeJogador, titular);
-        Nome nome = new Nome("Bruno Guimaraes");
-        CPF cpf = new CPF("072.491.550-83");
-        Cargo cargo = new Cargo(3);
-        Jogador jogador = new Jogador(cpf, nome.toString(), cargo.getCargo(), "Guimaraesbrabo", "AT", 10, timeJogador, true);
-
+        Jogador jogador = new Jogador(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
         jogadoresLista.add(jogador);
 
         String nomeArquivo = this.nomeArquivo+"/jogadores.json";
@@ -85,10 +78,8 @@ public class AdicionaJson {
             }
         }
 
-        Nome classNome = new Nome(nome);
         CPF classCpf = new CPF(cpf);
-        Cargo classCargo = new Cargo(cargo);
-        Tecnico tecnico = new Tecnico(classCpf, classNome, classCargo, senha, timeTecnico);
+        Tecnico tecnico = new Tecnico(classCpf, nome, cargo, senha, timeTecnico);
         tecnicosLista.add(tecnico);
 
         String nomeArquivo = this.nomeArquivo+"/tecnicos.json";
