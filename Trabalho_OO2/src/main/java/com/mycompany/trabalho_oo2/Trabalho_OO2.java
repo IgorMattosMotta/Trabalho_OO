@@ -1,29 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
-
 package com.mycompany.trabalho_oo2;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
-/**
- *
- * @author igorm
- */
 public class Trabalho_OO2 {
 
     public static void main(String[] args) {
-        /*Menu menu = new Menu();
-        
-         try{
-             menu.menu();
-        }catch (RuntimeException e) {
-            System.out.println("Método inválido!");
-            menu.menu();
-        }*/
-
+        //ao iniciar o programa, o mesmo deve ler os arquivos json e armazenar os dados em listas
         ArrayList<Time> timesLista = new ArrayList<>();
         ArrayList<Partida> partidasLista = new ArrayList<>();
         ArrayList<Tecnico> tecnicosLista = new ArrayList<>();
@@ -37,6 +18,28 @@ public class Trabalho_OO2 {
         leJson.getJogador(jogadoresLista,timesLista);
         leJson.getAdministrdor(adminLista);
         leJson.getGols(golsLista,jogadoresLista,partidasLista);
+        AdicionaJson adicionaJson = new AdicionaJson();
+        adicionaJson.adicionaJogador(jogadoresLista,timesLista);
+
+
+
+
+
+        /*String cpf = "11545693064";
+        String senha = "senha123";
+        ValidaLogin validaLogin = new ValidaLogin(tecnicosLista, adminLista, jogadoresLista);
+        if(validaLogin.autenticarTecnico(cpf, senha) != null){
+            Tecnico userLogado = validaLogin.autenticarTecnico(cpf, senha);
+            System.out.println("Tecnico logado");
+        }else if(validaLogin.autenticarAdmin(cpf,senha) != null){
+            Admin userLogado = validaLogin.autenticarAdmin(cpf, senha);
+            System.out.println("Admin logado");
+        } else if(validaLogin.autenticarJogador(cpf,senha) != null){
+            Jogador userLogado = validaLogin.autenticarJogador(cpf, senha);
+            System.out.println("Jogador logado");
+        } else{
+            System.out.println("Login inválido");
+        }*/
 
     }
 }

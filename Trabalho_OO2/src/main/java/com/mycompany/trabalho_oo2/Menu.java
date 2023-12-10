@@ -69,13 +69,7 @@ public class Menu {
                     case 5->{
                         Scanner s = new Scanner(System.in); 
                          String cpf = s.nextLine();
-                         try{
-                            Login login = new Login(cpf);
-                            login.Loga();
-                            user = login.getP();
-                         }catch(RuntimeException e){
-                             System.out.println("Login inválido!!!");
-                         }
+
                          
                     }
                     case 6->{

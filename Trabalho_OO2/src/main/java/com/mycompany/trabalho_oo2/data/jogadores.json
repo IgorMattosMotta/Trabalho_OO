@@ -1,24 +1,24 @@
 {
-  "jogadores": [
+  "jogadores":[
     {
-      "posicao": "AT",
-      "numCamisa": 10,
-      "idTime": 3,
-      "titular": true,
-      "cpf": "115.456.930-64",
-      "nome": "Joao Silva",
-      "cargo": 3,
-      "senha": "senha123"
+      "posicao":"AT",
+      "numCamisa":10,
+      "idTime":3,
+      "titular":true,
+      "cpf":"115.456.930-64",
+      "nome":"Joao Silva",
+      "cargo":3,
+      "senha":"senha123"
     },
     {
-      "posicao": "MC",
-      "numCamisa": 8,
-      "idTime": 1,
-      "titular": true,
-      "cpf": "743.204.020-65",
-      "nome": "Maria Santos",
-      "cargo": 3,
-      "senha": "senha456"
+      "posicao":"MC",
+      "numCamisa":8,
+      "idTime":1,
+      "titular":true,
+      "cpf":"743.204.020-65",
+      "nome":"Maria Santos",
+      "cargo":3,
+      "senha":"senha456"
     }
   ]
 }

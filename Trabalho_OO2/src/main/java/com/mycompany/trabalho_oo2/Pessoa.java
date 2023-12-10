@@ -68,4 +68,8 @@ public abstract class Pessoa {
              throw new RuntimeException(e.getMessage()+"\nCadastro inválido! Verifique se os campos foram preenchidos corretamente!");
         }
     }
+
+    public boolean validarSenha(String senha){
+        return this.getSenha().equals(senha);
+    }
 }

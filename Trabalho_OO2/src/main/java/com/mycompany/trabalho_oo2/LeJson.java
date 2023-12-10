@@ -10,11 +10,12 @@ public class LeJson {
     private String nomeArquivo;
 
     public LeJson(){
+        this.nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/";
     }
 
     public void getTimes(ArrayList<Time> timesLista){
         //pego o caminho do arquivo
-        String nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/times.json";
+        String nomeArquivo = this.nomeArquivo+"/times.json";
         //tento ler o arquivo pelo caminho dito anteriormente
         try(FileReader fileReader = new FileReader(nomeArquivo)){
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
@@ -40,7 +41,7 @@ public class LeJson {
 
     public void getPartidas(ArrayList<Partida> partidasLista, ArrayList<Time> timesLista){
         //pego o caminho do arquivo
-        String nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/partidas.json";
+        String nomeArquivo = this.nomeArquivo+"/partidas.json";
         //tento ler o arquivo pelo caminho dito anteriormente
         try(FileReader fileReader = new FileReader(nomeArquivo)){
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
@@ -81,7 +82,7 @@ public class LeJson {
 
     public void getTecnico(ArrayList<Tecnico> tecnicosLista,ArrayList<Time> timesLista){
         //pego o caminho do arquivo
-        String nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/tecnicos.json";
+        String nomeArquivo = this.nomeArquivo+"/tecnicos.json";
         //tento ler o arquivo pelo caminho dito anteriormente
         try(FileReader fileReader = new FileReader(nomeArquivo)){
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
@@ -116,7 +117,7 @@ public class LeJson {
     }
 
     public void getJogador(ArrayList<Jogador> jogadoresLista,ArrayList<Time> timesLista){
-        String nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/jogadores.json";
+        String nomeArquivo = this.nomeArquivo+"/jogadores.json";
         //tento ler o arquivo pelo caminho dito anteriormente
         try(FileReader fileReader = new FileReader(nomeArquivo)){
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
@@ -153,7 +154,7 @@ public class LeJson {
     }
 
     public void getAdministrdor(ArrayList<Admin> administradoresLista){
-        String nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/administradores.json";
+        String nomeArquivo = this.nomeArquivo+"/administradores.json";
         //tento ler o arquivo pelo caminho dito anteriormente
         try(FileReader fileReader = new FileReader(nomeArquivo)){
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
@@ -179,7 +180,7 @@ public class LeJson {
     }
 
     public void getGols(ArrayList<Gols> golsLista,ArrayList<Jogador> jogadoresLista,ArrayList<Partida> partidasLista){
-        String nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data/gols.json";
+        String nomeArquivo = this.nomeArquivo+"/gols.json";
         //tento ler o arquivo pelo caminho dito anteriormente
         try(FileReader fileReader = new FileReader(nomeArquivo)){
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
@@ -227,5 +228,6 @@ public class LeJson {
             e.printStackTrace();
         }
     }
+
 
 }

@@ -1,4 +1,4 @@
-package aplicacao;
+package com.mycompany.trabalho_oo2.aplicacao;
 import javax.swing.*;
 import java.awt.*;
 public abstract class MenuApp extends JFrame{
