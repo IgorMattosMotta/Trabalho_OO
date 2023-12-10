@@ -55,13 +55,19 @@ public class Aplicacao {
             EdicaoPartida edicaoPartida = new EdicaoPartida() {
             };
             edicaoPartida.setVisible(true);
-        });*/
+        });
 
-        /*SwingUtilities.invokeLater(() -> {
+        SwingUtilities.invokeLater(() -> {
             EdicaoTime edicaoTime = new EdicaoTime() {
             };
             edicaoTime.setVisible(true);
         });*/
+
+        SwingUtilities.invokeLater(() -> {
+            Login Login = new Login() {
+            };
+            Login.setVisible(true);
+        });
     }
 
 

@@ -11,6 +11,18 @@ public abstract class Jogador extends Pessoa{
     private Time time;
     private boolean titular;
 
+    @Override
+    public String toString() {
+        return "Jogador{" +
+                "nome=" + this.getNome() +
+                ", posicao='" + posicao + '\'' +
+                ", numGols=" + numGols +
+                ", numCamisa= " + numCamisa + ", "
+                 + time +
+                ", titular=" + titular +
+
+                '}';
+    }
 
     protected Jogador(CPF cpf, String nome, int cargo, String senha, String posicao, int numCamisa, Time time, boolean titular) {
         super(cpf, nome, cargo, senha);

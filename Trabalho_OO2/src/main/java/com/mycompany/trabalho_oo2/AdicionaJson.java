@@ -26,7 +26,24 @@ public class AdicionaJson {
             }
         }
         CPF classCpf = new CPF(cpf);
-        Jogador jogador = new Jogador(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+        Jogador jogador;
+        switch (posicao){
+            case "AT":
+                jogador = new Atacante(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+                break;
+            case "MC":
+                jogador = new Meia(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+                break;
+            case "ZG":
+                jogador = new Zagueiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+                break;
+            case "G":
+                jogador = new Goleiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+                break;
+            default:
+                jogador = null;
+                throw new RuntimeException("Jogador vazio!");
+        }
         jogadoresLista.add(jogador);
 
         String nomeArquivo = this.nomeArquivo+"/jogadores.json";

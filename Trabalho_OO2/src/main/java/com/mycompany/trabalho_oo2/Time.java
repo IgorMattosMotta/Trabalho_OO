@@ -13,6 +13,12 @@ public class Time {
     private String nomeTime;
     private String cidade;
 
+    @Override
+    public String toString() {
+        return
+                "nomeTime='" + nomeTime ;
+    }
+
     public Time(int id, String nomeTime, String cidade) {
         this.id = id;
         this.nomeTime = nomeTime;

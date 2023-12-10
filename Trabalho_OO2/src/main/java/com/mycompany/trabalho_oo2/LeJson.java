@@ -146,7 +146,24 @@ public class LeJson {
                     }
                 }
                 //crio um novo jogador com os atributos pegos
-                Goleiro novoJogador = new Goleiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                Jogador novoJogador;
+                switch (posicao){
+                    case "AT":
+                        novoJogador = new Atacante(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                        break;
+                    case "MC":
+                        novoJogador = new Meia(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                        break;
+                    case "ZG":
+                        novoJogador = new Zagueiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                        break;
+                    case "G":
+                        novoJogador = new Goleiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                        break;
+                    default:
+                        novoJogador = null;
+                        throw new RuntimeException("Jogador vazio ou posicao não reconhecida!!");
+                }
                 jogadoresLista.add(novoJogador);
             }
         } catch (Exception e) {

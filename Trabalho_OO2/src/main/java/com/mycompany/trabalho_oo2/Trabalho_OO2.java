@@ -1,5 +1,6 @@
 package com.mycompany.trabalho_oo2;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Trabalho_OO2 {
 
@@ -19,6 +20,7 @@ public class Trabalho_OO2 {
         leJson.getAdministrdor(adminLista);
         leJson.getGols(golsLista,jogadoresLista,partidasLista);
 
+
         System.out.println("Tecnicos Cadastrados:");
         for(Tecnico tecnico : tecnicosLista){
             System.out.println(tecnico.getCpf());
@@ -28,8 +30,7 @@ public class Trabalho_OO2 {
 
         System.out.println("Jogadores Cadastrados:");
         for(Jogador jogador : jogadoresLista){
-            System.out.println(jogador.getCpf());
-            System.out.println(jogador.getPosicao());
+            System.out.println(jogador);
         }
 
         AdicionaJson adicionaJson = new AdicionaJson();

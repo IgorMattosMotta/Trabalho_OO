@@ -16,6 +16,11 @@ public class Atacante extends Jogador{
     private int velocidade;
     private float notaGeral;
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     public Atacante(CPF cpf, String nome, int cargo, String senha, String posicao, int numCamisa, Time time, boolean titular) {
         super(cpf, nome, cargo, senha, posicao, numCamisa, time, titular);
     }
