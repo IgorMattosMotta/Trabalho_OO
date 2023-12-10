@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Aplicacao {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
+      /*  SwingUtilities.invokeLater(() -> {
                 LoginApp login = new LoginApp() {
                 };
                 login.setVisible(true);
@@ -27,17 +27,43 @@ public class Aplicacao {
             };
             jogadoresApp.setVisible(true);
         });
-
         SwingUtilities.invokeLater(() -> {
             PartidasApp partidasApp = new PartidasApp() {
             };
             partidasApp.setVisible(true);
         });
-
+        /*
         SwingUtilities.invokeLater(() -> {
             TecnicosApp tecnicosApp = new TecnicosApp() {
             };
             tecnicosApp.setVisible(true);
         });
+
+
+        SwingUtilities.invokeLater(() -> {
+            EdicaoTecnico edicaoTecnico = new EdicaoTecnico() {
+            };
+            edicaoTecnico.setVisible(true);
+        });
+
+        SwingUtilities.invokeLater(() -> {
+            EdicaoJogador edicaoJogador = new EdicaoJogador() {
+            };
+            edicaoJogador.setVisible(true);
+        });
+
+        SwingUtilities.invokeLater(() -> {
+            EdicaoPartida edicaoPartida = new EdicaoPartida() {
+            };
+            edicaoPartida.setVisible(true);
+        });
+     */
+        SwingUtilities.invokeLater(() -> {
+            EdicaoTime edicaoTime = new EdicaoTime() {
+            };
+            edicaoTime.setVisible(true);
+        });
     }
+
+
 }
