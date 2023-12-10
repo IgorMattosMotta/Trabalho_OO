@@ -11,7 +11,7 @@ public class AdicionaJson {
     private String nomeArquivo;
 
     public AdicionaJson() {
-        this.nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+        this.nomeArquivo = System.getProperty("user.dir")+"\\data";
     }
 
     public void adicionaJogador(

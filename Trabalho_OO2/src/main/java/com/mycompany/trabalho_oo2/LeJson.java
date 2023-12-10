@@ -10,7 +10,7 @@ public class LeJson {
     private String nomeArquivo;
 
     public LeJson(){
-        this.nomeArquivo = "C:\\Users\\igorm\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2/data/";
+        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
     }
 
     public void getTimes(ArrayList<Time> timesLista){
