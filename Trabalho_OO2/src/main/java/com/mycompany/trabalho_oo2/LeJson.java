@@ -10,7 +10,7 @@ public class LeJson {
     private String nomeArquivo;
 
     public LeJson(){
-        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO\\Trabalho_OO\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
     }
 
     public void getTimes(ArrayList<Time> timesLista){
@@ -146,7 +146,7 @@ public class LeJson {
                     }
                 }
                 //crio um novo jogador com os atributos pegos
-                Jogador novoJogador = new Jogador(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                Goleiro novoJogador = new Goleiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
                 jogadoresLista.add(novoJogador);
             }
         } catch (Exception e) {
@@ -223,7 +223,7 @@ public class LeJson {
                 //crio um novo jogador com os atributos pegos
                 Gols novoGol = new Gols(id,jogadorGol,partidaGol,tempo);
                 golsLista.add(novoGol);
-                jogadorGol.adicionarGol(novoGol);
+                //jogadorGol.adicionarGol(novoGol);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -26,7 +26,12 @@ public class AdicionaJson {
             }
         }
         CPF classCpf = new CPF(cpf);
-        Jogador jogador = new Jogador(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+        Jogador jogador = new Jogador(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular) {
+            @Override
+            public float calculaNotaGeral(Jogador jogador) {
+                return 0;
+            }
+        };
         jogadoresLista.add(jogador);
 
         String nomeArquivo = this.nomeArquivo+"/jogadores.json";

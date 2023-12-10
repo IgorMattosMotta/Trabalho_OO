@@ -29,7 +29,7 @@ public class Trabalho_OO2 {
         System.out.println("Jogadores Cadastrados:");
         for(Jogador jogador : jogadoresLista){
             System.out.println(jogador.getCpf());
-            System.out.println(jogador.getCargo());
+            System.out.println(jogador.getPosicao());
         }
 
         AdicionaJson adicionaJson = new AdicionaJson();
