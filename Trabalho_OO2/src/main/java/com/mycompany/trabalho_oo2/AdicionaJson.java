@@ -5,14 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdicionaJson {
     private String nomeArquivo;
 
     public AdicionaJson() {
-        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+        this.nomeArquivo = System.getProperty("user.dir")+"\\data";
     }
 
     public void adicionaJogador(
@@ -164,8 +163,21 @@ public class AdicionaJson {
 
     public void adicionaTime(
             List<Time> timesLista,
-            int id, String nome, String cidade
+            String nome, String cidade
     ){
+        //cria um id para o time
+        boolean idExiste = true;
+        int id = 0;
+        while(idExiste){
+            id = new Random().nextInt(1000);
+            for (Time time : timesLista){
+                if (time.getId() == id){
+                    idExiste = true;
+                    break;
+                }
+            }
+        }
+
         String nomeArquivo = this.nomeArquivo+"/times.json";
 
         try(FileReader fileReader = new FileReader(nomeArquivo)){
@@ -244,7 +256,7 @@ public class AdicionaJson {
     }
 
     public void adicionaPartida(
-            ArrayList<Partida> partidasLista, ArrayList<Time> timesLista,
+            List<Partida> partidasLista, List<Time> timesLista, List<Gols> golsLista,
             int id, int idTime1, int idTime2, String placar, String hora
     ){
         Time time1 = null;
@@ -278,7 +290,7 @@ public class AdicionaJson {
             novaPartida.addProperty("idTime1", idTime1);
             novaPartida.addProperty("idTime2", idTime2);
             novaPartida.addProperty("hora", hora);
-            novaPartida.addProperty("placar", placar);
+            novaPartida.addProperty("placar", "0x0");
 
             partidasArray.add(novaPartida);
 
