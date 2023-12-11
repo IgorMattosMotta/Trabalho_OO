@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 public class AdicionaJson {
     private String nomeArquivo;
@@ -18,6 +19,7 @@ public class AdicionaJson {
             List<Jogador> jogadoresLista, List<Time> timesLista,
             String cpf,String nome,int cargo,String senha,String posicao, int numCamisa,int idTime, boolean titular
     ){
+
         Time timeJogador = null;
         for (Time time : timesLista){
             if (time.getId() == idTime){
@@ -163,8 +165,21 @@ public class AdicionaJson {
 
     public void adicionaTime(
             List<Time> timesLista,
-            int id, String nome, String cidade
+            String nome, String cidade
     ){
+        //cria um id para o time
+        boolean idExiste = true;
+        int id = 0;
+        while(idExiste){
+            id = new Random().nextInt(1000);
+            for (Time time : timesLista){
+                if (time.getId() == id){
+                    idExiste = true;
+                    break;
+                }
+            }
+        }
+
         String nomeArquivo = this.nomeArquivo+"/times.json";
 
         try(FileReader fileReader = new FileReader(nomeArquivo)){
@@ -193,9 +208,21 @@ public class AdicionaJson {
 
     public void adicionaGol(
             List<Gols> golsLista, List<Jogador> jogadoresLista, List<Partida> partidasLista,
-            int id,int cpfJogador, int idPartida, String minuto
+            int cpfJogador, int idPartida, String minuto
     ){
 
+        //cria um id para o gol
+        boolean idExiste = true;
+        int id = 0;
+        while(idExiste){
+            id = new Random().nextInt(1000);
+            for (Gols gol : golsLista){
+                if (gol.getId() == id){
+                    idExiste = true;
+                    break;
+                }
+            }
+        }
         //procura o jogador que fez o gol
         Jogador jogadorGol = null;
         for(Jogador jogador : jogadoresLista){
@@ -244,8 +271,22 @@ public class AdicionaJson {
 
     public void adicionaPartida(
             List<Partida> partidasLista, List<Time> timesLista, List<Gols> golsLista,
-            int id, int idTime1, int idTime2, String placar, String hora
+            int idTime1, int idTime2, String placar, String hora
     ){
+
+        //cria um id para a partida
+        int id = 0;
+        boolean idExiste = true;
+        while(idExiste){
+            id = new Random().nextInt(1000);
+            for (Partida partida : partidasLista){
+                if (partida.getId() == id){
+                    idExiste = true;
+                    break;
+                }
+            }
+        }
+
         Time time1 = null;
         Time time2 = null;
         for(Time time : timesLista){

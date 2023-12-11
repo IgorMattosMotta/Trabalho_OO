@@ -34,5 +34,9 @@ public class Gols {
     public String getMinutoMarcou() {
         return minutoMarcou;
     }
+
+    public int getId() {
+        return id;
+    }
     
 }
