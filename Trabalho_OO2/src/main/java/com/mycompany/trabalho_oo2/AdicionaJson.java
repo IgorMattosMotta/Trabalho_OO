@@ -275,34 +275,36 @@ public class AdicionaJson {
                 break;
             }
         }
+        if(time1.getId() == time2.getId()){
+            throw new RuntimeException("Times não podem ser iguais");
+        }else {
+            Partida partida = new Partida(id, time1, time2, placar, hora);
+            partidasLista.add(partida);
+            String nomeArquivo = this.nomeArquivo + "/partidas.json";
+            try (FileReader fileReader = new FileReader(nomeArquivo)) {
+                JsonElement jsonElement = JsonParser.parseReader(fileReader);
+                JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-        Partida partida = new Partida(id, time1, time2,placar, hora);
-        partidasLista.add(partida);
+                JsonArray partidasArray = jsonObject.getAsJsonArray("partidas");
 
-        String nomeArquivo = this.nomeArquivo+"/partidas.json";
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
-            JsonElement jsonElement = JsonParser.parseReader(fileReader);
-            JsonObject jsonObject = jsonElement.getAsJsonObject();
+                JsonObject novaPartida = new JsonObject();
+                novaPartida.addProperty("id", id);
+                novaPartida.addProperty("idTime1", idTime1);
+                novaPartida.addProperty("idTime2", idTime2);
+                novaPartida.addProperty("hora", hora);
+                novaPartida.addProperty("placar", "0x0");
 
-            JsonArray partidasArray = jsonObject.getAsJsonArray("partidas");
+                partidasArray.add(novaPartida);
 
-            JsonObject novaPartida = new JsonObject();
-            novaPartida.addProperty("id", id);
-            novaPartida.addProperty("idTime1", idTime1);
-            novaPartida.addProperty("idTime2", idTime2);
-            novaPartida.addProperty("hora", hora);
-            novaPartida.addProperty("placar", "0x0");
+                jsonObject.add("partidas", partidasArray);
 
-            partidasArray.add(novaPartida);
-
-            jsonObject.add("partidas", partidasArray);
-
-            try(FileWriter fileWriter = new FileWriter(nomeArquivo)){
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(jsonObject, fileWriter);
+                try (FileWriter fileWriter = new FileWriter(nomeArquivo)) {
+                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                    gson.toJson(jsonObject, fileWriter);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
