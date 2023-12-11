@@ -1,8 +1,6 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.Jogador;
-import com.mycompany.trabalho_oo2.ValidaLogin;
-import com.mycompany.trabalho_oo2.ValidaPlacar;
+import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -81,13 +79,22 @@ public class Login extends JFrame {
             pnlFormulario.add(lblCargo2);
 
             JButton btnLogar = new JButton("Logar");
-            btnLogar.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void btnLogar(java.awt.event.ActionEvent e) {
+            btnLogar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent e) {
                     String cpf = lblId2.getText();
                     String senha = String.valueOf(lblSenha2.getPassword());
-
-
-
+                    if(CPF.ehValido(cpf)){
+                        switch (Integer.parseInt(lblCargo2.getText())){
+                            case 1:
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    SwingUtilities.invokeLater(() -> {
+                        MenuApp m = new MenuApp();
+                        m.setVisible(true);
+                    });
                 }
             });
             JButton btnSair = new JButton("Sair");

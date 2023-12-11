@@ -61,12 +61,17 @@ public class Aplicacao {
             EdicaoTime edicaoTime = new EdicaoTime() {
             };
             edicaoTime.setVisible(true);
-        });*/
+        });
 
         SwingUtilities.invokeLater(() -> {
             Login Login = new Login() {
             };
             Login.setVisible(true);
+        });*/
+        SwingUtilities.invokeLater(() -> {
+            CadastroJogadores CadastroJogadores = new CadastroJogadores() {
+            };
+            CadastroJogadores.setVisible(true);
         });
     }
 

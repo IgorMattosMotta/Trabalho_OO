@@ -24,15 +24,15 @@ public class CPF {
     }
 
 
-    private boolean ehValido(String cpf){
+    public static boolean ehValido(String cpf){
         cpf = retiraCaracEspecial(cpf);
-        int[] arrayCpf = this.transformaCpfArrayInt(cpf);
+        int[] arrayCpf = transformaCpfArrayInt(cpf);
         
             return verificaCodigo(1, arrayCpf) == true;
         
     }
 
-    private int[] transformaCpfArrayInt(String cpf){
+    private static int[] transformaCpfArrayInt(String cpf){
         int[] arrayCpf = new int[11];
         for(int i = 0; i <= 10; i++){
             arrayCpf[i] = Integer.parseInt(String.valueOf(cpf.charAt(i)));
@@ -40,7 +40,7 @@ public class CPF {
         return arrayCpf;
     }
     
-    private String retiraCaracEspecial(String cpf){
+    private static String retiraCaracEspecial(String cpf){
         if(cpf.contains(".") || cpf.contains("-")){
             cpf = cpf.replace(".", "");
             cpf = cpf.replace("-", "");
@@ -48,7 +48,7 @@ public class CPF {
         return cpf;
     }
         
-    private boolean  verificaCodigo(int posicaoCod, int[] cpf){
+    private static boolean  verificaCodigo(int posicaoCod, int[] cpf){
         int j;
         if(posicaoCod == 1){
             j = 10;
