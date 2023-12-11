@@ -1,7 +1,4 @@
 package com.mycompany.trabalho_oo2;
-
-
-
 import com.mycompany.trabalho_oo2.aplicacao.Login;
 
 import javax.swing.*;

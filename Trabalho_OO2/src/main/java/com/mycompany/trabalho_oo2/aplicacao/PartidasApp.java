@@ -1,4 +1,6 @@
 package com.mycompany.trabalho_oo2.aplicacao;
+import com.mycompany.trabalho_oo2.Session;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,11 +9,13 @@ public abstract class PartidasApp extends JFrame {
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
     protected JPanel pnlFormulario;
+    private Session session;
 
-    public PartidasApp(){
-        inicializar();
+    public PartidasApp(Session session){
+        this.session = session;
+        inicializar(this.session);
     }
-    private void inicializar(){
+    private void inicializar(Session session){
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
         this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);

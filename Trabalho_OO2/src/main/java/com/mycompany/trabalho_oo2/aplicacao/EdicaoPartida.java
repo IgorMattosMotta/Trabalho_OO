@@ -1,6 +1,7 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
 import com.mycompany.trabalho_oo2.Partida;
+import com.mycompany.trabalho_oo2.Session;
 import com.mycompany.trabalho_oo2.ValidaHora;
 import com.mycompany.trabalho_oo2.ValidaPlacar;
 
@@ -19,13 +20,15 @@ public class EdicaoPartida extends JFrame {
         protected JPanel pnlFormulario;
 
         private Partida tecnico;
+        private Session session;
 
 
-        public EdicaoPartida(){
-            inicializar();
+        public EdicaoPartida(Session session){
+            this.session = session;
+            inicializar(this.session);
         }
 
-        private void inicializar(){
+        private void inicializar(Session session){
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
             this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);

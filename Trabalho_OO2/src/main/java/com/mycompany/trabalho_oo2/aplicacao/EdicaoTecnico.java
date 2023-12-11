@@ -1,4 +1,5 @@
 package com.mycompany.trabalho_oo2.aplicacao;
+import com.mycompany.trabalho_oo2.Session;
 import com.mycompany.trabalho_oo2.Tecnico;
 
 import javax.swing.*;
@@ -14,12 +15,15 @@ public abstract class EdicaoTecnico extends JFrame{
 
     private Tecnico tecnico;
 
+    private Session session;
 
-    public EdicaoTecnico(){
-        inicializar();
+
+    public EdicaoTecnico(Session session){
+        this.session = session;
+        inicializar(this.session);
     }
 
-    private void inicializar(){
+    private void inicializar(Session session){
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
         this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);

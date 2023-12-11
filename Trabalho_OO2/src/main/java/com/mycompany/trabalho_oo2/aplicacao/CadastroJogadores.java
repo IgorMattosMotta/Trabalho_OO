@@ -1,6 +1,7 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
 import com.mycompany.trabalho_oo2.Jogador;
+import com.mycompany.trabalho_oo2.Session;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,13 +17,15 @@ public class CadastroJogadores extends JFrame {
         protected JPanel pnlFormulario;
 
         private Jogador jogador;
+        private Session session;
 
 
-        public CadastroJogadores(){
-            inicializar();
+        public CadastroJogadores(Session session){
+            this.session = session;
+            inicializar(session);
         }
 
-        private void inicializar(){
+        private void inicializar(Session session){
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
             this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);

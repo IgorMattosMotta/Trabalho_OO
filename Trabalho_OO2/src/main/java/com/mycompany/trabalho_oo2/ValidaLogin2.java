@@ -32,7 +32,8 @@ public class ValidaLogin2 {
                                 passouCPF = true;
                                 break;
                             } else {
-                                    MenuApp m = new MenuApp();
+                                    Session session = new Session(j.getCargo(), j.getCpf(), j.getNome());
+                                    MenuApp m = new MenuApp(session);
                                     m.setVisible(true);
                                 passouCPF = true;
                                 cargo = 3;
@@ -47,7 +48,8 @@ public class ValidaLogin2 {
                                 passouCPF = true;
                                 break;
                             } else {
-                                    MenuApp m = new MenuApp();
+                                    Session session = new Session(j.getCargo(), j.getCpf(), j.getNome());
+                                    MenuApp m = new MenuApp(session);
                                     m.setVisible(true);
                                 passouCPF = true;
                                 cargo = 2;
@@ -63,7 +65,8 @@ public class ValidaLogin2 {
                                 passouCPF = true;
                                 break;
                             } else {
-                                    MenuApp m = new MenuApp();
+                                    Session session = new Session(j.getCargo(), j.getCpf(), j.getNome());
+                                    MenuApp m = new MenuApp(session);
                                     m.setVisible(true);
                                 passouCPF = true;
                                 cargo = 1;

@@ -1,4 +1,6 @@
 package com.mycompany.trabalho_oo2.aplicacao;
+import com.mycompany.trabalho_oo2.Session;
+
 import javax.swing.*;
 import java.awt.*;
 public class MenuApp extends JFrame{
@@ -20,15 +22,18 @@ public class MenuApp extends JFrame{
     //consultar gols
     protected JButton btnConsultarGols;
 
-    public MenuApp(){
-        inicializar();
+    private Session session;
+
+    public MenuApp(Session session){
+        this.session = session;
+        inicializar(this.session);
     }
 
-    private void inicializar(){
+    private void inicializar(Session session){
         this.setTitle("Menu");
         this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
-        this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);
+        this.getContentPane().add(getPnlTopo(session), BorderLayout.PAGE_START);
+        this.getContentPane().add(getPnlFormulario(session), BorderLayout.CENTER);
         this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -37,7 +42,7 @@ public class MenuApp extends JFrame{
         this.pack();
     }
 
-    public JPanel getPnlFormulario(){
+    public JPanel getPnlFormulario(Session session){
         if(pnlFormulario == null){
             pnlFormulario = new JPanel(new GridLayout(6,1));
             btnConsultarJogadores = new JButton("Consultar Jogadores");
@@ -47,7 +52,9 @@ public class MenuApp extends JFrame{
             btnConsultarAdministradores = new JButton("Consultar Administradores");
             btnConsultarGols = new JButton("Consultar Gols");
 
-            pnlFormulario.add(btnConsultarJogadores);
+            if(session.getCargo() == 2 || session.getCargo() == 3){
+                pnlFormulario.add(btnConsultarJogadores);
+            }
             pnlFormulario.add(btnConsultarTecnicos);
             pnlFormulario.add(btnConsultarPartidas);
             pnlFormulario.add(btnConsultarTimes);
@@ -66,10 +73,22 @@ public class MenuApp extends JFrame{
         return pnlRodape;
     }
 
-    public JPanel getPnlTopo(){
+    public JPanel getPnlTopo(Session session){
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel("Nome: Álvaro | Administrador");
+            String cargo = "";
+            switch(session.getCargo()){
+                case 1:
+                    cargo = "Administrador";
+                    break;
+                case 2:
+                    cargo = "Técnico";
+                    break;
+                case 3:
+                    cargo = "Jogador";
+                    break;
+            }
+            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+" | Cargo: "+cargo);
             pnlTopo.add(lblTitulo);
         }
         return pnlTopo;

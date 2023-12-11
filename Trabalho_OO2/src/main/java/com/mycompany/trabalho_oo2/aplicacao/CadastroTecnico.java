@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.trabalho_oo2.aplicacao;
+import com.mycompany.trabalho_oo2.Session;
 import com.mycompany.trabalho_oo2.Tecnico;
 import javax.swing.*;
 import java.awt.*;
@@ -18,15 +19,17 @@ public abstract class CadastroTecnico extends JFrame{
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
     protected JPanel pnlFormulario;
+    private Session session;
     
     private Tecnico tecnico;
 
 
-    public CadastroTecnico(){
-        inicializar();
+    public CadastroTecnico(Session session){
+        this.session = session;
+        inicializar(session);
     }
 
-    private void inicializar(){
+    private void inicializar(Session session){
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
         this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);

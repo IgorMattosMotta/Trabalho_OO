@@ -16,11 +16,14 @@ public abstract class CadastroPartida extends JFrame{
     protected JPanel pnlTitulo;
     protected JPanel pnlFormulario;
 
-    public CadastroPartida(){
-        inicializar();
+    private Session session;
+
+    public CadastroPartida(Session session){
+        this.session = session;
+        inicializar(session);
     }
 
-    private void inicializar(){
+    private void inicializar(Session session){
 
 
         LeJson l = new LeJson();
