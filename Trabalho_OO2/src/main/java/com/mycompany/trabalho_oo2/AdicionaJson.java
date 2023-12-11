@@ -5,13 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdicionaJson {
     private String nomeArquivo;
 
     public AdicionaJson() {
-        this.nomeArquivo = System.getProperty("user.dir")+"\\data";
+        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
     }
 
     public void adicionaJogador(
@@ -243,7 +244,7 @@ public class AdicionaJson {
     }
 
     public void adicionaPartida(
-            List<Partida> partidasLista, List<Time> timesLista, List<Gols> golsLista,
+            ArrayList<Partida> partidasLista, ArrayList<Time> timesLista,
             int id, int idTime1, int idTime2, String placar, String hora
     ){
         Time time1 = null;
@@ -277,7 +278,7 @@ public class AdicionaJson {
             novaPartida.addProperty("idTime1", idTime1);
             novaPartida.addProperty("idTime2", idTime2);
             novaPartida.addProperty("hora", hora);
-            novaPartida.addProperty("placar", "0x0");
+            novaPartida.addProperty("placar", placar);
 
             partidasArray.add(novaPartida);
 
