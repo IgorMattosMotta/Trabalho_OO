@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 public class AdicionaJson {
     private String nomeArquivo;
@@ -256,7 +257,7 @@ public class AdicionaJson {
     }
 
     public void adicionaPartida(
-            List<Partida> partidasLista, List<Time> timesLista, List<Gols> golsLista,
+            List<Partida> partidasLista, List<Time> timesLista,
             int id, int idTime1, int idTime2, String placar, String hora
     ){
         Time time1 = null;

@@ -116,7 +116,7 @@ public abstract class CadastroPartida extends JFrame{
 
                     if(ValidaHora.validarHora(hora) && ValidaPlacar.validarPlacar(placar)){
                         AdicionaJson add = new AdicionaJson();
-                        add.adicionaPartida(p, t, t.size() +1, casa.getId(), visitante.getId(), placar, hora);
+                        add.adicionaPartida(p, t, p.size() +1, casa.getId(), visitante.getId(), placar, hora);
                         for(Partida p2: p){
                             System.out.println(p2.getTimeCasa() + "x" + p2.getTimeVisitante());
                         }
