@@ -17,15 +17,14 @@ import java.util.ArrayList;
 public class ValidaLogin2 {
 
     public static boolean valida(String cpf, String senha, int cargo, ArrayList<Jogador> jogadoresLista, ArrayList<Tecnico> tecnicosLista, ArrayList<Admin> adminLista) {
-        return ehValido(cpf, senha, cargo, jogadoresLista, tecnicosLista, adminLista);
+        return ehValido(cpf, senha, jogadoresLista, tecnicosLista, adminLista) > 0 && ehValido(cpf, senha, jogadoresLista, tecnicosLista, adminLista) < 4;
     }
 
-    private static boolean ehValido(String cpf, String senha, int cargo, ArrayList<Jogador> jogadoresLista, ArrayList<Tecnico> tecnicosLista, ArrayList<Admin> adminLista) {
+    private static int ehValido(String cpf, String senha, ArrayList<Jogador> jogadoresLista, ArrayList<Tecnico> tecnicosLista, ArrayList<Admin> adminLista) {
         boolean passouCPF = false;
+        int cargo = 0;
 
         if (CPF.ehValido(cpf)) {
-            switch (cargo) {
-                case 3:
                     for (Jogador j : jogadoresLista) {
                         if (j.getCpf().equals(cpf)) {
                             if (!j.getSenha().equals(senha)) {
@@ -36,12 +35,11 @@ public class ValidaLogin2 {
                                     MenuApp m = new MenuApp();
                                     m.setVisible(true);
                                 passouCPF = true;
-                                return true; // Retorna true se MenuApp for aberto
+                                cargo = 3;
+                                return cargo; // Retorna true se MenuApp for aberto
                             }
                         }
                     }
-                    break;
-                case 2:
                     for (Tecnico j : tecnicosLista) {
                         if (j.getCpf().equals(cpf)) {
                             if (!j.getSenha().equals(senha)) {
@@ -52,13 +50,12 @@ public class ValidaLogin2 {
                                     MenuApp m = new MenuApp();
                                     m.setVisible(true);
                                 passouCPF = true;
-                                return true; // Retorna true se MenuApp for aberto
+                                cargo = 2;
+                                return cargo; // Retorna true se MenuApp for aberto
                             }
                         }
                         System.out.println(cpf + "   " + j.getCpf());
                     }
-                    break;
-                case 1:
                     for (Admin j : adminLista) {
                         if (j.getCpf().equals(cpf)) {
                             if (!j.getSenha().equals(senha)) {
@@ -69,21 +66,16 @@ public class ValidaLogin2 {
                                     MenuApp m = new MenuApp();
                                     m.setVisible(true);
                                 passouCPF = true;
-                                return true; // Retorna true se MenuApp for aberto
+                                cargo = 1;
+                                return cargo; // Retorna true se MenuApp for aberto
                             }
                         }
                     }
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "CARGO INVÁLIDO!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
-                    break;
             }
 
             if (!passouCPF) {
                 JOptionPane.showMessageDialog(null, "CPF NÃO ENCONTRADO!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
-        }
-
-        return false; // Retorna false se MenuApp não for aberto
+        return cargo;
     }
 }
