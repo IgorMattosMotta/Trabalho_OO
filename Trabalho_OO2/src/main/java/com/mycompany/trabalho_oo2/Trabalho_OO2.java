@@ -1,4 +1,10 @@
 package com.mycompany.trabalho_oo2;
+
+
+
+import com.mycompany.trabalho_oo2.aplicacao.Login;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,7 +25,9 @@ public class Trabalho_OO2 {
         leJson.getJogador(jogadoresLista,timesLista);
         leJson.getAdministrdor(adminLista);
         leJson.getGols(golsLista,jogadoresLista,partidasLista);
-
+            Login login = new Login(jogadoresLista, adminLista, tecnicosLista) {
+            };
+            login.setVisible(true);
 
         System.out.println("Tecnicos Cadastrados:");
         for(Tecnico tecnico : tecnicosLista){
