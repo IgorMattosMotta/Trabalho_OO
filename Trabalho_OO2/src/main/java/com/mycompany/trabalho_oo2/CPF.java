@@ -4,6 +4,8 @@
  */
 package com.mycompany.trabalho_oo2;
 
+import javax.swing.*;
+
 /**
  *
  * @author igorm
@@ -17,18 +19,25 @@ public class CPF {
         return cpf;
     }
     
-     public void validacpf(String cpf){
-         if(!this.ehValido(cpf)){
-             throw new RuntimeException("CPF inválido!");
+     public static String validacpf(String cpf){
+         if(!ehValido(cpf)){
+             JOptionPane.showMessageDialog(null, "CPF INVÁLIDO!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
+             return null;
+         }else{
+             return retiraCaracEspecial(cpf);
          }
     }
 
 
     public static boolean ehValido(String cpf){
-        cpf = retiraCaracEspecial(cpf);
-        int[] arrayCpf = transformaCpfArrayInt(cpf);
-        
+        try {
+            cpf = retiraCaracEspecial(cpf);
+            int[] arrayCpf = transformaCpfArrayInt(cpf);
+
             return verificaCodigo(1, arrayCpf) == true;
+        }catch (RuntimeException e){
+            return false;
+        }
         
     }
 

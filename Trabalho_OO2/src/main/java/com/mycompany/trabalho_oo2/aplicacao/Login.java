@@ -1,10 +1,13 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
+
+
 import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Login extends JFrame {
     protected JPanel pnlTopo;
@@ -13,9 +16,14 @@ public class Login extends JFrame {
     protected JPanel pnlFormulario;
 
     private Jogador jogador;
+    private ArrayList<Jogador> jogadoresLista = new ArrayList<>();
+    private ArrayList<Admin> adminLista = new ArrayList<>();
+    private ArrayList<Tecnico> tecnicosLista = new ArrayList<>();
 
-
-    public Login(){
+    public Login(ArrayList<Jogador> jogadoresLista, ArrayList<Admin> adminLista, ArrayList<Tecnico> tecnicosLista){
+        this.jogadoresLista = jogadoresLista;
+        this.adminLista = adminLista;
+        this.tecnicosLista = tecnicosLista;
         inicializar();
     }
 
@@ -81,20 +89,13 @@ public class Login extends JFrame {
             JButton btnLogar = new JButton("Logar");
             btnLogar.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
-                    String cpf = lblId2.getText();
+                    String cpf = CPF.validacpf(lblId2.getText());
                     String senha = String.valueOf(lblSenha2.getPassword());
-                    if(CPF.ehValido(cpf)){
-                        switch (Integer.parseInt(lblCargo2.getText())){
-                            case 1:
-                                break;
-                            default:
-                                break;
-                        }
+                    int cargo = Integer.parseInt(lblCargo2.getText());
+
+                    if (cpf != null) {
+                        ValidaLogin2.valida(cpf, senha, cargo, jogadoresLista, tecnicosLista, adminLista);
                     }
-                    SwingUtilities.invokeLater(() -> {
-                        MenuApp m = new MenuApp();
-                        m.setVisible(true);
-                    });
                 }
             });
             JButton btnSair = new JButton("Sair");
