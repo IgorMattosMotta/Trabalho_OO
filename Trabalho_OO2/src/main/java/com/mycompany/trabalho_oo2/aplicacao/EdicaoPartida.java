@@ -87,7 +87,7 @@ public class EdicaoPartida extends JFrame {
                         // Quando o campo perde foco, verificar a validação
                         String ch = lblHora2.getText();
                         if (!ValidaHora.validarHora(ch)) {
-                            lblHora2.setText("Hora válida");
+                            lblHora2.setText("Hora inválida");
                         }
                     }
                 });
