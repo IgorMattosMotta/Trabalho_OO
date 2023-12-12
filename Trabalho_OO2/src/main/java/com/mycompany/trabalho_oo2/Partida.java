@@ -24,20 +24,38 @@ public class Partida {
     }
 
     public Time getTimeCasa() {
-        return timeCasa;
+        return this.timeCasa;
     }
 
     public Time getTimeVisitante() {
-        return timeVisitante;
+        return this.timeVisitante;
     }
 
     public String getPlacar() {
-        return placar;
+        return this.placar;
     }
 
     public String getHorario() {
-        return horario;
+        return this.horario;
     }
 
-    public int getId() { return id; }
+    public int getId() { return this.id; }
+
+    public void setTimeCasa(Time timeCasa) {
+        this.timeCasa = timeCasa;
+    }
+
+    public void setTimeVisitante(Time timeVisitante) {
+        this.timeVisitante = timeVisitante;
+    }
+
+    public void setPlacar(String placar) {
+        this.placar = placar;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+
 }
