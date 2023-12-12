@@ -19,5 +19,8 @@ public class Tecnico extends Pessoa{
     public Time getTime() {
         return time;
     }
-    
+
+    public void setTime(Time timeTecnico) {
+        this.time = timeTecnico;
+    }
 }

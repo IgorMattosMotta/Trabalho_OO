@@ -34,4 +34,12 @@ public class Time {
     }
 
     public int getId() { return id; }
+
+    public void setNomeTime(String nomeTime) {
+        this.nomeTime = nomeTime;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
 }

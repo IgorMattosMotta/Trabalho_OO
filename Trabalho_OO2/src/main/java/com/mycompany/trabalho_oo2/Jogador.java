@@ -64,4 +64,15 @@ public abstract class Jogador extends Pessoa{
     public abstract float calculaNotaGeral(Jogador jogador);
 
 
+    public void setPosicao(String posicao) {
+    }
+
+    public void setNumCamisa(int numCamisa) {
+    }
+
+    public void setTime(Time timeJogador) {
+    }
+
+    public void setTitular(boolean titular) {
+    }
 }
