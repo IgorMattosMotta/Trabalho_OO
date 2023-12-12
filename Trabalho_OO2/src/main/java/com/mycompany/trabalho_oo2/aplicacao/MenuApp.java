@@ -47,17 +47,21 @@ public class MenuApp extends JFrame{
             pnlFormulario = new JPanel(new GridLayout(6,1));
             btnConsultarJogadores = new JButton("Consultar Jogadores");
             btnConsultarTecnicos = new JButton("Consultar Técnicos");
-            btnConsultarTecnicos.addActionListener(e -> {
-                new ConsultaTime(this.session).setVisible(true);
-                dispose();
-            });
             btnConsultarPartidas = new JButton("Consultar Partidas");
             btnConsultarPartidas.addActionListener(e -> {
                 new ConsultaTime(this.session).setVisible(true);
                 dispose();
             });
             btnConsultarTimes = new JButton("Consultar Times");
+            btnConsultarTimes.addActionListener(e -> {
+                new ConsultaTime(this.session).setVisible(true);
+                dispose();
+            });
             btnConsultarAdministradores = new JButton("Consultar Administradores");
+            btnConsultarAdministradores.addActionListener(e -> {
+                new ConsultaTime(this.session).setVisible(true);
+                dispose();
+            });
             btnConsultarGols = new JButton("Consultar Gols");
 
             if(session.getCargo() == 2 || session.getCargo() == 3){
