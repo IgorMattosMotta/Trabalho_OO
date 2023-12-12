@@ -3,7 +3,7 @@
     {
       "posicao": "AT",
       "numCamisa": 10,
-      "idTime": 3,
+      "idTime": 2,
       "titular": true,
       "cpf": "636.199.090-75",
       "nome": "Mano Menezes",
@@ -18,7 +18,7 @@
     {
       "posicao": "MC",
       "numCamisa": 8,
-      "idTime": 1,
+      "idTime": 3,
       "titular": true,
       "cpf": "743.204.020-65",
       "nome": "Maria Santos",
@@ -48,7 +48,7 @@
     {
       "posicao": "AT",
       "numCamisa": 10,
-      "idTime": 1,
+      "idTime": 2,
       "titular": true,
       "cpf": "693.241.520-84",
       "nome": "Jogador Teste",

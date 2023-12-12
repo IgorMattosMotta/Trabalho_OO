@@ -81,7 +81,7 @@ public class Aplicacao {
             CadastroPartida.setVisible(true);
         });*/
         SwingUtilities.invokeLater(() -> {
-            ConsultaPartida Consulta = new ConsultaPartida(new Session(1, "845.496.690-04", "Pablo Veggeti")) {
+            ConsultarPartidaEspecifica Consulta = new ConsultarPartidaEspecifica(new Session(1, "845.496.690-04", "Pablo Veggeti"), 1) {
             };
             Consulta.setVisible(true);
         });

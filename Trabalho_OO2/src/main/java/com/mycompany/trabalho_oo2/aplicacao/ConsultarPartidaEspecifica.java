@@ -18,6 +18,9 @@ public class ConsultarPartidaEspecifica extends JFrame{
     protected JPanel pnlCentral;
     protected JPanel pnlFormulario2;
     protected JPanel pnlFormulario;
+
+    protected JPanel pnlJogadores1;
+    protected JPanel pnlJogadores2;
     private Session session;
     private int id;
 
@@ -100,31 +103,39 @@ public class ConsultarPartidaEspecifica extends JFrame{
     }
 
     public JPanel getPnlFormulario2() {
-        if (pnlFormulario2 == null) {
-            pnlFormulario2 = new JPanel(new GridLayout(0, 2));
-            JLabel lblTimeCasa = new JLabel("Time Casa");
-            JLabel lblTimeVisitante = new JLabel("Time Visitante");
-            pnlFormulario2.add(lblTimeCasa);
-            pnlFormulario2.add(lblTimeVisitante);
+            if (pnlFormulario2 == null) {
+                pnlFormulario2 = new JPanel(new GridLayout(0, 2));
+                JLabel lblTimeCasa = new JLabel("Time Casa");
+                JLabel lblTimeVisitante = new JLabel("Time Visitante");
+                pnlFormulario2.add(lblTimeCasa);
+                pnlFormulario2.add(lblTimeVisitante);
 
-            LeJson l = new LeJson();
-            ArrayList<Time> times = new ArrayList<>();
-            ArrayList<Partida> partidas = new ArrayList<>();
-            l.getTimes(times);
-            l.getPartidas(partidas, times);
+                LeJson l = new LeJson();
+                ArrayList<Time> times = new ArrayList<>();
+                ArrayList<Partida> partidas = new ArrayList<>();
+                l.getTimes(times);
+                l.getPartidas(partidas, times);
+                ArrayList<Jogador> jogadores = new ArrayList<>();
+                l.getTimes(times);
+                l.getJogador(jogadores, times);
+                for (Partida partida : partidas){
+                    if(partida.getId() == this.id) {
+                        JLabel listaDeTimes1 = new JLabel(String.valueOf(partida.getTimeCasa()));
+                        JLabel listaDeTimes2 = new JLabel(String.valueOf(partida.getTimeVisitante()));
+                        pnlFormulario2.add(listaDeTimes1);
+                        pnlFormulario2.add(listaDeTimes2);
 
-            for (Partida partida : partidas){
-                if(partida.getId() == this.id) {
-                    JLabel listaDeTimes1 = new JLabel(String.valueOf(partida.getTimeCasa()));
-                    JLabel listaDeTimes2 = new JLabel(String.valueOf(partida.getTimeVisitante()));
-                    pnlFormulario2.add(listaDeTimes1);
-                    pnlFormulario2.add(listaDeTimes2);
-                    break;
+                        // Adiciona jogadores ao pnlJogadores1
+                        pnlFormulario2.add(getPnlJogadores1());
+
+                        // Adiciona jogadores ao pnlJogadores2
+                        pnlFormulario2.add(getPnlJogadores2());
+                        break;
+                    }
                 }
             }
+            return pnlFormulario2;
         }
-        return pnlFormulario2;
-    }
     public JPanel getPnlRodape(){
         if(pnlRodape == null){
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -161,4 +172,57 @@ public class ConsultarPartidaEspecifica extends JFrame{
         }
         return pnlTopo;
     }
+
+    public JPanel getPnlJogadores1(){
+            pnlJogadores1 = new JPanel(new GridLayout(0, 1));
+            if(pnlJogadores1 == null){
+                LeJson l = new LeJson();
+                ArrayList<Time> times = new ArrayList<>();
+                ArrayList<Partida> partidas = new ArrayList<>();
+                l.getTimes(times);
+                l.getPartidas(partidas, times);
+                ArrayList<Jogador> jogadores = new ArrayList<>();
+                l.getTimes(times);
+                l.getJogador(jogadores, times);
+                for (Partida partida : partidas){
+                    if(partida.getId() == this.id) {
+                        for (Jogador j : jogadores) {
+                            if (j.getTime().getId() == partida.getTimeCasa().getId()) {
+                                JLabel lblJogador1 = new JLabel(j.getNome());
+                                pnlJogadores1.add(lblJogador1);
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            return pnlJogadores1;
+        }
+
+        public JPanel getPnlJogadores2(){
+            // Corrigir o nome da variável para pnlJogadores2
+            pnlJogadores2 = new JPanel(new GridLayout(0, 1));
+                LeJson l = new LeJson();
+                ArrayList<Time> times = new ArrayList<>();
+                ArrayList<Partida> partidas = new ArrayList<>();
+                l.getTimes(times);
+                l.getPartidas(partidas, times);
+                ArrayList<Jogador> jogadores = new ArrayList<>();
+                l.getTimes(times);
+                l.getJogador(jogadores, times);
+                for (Partida partida : partidas) {
+                    if (partida.getId() == this.id) {
+                        for (Jogador j : jogadores) {
+                            System.out.println(j.getTime().getId() + " " + partida.getTimeVisitante().getId());
+                            if (j.getTime().getId() == partida.getTimeVisitante().getId()) {
+
+                                JLabel lblJogador2 = new JLabel(j.getNome());
+                                pnlJogadores2.add(lblJogador2);
+                            }
+                        }
+                        break;
+                    }
+                }
+            return pnlJogadores2;
+        }
 }
