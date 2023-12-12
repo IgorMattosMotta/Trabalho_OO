@@ -4,6 +4,8 @@
  */
 package com.mycompany.trabalho_oo2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author igorm
@@ -19,7 +21,9 @@ public class Time {
     }
 
     public Time(int id, String nomeTime, String cidade) {
+
         this.id = id;
+
         this.nomeTime = nomeTime;
         this.cidade = cidade;
     }
