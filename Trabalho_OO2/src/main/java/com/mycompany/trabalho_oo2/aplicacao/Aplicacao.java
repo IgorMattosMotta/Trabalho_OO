@@ -1,5 +1,7 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
+import com.mycompany.trabalho_oo2.Session;
+
 import javax.swing.*;
 
 public class Aplicacao {
@@ -67,11 +69,21 @@ public class Aplicacao {
             Login Login = new Login() {
             };
             Login.setVisible(true);
-        });*/
+        });
         SwingUtilities.invokeLater(() -> {
             CadastroJogadores CadastroJogadores = new CadastroJogadores() {
             };
             CadastroJogadores.setVisible(true);
+        });
+        SwingUtilities.invokeLater(() -> {
+            CadastroPartida CadastroPartida = new CadastroPartida() {
+            };
+            CadastroPartida.setVisible(true);
+        });*/
+        SwingUtilities.invokeLater(() -> {
+            ConsultaPartida Consulta = new ConsultaPartida(new Session(1, "845.496.690-04", "Pablo Veggeti")) {
+            };
+            Consulta.setVisible(true);
         });
     }
 

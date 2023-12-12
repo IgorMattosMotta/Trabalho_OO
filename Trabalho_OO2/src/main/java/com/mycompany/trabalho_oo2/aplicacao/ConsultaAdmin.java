@@ -107,7 +107,7 @@ public class ConsultaAdmin extends JFrame{
     public JPanel getPnlTopo(){
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel(Session.getNome() + "|" + Session.getNomeCargo(Session.getCargo()));
+            JLabel lblTitulo = new JLabel(session.getNome() + "|" + Session.getNomeCargo(session.getCargo()));
             pnlTopo.add(lblTitulo);
         }
         return pnlTopo;
