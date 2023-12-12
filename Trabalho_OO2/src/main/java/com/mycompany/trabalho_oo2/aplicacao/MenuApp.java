@@ -52,6 +52,10 @@ public class MenuApp extends JFrame{
                 dispose();
             });
             btnConsultarPartidas = new JButton("Consultar Partidas");
+            btnConsultarPartidas.addActionListener(e -> {
+                new ConsultaTime(this.session).setVisible(true);
+                dispose();
+            });
             btnConsultarTimes = new JButton("Consultar Times");
             btnConsultarAdministradores = new JButton("Consultar Administradores");
             btnConsultarGols = new JButton("Consultar Gols");
