@@ -47,6 +47,10 @@ public class MenuApp extends JFrame{
             pnlFormulario = new JPanel(new GridLayout(6,1));
             btnConsultarJogadores = new JButton("Consultar Jogadores");
             btnConsultarTecnicos = new JButton("Consultar Técnicos");
+            btnConsultarTecnicos.addActionListener(e -> {
+                new ConsultaTime(this.session).setVisible(true);
+                dispose();
+            });
             btnConsultarPartidas = new JButton("Consultar Partidas");
             btnConsultarTimes = new JButton("Consultar Times");
             btnConsultarAdministradores = new JButton("Consultar Administradores");
@@ -76,19 +80,7 @@ public class MenuApp extends JFrame{
     public JPanel getPnlTopo(Session session){
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            String cargo = "";
-            switch(session.getCargo()){
-                case 1:
-                    cargo = "Administrador";
-                    break;
-                case 2:
-                    cargo = "Técnico";
-                    break;
-                case 3:
-                    cargo = "Jogador";
-                    break;
-            }
-            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+" | Cargo: "+cargo);
+            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+" | Cargo: "+ Session.getNomeCargo(Session.getCargo()));
             pnlTopo.add(lblTitulo);
         }
         return pnlTopo;
