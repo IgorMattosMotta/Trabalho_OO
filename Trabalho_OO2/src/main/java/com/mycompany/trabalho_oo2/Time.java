@@ -15,8 +15,7 @@ public class Time {
 
     @Override
     public String toString() {
-        return
-                nomeTime ;
+        return nomeTime ;
     }
 
     public Time(int id, String nomeTime, String cidade) {

@@ -136,6 +136,11 @@ public class LeJson {
                 int numCamisa = jogadorObject.get("numCamisa").getAsInt();
                 String posicao = jogadorObject.get("posicao").getAsString();
                 boolean titular = jogadorObject.get("titular").getAsBoolean();
+                int reflexo = jogadorObject.get("reflexo").getAsInt();
+                int chute = jogadorObject.get("chute").getAsInt();
+                int marcacao = jogadorObject.get("marcacao").getAsInt();
+                int passe = jogadorObject.get("passe").getAsInt();
+                int velocidade = jogadorObject.get("velocidade").getAsInt();
 
                 //acho o time do jogador
                 Time timeJogador = null;
@@ -149,16 +154,16 @@ public class LeJson {
                 Jogador novoJogador;
                 switch (posicao){
                     case "AT":
-                        novoJogador = new Atacante(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                        novoJogador = new Atacante(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
                     case "MC":
-                        novoJogador = new Meia(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                        novoJogador = new Meia(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
                     case "ZG":
-                        novoJogador = new Zagueiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                        novoJogador = new Zagueiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
                     case "G":
-                        novoJogador = new Goleiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular);
+                        novoJogador = new Goleiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
                     default:
                         novoJogador = null;

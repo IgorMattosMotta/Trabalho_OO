@@ -17,7 +17,7 @@ public class AdicionaJson {
 
     public void adicionaJogador(
             List<Jogador> jogadoresLista, List<Time> timesLista,
-            String cpf,String nome,int cargo,String senha,String posicao, int numCamisa,int idTime, boolean titular
+            String cpf,String nome,int cargo,String senha,String posicao, int numCamisa,int idTime, boolean titular, int reflexo, int chute, int marcacao, int passe, int velocidade
     ){
         Time timeJogador = null;
         for (Time time : timesLista){
@@ -30,16 +30,16 @@ public class AdicionaJson {
         Jogador jogador;
         switch (posicao){
             case "AT":
-                jogador = new Atacante(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+                jogador = new Atacante(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                 break;
             case "MC":
-                jogador = new Meia(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+                jogador = new Meia(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                 break;
             case "ZG":
-                jogador = new Zagueiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+                jogador = new Zagueiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                 break;
             case "G":
-                jogador = new Goleiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular);
+                jogador = new Goleiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                 break;
             default:
                 jogador = null;

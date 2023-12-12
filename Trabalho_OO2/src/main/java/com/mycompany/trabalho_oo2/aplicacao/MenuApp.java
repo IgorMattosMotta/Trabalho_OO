@@ -46,10 +46,18 @@ public class MenuApp extends JFrame{
         if(pnlFormulario == null){
             pnlFormulario = new JPanel(new GridLayout(6,1));
             btnConsultarJogadores = new JButton("Consultar Jogadores");
+            btnConsultarJogadores.addActionListener(e -> {
+                new ConsultaJogadores(this.session).setVisible(true);
+                dispose();
+            });
             btnConsultarTecnicos = new JButton("Consultar Técnicos");
+            btnConsultarTecnicos.addActionListener(e -> {
+                new ConsultaTecnico(this.session).setVisible(true);
+                dispose();
+            });
             btnConsultarPartidas = new JButton("Consultar Partidas");
             btnConsultarPartidas.addActionListener(e -> {
-                new ConsultaTime(this.session).setVisible(true);
+                new ConsultaPartida(this.session).setVisible(true);
                 dispose();
             });
             btnConsultarTimes = new JButton("Consultar Times");
@@ -59,7 +67,7 @@ public class MenuApp extends JFrame{
             });
             btnConsultarAdministradores = new JButton("Consultar Administradores");
             btnConsultarAdministradores.addActionListener(e -> {
-                new ConsultaTime(this.session).setVisible(true);
+                new ConsultaAdmin(this.session).setVisible(true);
                 dispose();
             });
             btnConsultarGols = new JButton("Consultar Gols");
@@ -88,7 +96,7 @@ public class MenuApp extends JFrame{
     public JPanel getPnlTopo(Session session){
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+" | Cargo: "+ Session.getNomeCargo(Session.getCargo()));
+            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+" | Cargo: "+ Session.getNomeCargo(session.getCargo()));
             pnlTopo.add(lblTitulo);
         }
         return pnlTopo;

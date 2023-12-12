@@ -1,28 +1,29 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.*;
+import com.mycompany.trabalho_oo2.Jogador;
+import com.mycompany.trabalho_oo2.LeJson;
+import com.mycompany.trabalho_oo2.Session;
+import com.mycompany.trabalho_oo2.Time;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
+public class ConsultaJogadores extends JFrame {
 
-public class ConsultaPartida extends JFrame{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
     protected JPanel pnlFormulario;
+
+    private Jogador jogador;
     private Session session;
 
 
-
-    public ConsultaPartida(Session session){
+    public ConsultaJogadores(Session session){
         this.session = session;
-        inicializar(this.session);
+        inicializar(session);
     }
 
     private void inicializar(Session session){
@@ -40,48 +41,57 @@ public class ConsultaPartida extends JFrame{
     public JPanel getPnlTitulo(){
         if(pnlTitulo == null){
             pnlTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel("Jogadores");
+            JLabel lblTitulo = new JLabel("Cadastro Jogadores");
             pnlTitulo.add(lblTitulo);
         }
         return pnlTitulo;
     }
 
     public JPanel getPnlFormulario(){
-        if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,5));
-            JLabel lblId = new JLabel("ID");
-            JLabel lblTimeCasa = new JLabel("Time Casa");
-            JLabel lblTimeVisitante = new JLabel("Time Visitante");
-            JLabel lblHora = new JLabel("Hora");
-            JLabel lblPlacar = new JLabel("Placar");
+        if(pnlFormulario == null) {
+            LeJson l = new LeJson();
+            ArrayList<Jogador> jogadores = new ArrayList<>();
+            ArrayList<Time> times = new ArrayList<>();
+            l.getTimes(times);
+            l.getJogador(jogadores, times);
 
+
+            pnlFormulario = new JPanel(new GridLayout(0, 5));
+            JLabel lblId = new JLabel("CPF");
+            JLabel lblNome = new JLabel("Nome");
+            JLabel lblNumCamisa = new JLabel("Num Camisa");
+            JLabel lblTime = new JLabel("Time");
+            JLabel lblOverall = new JLabel("Overall");
 
             pnlFormulario.add(lblId);
-            pnlFormulario.add(lblTimeCasa);
-            pnlFormulario.add(lblTimeVisitante);
-            pnlFormulario.add(lblHora);
-            pnlFormulario.add(lblPlacar);
+            pnlFormulario.add(lblNome);
+            pnlFormulario.add(lblNumCamisa);
+            pnlFormulario.add(lblTime);
+            pnlFormulario.add(lblOverall);
 
-            LeJson l = new LeJson();
-            ArrayList<Time> times = new ArrayList<>();
-            ArrayList<Partida> partidas =  new ArrayList<>();
-            l.getTimes(times);
-            l.getPartidas(partidas, times);
+            for (Jogador j:jogadores) {
 
-            for(Partida p: partidas) {
-                JLabel lblId2 = new JLabel(String.valueOf(p.getId()));
-                JLabel listaDeTimes1 = new JLabel(String.valueOf(p.getTimeCasa()));
-                JLabel listaDeTimes2 = new JLabel(String.valueOf(p.getTimeVisitante()));
-                JLabel lblHora2 = new JLabel(p.getHorario());
-                JLabel lblPartida2 = new JLabel(p.getPlacar());
+                JLabel lblId2 = new JLabel(j.getCpf());
+
+                JLabel lblNome2 = new JLabel(j.getNome());
+
+                JLabel lblNumCamisa2 = new JLabel(String.valueOf(j.getNumCamisa()));
+
+                JLabel lblTimes2 = new JLabel(j.getTime().getNomeTime());
+
+                JLabel lblOverall2 = new JLabel(String.valueOf(j.calculaNotaGeral(j)/10));
 
                 pnlFormulario.add(lblId2);
-                pnlFormulario.add(listaDeTimes1);
-                pnlFormulario.add(listaDeTimes2);
-                pnlFormulario.add(lblHora2);
-                pnlFormulario.add(lblPartida2);
+                pnlFormulario.add(lblNome2);
+                pnlFormulario.add(lblNumCamisa2);
+                pnlFormulario.add(lblTimes2);
+                pnlFormulario.add(lblOverall2);
+
             }
         }
+
+
+
         return pnlFormulario;
     }
 
@@ -116,7 +126,7 @@ public class ConsultaPartida extends JFrame{
     public JPanel getPnlTopo(){
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel(session.getNome() + "|" + Session.getNomeCargo(session.getCargo()));
+            JLabel lblTitulo = new JLabel("Nome: Álvaro | Administrador");
             pnlTopo.add(lblTitulo);
         }
         return pnlTopo;

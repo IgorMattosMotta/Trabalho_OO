@@ -8,7 +8,12 @@
       "cpf": "636.199.090-75",
       "nome": "Mano Menezes",
       "cargo": 3,
-      "senha": "senha123"
+      "senha": "senha123",
+      "reflexo": 80,
+      "chute": 85,
+      "marcacao": 75,
+      "passe": 90,
+      "velocidade": 88
     },
     {
       "posicao": "MC",
@@ -18,7 +23,12 @@
       "cpf": "743.204.020-65",
       "nome": "Maria Santos",
       "cargo": 3,
-      "senha": "senha456"
+      "senha": "senha456",
+      "reflexo": 75,
+      "chute": 78,
+      "marcacao": 82,
+      "passe": 88,
+      "velocidade": 80
     },
     {
       "posicao": "AT",
@@ -28,7 +38,12 @@
       "cpf": "07249155083",
       "nome": "Bruno Guimaraes",
       "cargo": 3,
-      "senha": "Guimaraesbrabo"
+      "senha": "Guimaraesbrabo",
+      "reflexo": 82,
+      "chute": 90,
+      "marcacao": 76,
+      "passe": 85,
+      "velocidade": 89
     },
     {
       "posicao": "AT",
@@ -38,7 +53,12 @@
       "cpf": "693.241.520-84",
       "nome": "Jogador Teste",
       "cargo": 1,
-      "senha": "123456"
+      "senha": "123456",
+      "reflexo": 70,
+      "chute": 80,
+      "marcacao": 72,
+      "passe": 78,
+      "velocidade": 82
     }
   ]
 }

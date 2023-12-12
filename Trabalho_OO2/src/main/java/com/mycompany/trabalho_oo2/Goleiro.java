@@ -16,8 +16,13 @@ public class Goleiro extends Jogador{
     private int velocidade;
     private float notaGeral;
 
-    public Goleiro(CPF cpf, String nome, int cargo, String senha, String posicao, int numCamisa, Time time, boolean titular) {
+    public Goleiro(CPF cpf, String nome, int cargo, String senha, String posicao, int numCamisa, Time time, boolean titular, int reflexo, int chute, int marcação, int passe, int velocidade) {
         super(cpf, nome, cargo, senha, posicao, numCamisa, time, titular);
+        this.reflexo = reflexo;
+        this.chute = chute;
+        this.marcação = marcação;
+        this.passe = passe;
+        this.velocidade = velocidade;
     }
 
     public void setReflexo(int val)

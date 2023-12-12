@@ -14,7 +14,7 @@ public class Session{
         Session.nome = nome;
     }
 
-    public static int getCargo(){
+    public int getCargo(){
         return cargo;
     }
 
@@ -35,7 +35,7 @@ public class Session{
         return cpf;
     }
 
-    public static String getNome(){
+    public String getNome(){
         return nome;
     }
 }
