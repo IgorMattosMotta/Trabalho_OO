@@ -6,7 +6,7 @@ package com.mycompany.trabalho_oo2;
 //Davi Laranjo Villa 202235025
 public abstract class Jogador extends Pessoa{
     private String posicao;
-    private Gols numGols;
+
     private int numCamisa;
     private Time time;
     private boolean titular;
@@ -16,7 +16,6 @@ public abstract class Jogador extends Pessoa{
         return "Jogador{" +
                 "nome=" + this.getNome() +
                 ", posicao='" + posicao + '\'' +
-                ", numGols=" + numGols +
                 ", numCamisa= " + numCamisa + ", "
                  + time +
                 ", titular=" + titular +
@@ -43,9 +42,6 @@ public abstract class Jogador extends Pessoa{
         return posicao;
     }
 
-    public Gols getNumGols() {
-        return numGols;
-    }
 
     public int getNumCamisa() {
         return numCamisa;

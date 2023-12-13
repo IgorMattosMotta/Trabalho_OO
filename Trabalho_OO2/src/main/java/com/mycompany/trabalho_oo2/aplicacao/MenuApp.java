@@ -72,10 +72,6 @@ public class MenuApp extends JFrame implements InterfacePadrao{
             });
 
             btnConsultarGols = new JButton("Consultar Gols");
-            btnConsultarGols.addActionListener(e -> {
-                new ConsultaGol(this.session).setVisible(true);
-                dispose();
-            });
 
             pnlFormulario.add(btnConsultarJogadores);
             pnlFormulario.add(btnConsultarTecnicos);

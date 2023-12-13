@@ -1,10 +1,8 @@
 package com.mycompany.trabalho_oo2;
-import com.mycompany.trabalho_oo2.aplicacao.EdicaoJogador;
+
 import com.mycompany.trabalho_oo2.aplicacao.Login;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Trabalho_OO2 {
 
@@ -15,20 +13,15 @@ public class Trabalho_OO2 {
         ArrayList<Tecnico> tecnicosLista = new ArrayList<>();
         ArrayList<Jogador> jogadoresLista = new ArrayList<>();
         ArrayList<Admin> adminLista = new ArrayList<>();
-        ArrayList<Gols> golsLista = new ArrayList<>();
         LeJson leJson = new LeJson();
         leJson.getTimes(timesLista);
         leJson.getPartidas(partidasLista, timesLista);
-        leJson.getTecnico(tecnicosLista,timesLista);
-        leJson.getJogador(jogadoresLista,timesLista);
+        leJson.getTecnico(tecnicosLista, timesLista);
+        leJson.getJogador(jogadoresLista, timesLista);
         leJson.getAdministrdor(adminLista);
-        leJson.getGols(golsLista,jogadoresLista,partidasLista);
-            /*Login login = new Login(jogadoresLista, adminLista, tecnicosLista) {
-            };
-            login.setVisible(true);*/
-
-        //EdicaoJogador edicaoJogador = new EdicaoJogador(new Session(1,"",""), jogadoresLista.get(0));
-        RemoveJson removeJson = new RemoveJson();
+        Login login = new Login(jogadoresLista, adminLista, tecnicosLista) {
+        };
+        login.setVisible(true);
     }
 }
         

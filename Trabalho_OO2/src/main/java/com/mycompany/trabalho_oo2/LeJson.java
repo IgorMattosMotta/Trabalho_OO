@@ -202,57 +202,5 @@ public class LeJson {
         }
     }
 
-    public void getGols(ArrayList<Gols> golsLista,ArrayList<Jogador> jogadoresLista,ArrayList<Partida> partidasLista){
-
-
-
-        String nomeArquivo = this.nomeArquivo+"/gols.json";
-        //tento ler o arquivo pelo caminho dito anteriormente
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
-            JsonElement jsonElement = JsonParser.parseReader(fileReader);
-            JsonObject jsonObject = jsonElement.getAsJsonObject();
-            //pego o array de gols
-            JsonArray golsArray = jsonObject.getAsJsonArray("gols");
-
-            //for each para cada gol no array de gols
-            for (JsonElement golElement : golsArray) {
-                JsonObject golObject = golElement.getAsJsonObject();
-                //pego os atributos de cada jogador
-                int id = golObject.get("id").getAsInt();
-                //System.out.println(id);
-                String cpf = golObject.get("cpf").getAsString();
-                //System.out.println(cpf);
-                int idPartida = golObject.get("partida").getAsInt();
-                //System.out.println(idPartida);
-                String tempo = golObject.get("tempo").getAsString();
-                //System.out.println(tempo);
-
-                //acho o jogador do gol
-                String cpfJogador = cpf.replaceAll("[^0-9]", "");
-                Jogador jogadorGol = null;
-                for (Jogador jogador : jogadoresLista){
-                    if (jogador.getCpf().equals(cpfJogador)){
-                        jogadorGol = jogador;
-                    }
-                }
-
-                //acha a partida do gol
-                Partida partidaGol = null;
-                for (Partida partida : partidasLista){
-                    if (partida.getId() == idPartida){
-                        partidaGol = partida;
-                    }
-                }
-
-
-                //crio um novo jogador com os atributos pegos
-                Gols novoGol = new Gols(id,jogadorGol,partidaGol,tempo);
-                golsLista.add(novoGol);
-                //jogadorGol.adicionarGol(novoGol);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }
