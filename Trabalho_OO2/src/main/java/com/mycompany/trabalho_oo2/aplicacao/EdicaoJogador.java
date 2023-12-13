@@ -1,8 +1,5 @@
 package com.mycompany.trabalho_oo2.aplicacao;
-import com.mycompany.trabalho_oo2.Jogador;
-import com.mycompany.trabalho_oo2.LeJson;
-import com.mycompany.trabalho_oo2.Session;
-import com.mycompany.trabalho_oo2.Time;
+import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +9,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class EdicaoJogador extends JFrame{
+public class EdicaoJogador extends JFrame{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
@@ -22,14 +19,18 @@ public abstract class EdicaoJogador extends JFrame{
     private Session session;
 
     private ArrayList<Time> times;
+    private ArrayList<Jogador> jogadores;
 
 
     public EdicaoJogador(Session session, Jogador jogador){
         this.session = session;
         this.jogador = jogador;
 
+        this.times = new ArrayList<>();
+        this.jogadores = new ArrayList<>();
         LeJson leJson = new LeJson();
         leJson.getTimes(this.times);
+        leJson.getJogador(this.jogadores, this.times);
         inicializar(session);
     }
 
@@ -61,11 +62,13 @@ public abstract class EdicaoJogador extends JFrame{
             JLabel lblNome = new JLabel("Nome");
             JLabel lblNumCamisa = new JLabel("Num Camisa");
             JLabel lblTime = new JLabel("Time");
+            JLabel lblTitular1 = new JLabel("Titular");
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblNumCamisa);
             pnlFormulario.add(lblTime);
+            pnlFormulario.add(lblTitular1);
 
             JLabel lblId2 = new JLabel(this.jogador.getCpf());//jogador.getCpf()
             JTextField lblNome2 = new JTextField(this.jogador.getNome());//jogador.nome
@@ -89,16 +92,23 @@ public abstract class EdicaoJogador extends JFrame{
             });
 
             // Lista de times
-            String[] timesArray = new String[times.size()];
-            for (Time time : times) {
-                timesArray[times.indexOf(time)] = time.getId()+" - "+time.getNomeTime();
+            String[] timesArray = new String[this.times.size()];
+            for (Time time : this.times) {
+                timesArray[this.times.indexOf(time)] = time.getId()+" - "+time.getNomeTime();
             }
+            //String[] timesArray = {"vasco","cruzeiro"};
 
             // Criar um modelo para a lista
             DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(timesArray);
 
             // Criar a lista com base no modelo
             JComboBox<String> listaDeTimes = new JComboBox<>(lblTime2);
+
+            String[] titularArray = new String[2];
+            titularArray[0] = "Titular";
+            titularArray[1] = "Reserva";
+            DefaultComboBoxModel<String> lblTitular = new DefaultComboBoxModel<>(titularArray);
+            JComboBox<String> listaDeTitular = new JComboBox<>(lblTitular);
 
             // Criar um botão para obter a seleção
             JButton botao = new JButton("Obter Seleção");
@@ -114,10 +124,34 @@ public abstract class EdicaoJogador extends JFrame{
                     }
                 }
             });
+
+            JButton btnSalvar = new JButton("Salvar");
+            btnSalvar.addActionListener(e -> {
+                //Salvar
+                    boolean titular = false;
+                    if(listaDeTitular.getSelectedItem().toString().equals("Titular")) {
+                        titular = true;
+                    }else if(listaDeTitular.getSelectedItem().toString().equals("Reserva")){
+                        titular = false;
+                    }
+                    int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
+
+                    StringBuilder cpfFormatado = new StringBuilder(this.jogador.getCpf());
+                    cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
+
+                    EditaJson editaJson = new EditaJson();
+                    editaJson.editaJogador(this.jogadores,this.times,cpfFormatado.toString(), lblNome2.getText(),Integer.parseInt(lblNumCamisa2.getText()), idTime,titular);
+                    JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                    new MenuApp(this.session).setVisible(true);
+                    dispose();
+            });
+
             pnlFormulario.add(lblId2);
             pnlFormulario.add(lblNome2);
             pnlFormulario.add(lblNumCamisa2);
             pnlFormulario.add(listaDeTimes);
+            pnlFormulario.add(listaDeTitular);
+            pnlFormulario.add(btnSalvar);
 
         }
         return pnlFormulario;
@@ -129,9 +163,7 @@ public abstract class EdicaoJogador extends JFrame{
 
             JButton btnVoltar = new JButton("Voltar");
             JButton btnSair = new JButton("Sair");
-            JButton btnCadastro = new JButton("Salvar");
             pnlRodape.add(btnVoltar);
-            pnlRodape.add(btnCadastro);
             pnlRodape.add(btnSair);
         }
         return pnlRodape;

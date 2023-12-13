@@ -77,9 +77,7 @@ public class MenuApp extends JFrame{
                 dispose();
             });
 
-            if(session.getCargo() == 2 || session.getCargo() == 3){
-                pnlFormulario.add(btnConsultarJogadores);
-            }
+            pnlFormulario.add(btnConsultarJogadores);
             pnlFormulario.add(btnConsultarTecnicos);
             pnlFormulario.add(btnConsultarPartidas);
             pnlFormulario.add(btnConsultarTimes);
