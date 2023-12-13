@@ -203,6 +203,9 @@ public class LeJson {
     }
 
     public void getGols(ArrayList<Gols> golsLista,ArrayList<Jogador> jogadoresLista,ArrayList<Partida> partidasLista){
+
+
+
         String nomeArquivo = this.nomeArquivo+"/gols.json";
         //tento ler o arquivo pelo caminho dito anteriormente
         try(FileReader fileReader = new FileReader(nomeArquivo)){

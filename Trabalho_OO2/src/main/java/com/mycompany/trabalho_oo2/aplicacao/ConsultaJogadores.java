@@ -92,6 +92,11 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblOverall2);
                 pnlFormulario.add(btnEditar);
 
+                btnEditar.addActionListener(e -> {
+                    new EdicaoJogador(this.session, j).setVisible(true);
+                    dispose();
+                });
+
             }
         }
 

@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class Login extends JFrame implements InterfacePadrao{
+public class Login extends JFrame {
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
@@ -51,14 +51,12 @@ public class Login extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(3,3));
+            pnlFormulario = new JPanel(new GridLayout(0,2));
             JLabel lblId = new JLabel("CPF");
             JLabel lblSenha = new JLabel("Senha");
-            JLabel lblCargo = new JLabel("Cargo");
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblSenha);
-            pnlFormulario.add(lblCargo);
 
 
             JTextField lblId2 = new JTextField("");//jogador.getCpf()
@@ -72,30 +70,17 @@ public class Login extends JFrame implements InterfacePadrao{
             });
             JPasswordField lblSenha2 = new JPasswordField();//jogador.nome
 
-            JTextField lblCargo2 = new JFormattedTextField("");
-            lblCargo2.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void keyTyped(java.awt.event.KeyEvent evt) {
-                    char ch = evt.getKeyChar();
-                    if (!Character.isDigit(ch) && ch != KeyEvent.VK_BACK_SPACE && ch != KeyEvent.VK_DELETE) {
-                        evt.consume(); // Ignora caracteres não numéricos
-                    }
-                }
-            });
-
             pnlFormulario.add(lblId2);
             pnlFormulario.add(lblSenha2);
-            pnlFormulario.add(lblCargo2);
 
             JButton btnLogar = new JButton("Logar");
             btnLogar.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     String cpf = CPF.validacpf(lblId2.getText());
                     String senha = String.valueOf(lblSenha2.getPassword());
-                    //int cargo = Integer.parseInt(lblCargo2.getText());
-                    int cargo = 0;
 
                     if (cpf != null) {
-                        ValidaLogin2.valida(cpf, senha, cargo, jogadoresLista, tecnicosLista, adminLista);
+                        ValidaLogin2.valida(cpf, senha, jogadoresLista, tecnicosLista, adminLista);
                     }
                 }
             });
@@ -115,10 +100,6 @@ public class Login extends JFrame implements InterfacePadrao{
         return pnlFormulario;
     }
 
-    @Override
-    public JPanel getPnlRodape() {
-        return null;
-    }
 
 
     public JPanel getPnlTopo(){

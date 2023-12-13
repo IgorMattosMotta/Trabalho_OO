@@ -70,11 +70,14 @@ public class MenuApp extends JFrame implements InterfacePadrao{
                 new ConsultaAdmin(this.session).setVisible(true);
                 dispose();
             });
-            btnConsultarGols = new JButton("Consultar Gols");
 
-            if(session.getCargo() == 2 || session.getCargo() == 3){
-                pnlFormulario.add(btnConsultarJogadores);
-            }
+            btnConsultarGols = new JButton("Consultar Gols");
+            btnConsultarGols.addActionListener(e -> {
+                new ConsultaGol(this.session).setVisible(true);
+                dispose();
+            });
+
+            pnlFormulario.add(btnConsultarJogadores);
             pnlFormulario.add(btnConsultarTecnicos);
             pnlFormulario.add(btnConsultarPartidas);
             pnlFormulario.add(btnConsultarTimes);

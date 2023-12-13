@@ -21,7 +21,7 @@ public class EditaJson {
 
     public void editaJogador(
             List<Jogador> jogadoresLista, List<Time> timesLista,
-            String cpf, String nome, String posicao, int numCamisa, int idTime, boolean titular
+            String cpf, String nome, int numCamisa, int idTime, boolean titular
     ){
         //edita o objeto tecnico na lista de tecnicos
         int idTimeJogador = 0;
@@ -37,7 +37,7 @@ public class EditaJson {
         for (Jogador jogador : jogadoresLista){
             if (jogador.getCpf().equals(cpf)){
                 jogador.setNome(nome);
-                jogador.setPosicao(posicao);
+                //jogador.setPosicao(posicao);
                 jogador.setNumCamisa(numCamisa);
                 jogador.setTime(timeJogador);
                 jogador.setTitular(titular);
@@ -68,7 +68,7 @@ public class EditaJson {
             primeiroJogador.addProperty("nome", nome);
             primeiroJogador.addProperty("numCamisa", numCamisa);
             primeiroJogador.addProperty("titular", titular);
-            primeiroJogador.addProperty("posicao", posicao);
+            //primeiroJogador.addProperty("posicao", posicao);
             primeiroJogador.addProperty("idTime", idTimeJogador);
 
             try (FileWriter fileWriter = new FileWriter(this.nomeArquivo+"\\jogadores.json")) {
