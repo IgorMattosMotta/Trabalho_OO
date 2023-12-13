@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
  *
  * @author davil
  */
-public abstract class CadastroTecnico extends JFrame{
+public abstract class CadastroTecnico extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;

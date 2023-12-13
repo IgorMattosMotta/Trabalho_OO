@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class ConsultaJogadores extends JFrame {
+public class ConsultaJogadores extends JFrame implements InterfacePadrao{
 
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;

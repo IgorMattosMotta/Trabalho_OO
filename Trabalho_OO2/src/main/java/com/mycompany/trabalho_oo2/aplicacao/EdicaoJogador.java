@@ -1,4 +1,5 @@
 package com.mycompany.trabalho_oo2.aplicacao;
+
 import com.mycompany.trabalho_oo2.Jogador;
 import com.mycompany.trabalho_oo2.LeJson;
 import com.mycompany.trabalho_oo2.Session;
@@ -10,9 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.List;
 
-public abstract class EdicaoJogador extends JFrame{
+public abstract class EdicaoJogador extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;

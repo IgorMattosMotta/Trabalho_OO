@@ -2,14 +2,13 @@ package com.mycompany.trabalho_oo2.aplicacao;
 
 import com.mycompany.trabalho_oo2.EditaJson;
 import com.mycompany.trabalho_oo2.Session;
-import com.mycompany.trabalho_oo2.Tecnico;
 import com.mycompany.trabalho_oo2.Time;
 
 import javax.swing.*;
 import java.awt.*;
 
 
-public abstract class EdicaoTime extends JFrame{
+public abstract class EdicaoTime extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;

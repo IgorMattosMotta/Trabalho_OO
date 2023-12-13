@@ -1,4 +1,5 @@
 package com.mycompany.trabalho_oo2.aplicacao;
+
 import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
@@ -8,9 +9,8 @@ import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.List;
 
-public abstract class CadastroPartida extends JFrame{
+public abstract class CadastroPartida extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;

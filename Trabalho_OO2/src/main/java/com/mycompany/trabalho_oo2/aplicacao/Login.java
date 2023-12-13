@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
@@ -91,7 +91,8 @@ public class Login extends JFrame {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     String cpf = CPF.validacpf(lblId2.getText());
                     String senha = String.valueOf(lblSenha2.getPassword());
-                    int cargo = Integer.parseInt(lblCargo2.getText());
+                    //int cargo = Integer.parseInt(lblCargo2.getText());
+                    int cargo = 0;
 
                     if (cpf != null) {
                         ValidaLogin2.valida(cpf, senha, cargo, jogadoresLista, tecnicosLista, adminLista);
@@ -114,6 +115,10 @@ public class Login extends JFrame {
         return pnlFormulario;
     }
 
+    @Override
+    public JPanel getPnlRodape() {
+        return null;
+    }
 
 
     public JPanel getPnlTopo(){

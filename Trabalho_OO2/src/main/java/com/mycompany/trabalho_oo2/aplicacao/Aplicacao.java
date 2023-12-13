@@ -1,9 +1,6 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.CPF;
-import com.mycompany.trabalho_oo2.Jogador;
 import com.mycompany.trabalho_oo2.Session;
-import com.mycompany.trabalho_oo2.Time;
 
 import javax.swing.*;
 
@@ -63,7 +60,7 @@ public class Aplicacao {
         });
 
         SwingUtilities.invokeLater(() -> {
-            EdicaoTime edicaoTime = new EdicaoTime() {
+            EdicaoTime edicaoTime = new EdicaoTime(new Session(1, "845.496.690-04", "Pablo Veggeti"), new Time(1, "Vasco da Gama", "Rio de Janeiro")) {
             };
             edicaoTime.setVisible(true);
         });
@@ -73,15 +70,18 @@ public class Aplicacao {
             };
             Login.setVisible(true);
         });
+
+       */
         SwingUtilities.invokeLater(() -> {
-            CadastroJogadores CadastroJogadores = new CadastroJogadores() {
-            };
-            CadastroJogadores.setVisible(true);
-        });
-        SwingUtilities.invokeLater(() -> {
-            CadastroPartida CadastroPartida = new CadastroPartida() {
+            CadastroPartida CadastroPartida = new CadastroPartida(new Session(1, "845.496.690-04", "Pablo Veggeti")) {
             };
             CadastroPartida.setVisible(true);
+        });
+    /*
+        SwingUtilities.invokeLater(() -> {
+            ConsultarPartidaEspecifica ConsultarPartidaEspecifica = new ConsultarPartidaEspecifica(new Session(1, "845.496.690-04", "Pablo Veggeti"), 1) {
+            };
+            ConsultarPartidaEspecifica.setVisible(true);
         });*/
 
 
