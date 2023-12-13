@@ -1,6 +1,7 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
 import com.mycompany.trabalho_oo2.LeJson;
+import com.mycompany.trabalho_oo2.RemoveJson;
 import com.mycompany.trabalho_oo2.Session;
 import com.mycompany.trabalho_oo2.Time;
 
@@ -48,16 +49,18 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
 
         public JPanel getPnlFormulario(){
             if(pnlFormulario == null){
-                pnlFormulario = new JPanel(new GridLayout(0,4));
+                pnlFormulario = new JPanel(new GridLayout(0,5));
                 JLabel lblId = new JLabel("ID");
                 JLabel lblNome = new JLabel("Nome");
                 JLabel lblCidade = new JLabel("Cidade");
                 JLabel lblEditar = new JLabel("Editar");
+                JLabel lblExcluir = new JLabel("Excluir");
 
                 pnlFormulario.add(lblId);
                 pnlFormulario.add(lblNome);
                 pnlFormulario.add(lblCidade);
                 pnlFormulario.add(lblEditar);
+                pnlFormulario.add(lblExcluir);
 
                 ArrayList<Time> times = new ArrayList<>();
                 LeJson l = new LeJson();
@@ -69,11 +72,20 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
                     JLabel lblNome2 = new JLabel(t.getNomeTime());
                     JLabel lblCidade2 = new JLabel(t.getCidade());
                     JButton btnEditar = new JButton("Editar");
+                    JButton btnExcluir = new JButton("Excluir");
+
+                    btnExcluir.addActionListener(e -> {
+                        RemoveJson r = new RemoveJson();
+                        r.removeTime(t.getId());
+                        new ConsultaTime(this.session).setVisible(true);
+                        dispose();
+                    });
 
                     pnlFormulario.add(lblId2);
                     pnlFormulario.add(lblNome2);
                     pnlFormulario.add(lblCidade2);
                     pnlFormulario.add(btnEditar);
+                    pnlFormulario.add(btnExcluir);
                 }
 
             }
