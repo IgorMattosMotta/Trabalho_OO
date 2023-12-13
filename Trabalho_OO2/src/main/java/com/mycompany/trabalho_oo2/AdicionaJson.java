@@ -1,7 +1,8 @@
 package com.mycompany.trabalho_oo2;
+
 import com.google.gson.*;
 
-import java.io.FileNotFoundException;
+import javax.swing.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class AdicionaJson {
     private String nomeArquivo;
 
     public AdicionaJson() {
-        this.nomeArquivo = System.getProperty("user.dir")+"\\data";
+        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
     }
 
     public void adicionaJogador(
@@ -46,6 +47,12 @@ public class AdicionaJson {
                 throw new RuntimeException("Jogador vazio!");
         }
         jogadoresLista.add(jogador);
+        for(Jogador j: jogadoresLista){
+            if (j.getCpf() == cpf){
+                JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                new RuntimeException("Jogador já cadastrado!!!");
+            }
+        }
 
         String nomeArquivo = this.nomeArquivo+"/jogadores.json";
 
@@ -67,6 +74,11 @@ public class AdicionaJson {
             novoJogador.addProperty("nome", nome);
             novoJogador.addProperty("cargo", cargo);
             novoJogador.addProperty("senha", senha);
+            novoJogador.addProperty("reflexo", reflexo);
+            novoJogador.addProperty("chute", chute);
+            novoJogador.addProperty("marcacao", marcacao);
+            novoJogador.addProperty("passe", passe);
+            novoJogador.addProperty("velocidade", velocidade);
 
             jogadoresArray.add(novoJogador);
 

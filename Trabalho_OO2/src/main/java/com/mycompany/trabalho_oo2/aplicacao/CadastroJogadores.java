@@ -1,13 +1,13 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.Jogador;
-import com.mycompany.trabalho_oo2.Session;
+import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 public class CadastroJogadores extends JFrame {
 
@@ -48,16 +48,14 @@ public class CadastroJogadores extends JFrame {
 
         public JPanel getPnlFormulario(){
             if(pnlFormulario == null){
-                pnlFormulario = new JPanel(new GridLayout(4,5));
+                pnlFormulario = new JPanel(new GridLayout(0,4));
                 JLabel lblId = new JLabel("CPF");
                 JLabel lblNome = new JLabel("Nome");
-                JLabel lblNumGols = new JLabel("Num Gols");
                 JLabel lblNumCamisa = new JLabel("Num Camisa");
                 JLabel lblTime = new JLabel("Time");
 
                 pnlFormulario.add(lblId);
                 pnlFormulario.add(lblNome);
-                pnlFormulario.add(lblNumGols);
                 pnlFormulario.add(lblNumCamisa);
                 pnlFormulario.add(lblTime);
 
@@ -80,15 +78,6 @@ public class CadastroJogadores extends JFrame {
                         }
                     }
                 });
-                JTextField lblNumGols2 = new JFormattedTextField("Escreva Número de gols");
-                lblNumGols2.addKeyListener(new java.awt.event.KeyAdapter() {
-                    public void keyTyped(java.awt.event.KeyEvent evt) {
-                        char ch = evt.getKeyChar();
-                        if (!Character.isDigit(ch) && ch != KeyEvent.VK_BACK_SPACE && ch != KeyEvent.VK_DELETE) {
-                            evt.consume(); // Ignora caracteres não numéricos
-                        }
-                    }
-                });
                 JTextField lblNumCamisa2 = new JTextField("Escreva número de camisa:");
                 lblNumCamisa2.addKeyListener(new java.awt.event.KeyAdapter() {
                     public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -99,33 +88,28 @@ public class CadastroJogadores extends JFrame {
                     }
                 });
                 // Lista de times
-                String[] times = {"Varmengo", "Barcelona", "Manchester United", "Bayern Munich", "Liverpool"};
+                ArrayList<Time> t = new ArrayList<>();
+                LeJson l = new LeJson();
+                l.getTimes(t);
+                Time[] times = new Time[t.size()];
+                int i = 0;
+                for(Time time: t){
+                    times[i] = time;
+                    i++;
+                }
 
                 // Criar um modelo para a lista
-                DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(times);
-
+                DefaultComboBoxModel<Time> time = new DefaultComboBoxModel<>(times);
                 // Criar a lista com base no modelo
-                JComboBox<String> listaDeTimes = new JComboBox<>(lblTime2);
+                JComboBox<Time>  lblTime2 = new JComboBox<>(time);
 
                 // Criar um botão para obter a seleção
                 JButton botao = new JButton("Obter Seleção");
-                botao.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Obter a seleção da lista
-                        String selecionado = (String) listaDeTimes.getSelectedItem();
-                        if (selecionado != null) {
-                            JOptionPane.showMessageDialog(null, "Time selecionado: " + selecionado);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Nenhum time selecionado.");
-                        }
-                    }
-                });
+
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblNome2);
-                pnlFormulario.add(lblNumGols2);
                 pnlFormulario.add(lblNumCamisa2);
-                pnlFormulario.add(listaDeTimes);
+                pnlFormulario.add(lblTime2);
 
 
                 /*private int reflexo;
@@ -138,7 +122,7 @@ public class CadastroJogadores extends JFrame {
                 JLabel lblChute = new JLabel("Chute");
                 JLabel lblMarcacao = new JLabel("Marcação");
                 JLabel lblPasse = new JLabel("Passe");
-                JLabel lblVelocidade = new JLabel("Reflexo");
+                JLabel lblVelocidade = new JLabel("Velocidade");
 
 
 
@@ -148,14 +132,14 @@ public class CadastroJogadores extends JFrame {
                 pnlFormulario.add(lblChute);
                 pnlFormulario.add(lblMarcacao);
                 pnlFormulario.add(lblPasse);
-                pnlFormulario.add(lblVelocidade);
+
 
 
                 JTextField lblReflexo2 = new JTextField("Escreva Reflexo");
                 JTextField lblChute2 = new JTextField("Escreva Chute");
                 JTextField lblMarcacao2 = new JTextField("Escreva Marcacao");
                 JTextField lblPasse2 = new JTextField("Escreva Chute");
-                JTextField lblVelocidade2 = new JTextField("Escreva Reflexo");
+                JTextField lblVelocidade2 = new JTextField("Escreva Velocidade");
 
 
 
@@ -206,12 +190,52 @@ public class CadastroJogadores extends JFrame {
                 pnlFormulario.add(lblChute2);
                 pnlFormulario.add(lblPasse2);
                 pnlFormulario.add(lblMarcacao2);
+                pnlFormulario.add(lblVelocidade);
+
+
+                JLabel lblSenha = new JLabel("Senha");
+                JLabel lblPosicao = new JLabel("Posicao");
+                JCheckBox lblTitular = new JCheckBox("Jogador é titular?");
+
+                pnlFormulario.add(lblSenha);
+                pnlFormulario.add(lblPosicao);
+                pnlFormulario.add(lblTitular);
                 pnlFormulario.add(lblVelocidade2);
 
+                JPasswordField lblSenha2 = new JPasswordField();
+                // Lista de times
+                String[] posicoes = {"AT", "MC", "ZAG", "G"};
+
+                // Criar um modelo para a lista
+                DefaultComboBoxModel<String> posicao = new DefaultComboBoxModel<>(posicoes);
+
+                // Criar a lista com base no modelo
+                JComboBox<String> lblPosicao2 = new JComboBox<>(posicao);
+
+                pnlFormulario.add(lblSenha2);
+                pnlFormulario.add(lblPosicao2);
+
+
+            JButton btnCadastro = new JButton("Salvar");
+            btnCadastro.addActionListener(e -> {
+                ArrayList<Jogador> jogadores = new ArrayList<>();
+                ArrayList<Time> Listatimes = new ArrayList<>();
+                l.getTimes(Listatimes);
+                l.getJogador(jogadores, Listatimes);
+
+                Time time1 = (Time) lblTime2.getSelectedItem();
+                AdicionaJson a = new AdicionaJson();
+                try {
+                    a.adicionaJogador(jogadores, Listatimes, String.valueOf(lblId2.getText()), String.valueOf(lblNome2.getText()), 3, String.valueOf(lblSenha2.getPassword()), lblPosicao2.getSelectedItem().toString(), Integer.parseInt(String.valueOf(lblNumCamisa2.getText())), time1.getId(), lblTitular.isSelected(), Integer.parseInt(String.valueOf(lblReflexo2.getText())), Integer.parseInt(String.valueOf(lblChute2.getText())), Integer.parseInt(String.valueOf(lblMarcacao2.getText())), Integer.parseInt(String.valueOf(lblPasse2.getText())), Integer.parseInt(String.valueOf(lblVelocidade2.getText())));
+                }catch (RuntimeException erro) {
+                        JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
+                }
+            });
+
+
+            pnlFormulario.add(btnCadastro);
             }
-
-
-
             return pnlFormulario;
         }
 
@@ -221,9 +245,23 @@ public class CadastroJogadores extends JFrame {
 
                 JButton btnVoltar = new JButton("Voltar");
                 JButton btnSair = new JButton("Sair");
-                JButton btnCadastro = new JButton("Salvar");
+
+                addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        // Chama dispose() para fechar a janela
+                        dispose();
+                    }
+                });
+                btnSair.addActionListener(e -> dispose());
+                btnVoltar.addActionListener(e -> {
+                    new MenuApp(this.session).setVisible(true);
+                    dispose();
+                });
+
+
+
                 pnlRodape.add(btnVoltar);
-                pnlRodape.add(btnCadastro);
                 pnlRodape.add(btnSair);
             }
             return pnlRodape;
@@ -232,7 +270,7 @@ public class CadastroJogadores extends JFrame {
         public JPanel getPnlTopo(){
             if(pnlTopo == null){
                 pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-                JLabel lblTitulo = new JLabel("Nome: Álvaro | Administrador");
+                JLabel lblTitulo = new JLabel(session.getNome() + " | " + Session.getNomeCargo(session.getCargo()));
                 pnlTopo.add(lblTitulo);
             }
             return pnlTopo;
