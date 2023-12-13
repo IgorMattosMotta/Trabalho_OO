@@ -1,22 +1,17 @@
 package com.mycompany.trabalho_oo2;
 
-import java.util.List;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
+import java.util.List;
 
 public class EditaJson {
     private String nomeArquivo;
 
     public EditaJson(){
-        //this.nomeArquivo = System.getProperty("user.dir")+"\\data";
-        this.nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+        //this.nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
     }
 
     public void editaJogador(

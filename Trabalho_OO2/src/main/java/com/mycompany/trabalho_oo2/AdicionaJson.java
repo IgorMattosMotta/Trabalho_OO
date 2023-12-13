@@ -217,56 +217,9 @@ public class AdicionaJson {
         }
     }
 
-    public void adicionaGol(
-            List<Gols> golsLista, List<Jogador> jogadoresLista, List<Partida> partidasLista,
-            int id,int cpfJogador, int idPartida, String minuto
-    ){
 
-        //procura o jogador que fez o gol
-        Jogador jogadorGol = null;
-        for(Jogador jogador : jogadoresLista){
-            if(jogador.getCpf().equals(cpfJogador)){
-                jogadorGol = jogador;
-                break;
-            }
-        }
-        //procura a partida que o gol foi feito
-        Partida partidaGol = null;
-        for(Partida partida : partidasLista){
-            if(partida.getId() == idPartida){
-                partidaGol = partida;
-                break;
-            }
-        }
 
-        Gols gol = new Gols(id,jogadorGol, partidaGol, minuto);
 
-        golsLista.add(gol);
-        String nomeArquivo = this.nomeArquivo+"/gols.json";
-        try(FileReader fileReader = new FileReader(nomeArquivo)) {
-            JsonElement jsonElement = JsonParser.parseReader(fileReader);
-            JsonObject jsonObject = jsonElement.getAsJsonObject();
-
-            JsonArray golsArray = jsonObject.getAsJsonArray("gols");
-
-            JsonObject novoGol = new JsonObject();
-            novoGol.addProperty("id", id);
-            novoGol.addProperty("cpfJogador", cpfJogador);
-            novoGol.addProperty("idPartida", idPartida);
-            novoGol.addProperty("minuto", minuto);
-
-            golsArray.add(novoGol);
-
-            jsonObject.add("gols", golsArray);
-
-            try(FileWriter fileWriter = new FileWriter(nomeArquivo)){
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(jsonObject, fileWriter);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void adicionaPartida(
             List<Partida> partidasLista, List<Time> timesLista,

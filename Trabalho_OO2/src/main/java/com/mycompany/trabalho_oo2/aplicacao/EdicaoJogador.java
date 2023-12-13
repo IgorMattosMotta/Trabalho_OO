@@ -1,4 +1,5 @@
 package com.mycompany.trabalho_oo2.aplicacao;
+
 import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
@@ -7,9 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.List;
 
-public class EdicaoJogador extends JFrame{
+public class EdicaoJogador extends JFrame {
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
@@ -22,7 +22,7 @@ public class EdicaoJogador extends JFrame{
     private ArrayList<Jogador> jogadores;
 
 
-    public EdicaoJogador(Session session, Jogador jogador){
+    public EdicaoJogador(Session session, Jogador jogador) {
         this.session = session;
         this.jogador = jogador;
 
@@ -34,7 +34,7 @@ public class EdicaoJogador extends JFrame{
         inicializar(session);
     }
 
-    private void inicializar(Session session){
+    private void inicializar(Session session) {
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
         this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);
@@ -46,8 +46,8 @@ public class EdicaoJogador extends JFrame{
         this.pack();
     }
 
-    public JPanel getPnlTitulo(){
-        if(pnlTitulo == null){
+    public JPanel getPnlTitulo() {
+        if (pnlTitulo == null) {
             pnlTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel lblTitulo = new JLabel("Jogador");
             pnlTitulo.add(lblTitulo);
@@ -55,9 +55,9 @@ public class EdicaoJogador extends JFrame{
         return pnlTitulo;
     }
 
-    public JPanel getPnlFormulario(){
-        if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,5));
+    public JPanel getPnlFormulario() {
+        if (pnlFormulario == null) {
+            pnlFormulario = new JPanel(new GridLayout(0, 5));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblNumCamisa = new JLabel("Num Camisa");
@@ -81,7 +81,7 @@ public class EdicaoJogador extends JFrame{
                     }
                 }
             });
-            JTextField lblNumCamisa2 = new JTextField(this.jogador.getNumCamisa());
+            JTextField lblNumCamisa2 = new JTextField(String.valueOf(this.jogador.getNumCamisa()));
             lblNumCamisa2.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyTyped(java.awt.event.KeyEvent evt) {
                     char ch = evt.getKeyChar();
@@ -94,7 +94,7 @@ public class EdicaoJogador extends JFrame{
             // Lista de times
             String[] timesArray = new String[this.times.size()];
             for (Time time : this.times) {
-                timesArray[this.times.indexOf(time)] = time.getId()+" - "+time.getNomeTime();
+                timesArray[this.times.indexOf(time)] = time.getId() + " - " + time.getNomeTime();
             }
             //String[] timesArray = {"vasco","cruzeiro"};
 
@@ -128,22 +128,22 @@ public class EdicaoJogador extends JFrame{
             JButton btnSalvar = new JButton("Salvar");
             btnSalvar.addActionListener(e -> {
                 //Salvar
-                    boolean titular = false;
-                    if(listaDeTitular.getSelectedItem().toString().equals("Titular")) {
-                        titular = true;
-                    }else if(listaDeTitular.getSelectedItem().toString().equals("Reserva")){
-                        titular = false;
-                    }
-                    int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
+                boolean titular = false;
+                if (listaDeTitular.getSelectedItem().toString().equals("Titular")) {
+                    titular = true;
+                } else if (listaDeTitular.getSelectedItem().toString().equals("Reserva")) {
+                    titular = false;
+                }
+                int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
 
-                    StringBuilder cpfFormatado = new StringBuilder(this.jogador.getCpf());
-                    cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
+                StringBuilder cpfFormatado = new StringBuilder(this.jogador.getCpf());
+                cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
 
-                    EditaJson editaJson = new EditaJson();
-                    editaJson.editaJogador(this.jogadores,this.times,cpfFormatado.toString(), lblNome2.getText(),Integer.parseInt(lblNumCamisa2.getText()), idTime,titular);
-                    JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
-                    new MenuApp(this.session).setVisible(true);
-                    dispose();
+                EditaJson editaJson = new EditaJson();
+                editaJson.editaJogador(this.jogadores, this.times, cpfFormatado.toString(), lblNome2.getText(), Integer.parseInt(lblNumCamisa2.getText()), idTime, titular);
+                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                new MenuApp(this.session).setVisible(true);
+                dispose();
             });
 
             pnlFormulario.add(lblId2);
@@ -157,8 +157,8 @@ public class EdicaoJogador extends JFrame{
         return pnlFormulario;
     }
 
-    public JPanel getPnlRodape(){
-        if(pnlRodape == null){
+    public JPanel getPnlRodape() {
+        if (pnlRodape == null) {
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
             JButton btnVoltar = new JButton("Voltar");
@@ -169,8 +169,8 @@ public class EdicaoJogador extends JFrame{
         return pnlRodape;
     }
 
-    public JPanel getPnlTopo(){
-        if(pnlTopo == null){
+    public JPanel getPnlTopo() {
+        if (pnlTopo == null) {
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel lblTitulo = new JLabel("Nome: Álvaro | Administrador");
             pnlTopo.add(lblTitulo);
