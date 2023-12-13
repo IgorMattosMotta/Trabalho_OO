@@ -9,7 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class CadastroJogadores extends JFrame {
+public class CadastroJogadores extends JFrame implements InterfacePadrao{
 
         protected JPanel pnlTopo;
         protected JPanel pnlRodape;

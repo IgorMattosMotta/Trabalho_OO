@@ -4,7 +4,7 @@ import com.mycompany.trabalho_oo2.Session;
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class JogadoresApp extends JFrame{
+public abstract class JogadoresApp extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;

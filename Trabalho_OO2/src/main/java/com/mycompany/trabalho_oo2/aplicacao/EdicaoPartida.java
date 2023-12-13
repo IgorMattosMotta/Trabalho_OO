@@ -4,13 +4,11 @@ import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
-public class EdicaoPartida extends JFrame {
+public class EdicaoPartida extends JFrame implements InterfacePadrao{
 
         protected JPanel pnlTopo;
         protected JPanel pnlRodape;

@@ -1,17 +1,18 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.*;
+import com.mycompany.trabalho_oo2.LeJson;
+import com.mycompany.trabalho_oo2.Partida;
+import com.mycompany.trabalho_oo2.Session;
+import com.mycompany.trabalho_oo2.Time;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 
-public class ConsultaPartida extends JFrame{
+public class ConsultaPartida extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;

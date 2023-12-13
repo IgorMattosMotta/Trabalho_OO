@@ -10,7 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class ConsultaTime extends JFrame {
+public class ConsultaTime extends JFrame implements InterfacePadrao{
 
         protected JPanel pnlTopo;
         protected JPanel pnlRodape;

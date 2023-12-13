@@ -3,7 +3,7 @@ import com.mycompany.trabalho_oo2.Session;
 
 import javax.swing.*;
 import java.awt.*;
-public class MenuApp extends JFrame{
+public class MenuApp extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     //botao sair
@@ -87,6 +87,16 @@ public class MenuApp extends JFrame{
         return pnlFormulario;
     }
 
+    @Override
+    public JPanel getPnlTitulo() {
+        return null;
+    }
+
+    @Override
+    public JPanel getPnlFormulario() {
+        return null;
+    }
+
     public JPanel getPnlRodape(){
         if(pnlRodape == null){
             btnSair = new JButton("Sair");
@@ -94,6 +104,11 @@ public class MenuApp extends JFrame{
             pnlRodape.add(btnSair);
         }
         return pnlRodape;
+    }
+
+    @Override
+    public JPanel getPnlTopo() {
+        return null;
     }
 
     public JPanel getPnlTopo(Session session){

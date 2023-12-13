@@ -1,17 +1,17 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.*;
+import com.mycompany.trabalho_oo2.Admin;
+import com.mycompany.trabalho_oo2.LeJson;
+import com.mycompany.trabalho_oo2.Session;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 
-public class ConsultaAdmin extends JFrame{
+public class ConsultaAdmin extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;

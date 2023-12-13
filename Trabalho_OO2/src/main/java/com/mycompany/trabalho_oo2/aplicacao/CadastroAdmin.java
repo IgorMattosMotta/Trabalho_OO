@@ -1,12 +1,11 @@
 package com.mycompany.trabalho_oo2.aplicacao;
-import com.mycompany.trabalho_oo2.Jogador;
+
 import com.mycompany.trabalho_oo2.Session;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
-public abstract class CadastroAdmin extends JFrame{
+public abstract class CadastroAdmin extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
