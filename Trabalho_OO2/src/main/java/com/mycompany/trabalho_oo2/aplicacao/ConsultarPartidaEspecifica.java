@@ -4,8 +4,6 @@ import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ public class ConsultarPartidaEspecifica extends JFrame{
     protected JPanel pnlJogadores2;
     private Session session;
     private int id;
-
+    private JScrollPane scrollPaneFormulario2;
 
 
     public ConsultarPartidaEspecifica(Session session, int id){
@@ -42,17 +40,18 @@ public class ConsultarPartidaEspecifica extends JFrame{
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
+        scrollPaneFormulario2 = new JScrollPane(getPnlFormulario2());
+        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Times", scrollPaneFormulario2);
+        pnlCentral.add(tabbedPane, BorderLayout.CENTER);
         this.pack();
     }
 
+
+
     public  JPanel getPnlCentral(){
-        pnlCentral = new JPanel(new BorderLayout());
-
-        JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("Informações", getPnlFormulario());
-        tabbedPane.addTab("Times", getPnlFormulario2());
-
-        pnlCentral.add(tabbedPane, BorderLayout.CENTER);
+        pnlCentral = new JPanel(new GridLayout(0, 2));
+        pnlCentral.add(getPnlFormulario());
 
         return pnlCentral;
 
@@ -73,6 +72,9 @@ public class ConsultarPartidaEspecifica extends JFrame{
             JLabel lblId = new JLabel("ID");
             JLabel lblHora = new JLabel("Hora");
             JLabel lblPlacar = new JLabel("Placar");
+
+
+
 
 
             pnlFormulario.add(lblId);
@@ -96,6 +98,8 @@ public class ConsultarPartidaEspecifica extends JFrame{
 
                     pnlFormulario.add(lblHora2);
                     pnlFormulario.add(lblPartida2);
+
+
                 }
             }
         }
@@ -175,7 +179,6 @@ public class ConsultarPartidaEspecifica extends JFrame{
 
     public JPanel getPnlJogadores1(){
             pnlJogadores1 = new JPanel(new GridLayout(0, 1));
-            if(pnlJogadores1 == null){
                 LeJson l = new LeJson();
                 ArrayList<Time> times = new ArrayList<>();
                 ArrayList<Partida> partidas = new ArrayList<>();
@@ -183,19 +186,28 @@ public class ConsultarPartidaEspecifica extends JFrame{
                 l.getPartidas(partidas, times);
                 ArrayList<Jogador> jogadores = new ArrayList<>();
                 l.getTimes(times);
+                ArrayList<Tecnico> tecnicos = new ArrayList<>();
+                l.getTecnico(tecnicos, times);
                 l.getJogador(jogadores, times);
-                for (Partida partida : partidas){
-                    if(partida.getId() == this.id) {
-                        for (Jogador j : jogadores) {
-                            if (j.getTime().getId() == partida.getTimeCasa().getId()) {
-                                JLabel lblJogador1 = new JLabel(j.getNome());
-                                pnlJogadores1.add(lblJogador1);
+                l.getPartidas(partidas, times);
+                for (Partida partida : partidas) {
+                    if (partida.getId() == this.id) {
+                            for(Tecnico t: tecnicos) {
+                                if(t.getTime().getId() == partida.getTimeCasa().getId()){
+                                    JLabel lbltecnico = new JLabel(t.getNome());
+                                    pnlJogadores1.add(lbltecnico);
+                                }
+                            }
+                            for (Jogador j : jogadores) {
+                                if (j.getTime().getId() == partida.getTimeCasa().getId()) {
+
+                                    JLabel lblJogador1 = new JLabel(j.getNome());
+                                    pnlJogadores1.add(lblJogador1);
+                                }
                             }
                         }
                         break;
                     }
-                }
-            }
             return pnlJogadores1;
         }
 
@@ -209,11 +221,18 @@ public class ConsultarPartidaEspecifica extends JFrame{
                 l.getPartidas(partidas, times);
                 ArrayList<Jogador> jogadores = new ArrayList<>();
                 l.getTimes(times);
+                ArrayList<Tecnico> tecnicos = new ArrayList<>();
+                l.getTecnico(tecnicos, times);
                 l.getJogador(jogadores, times);
                 for (Partida partida : partidas) {
                     if (partida.getId() == this.id) {
+                        for(Tecnico t: tecnicos) {
+                            if(t.getTime().getId() == partida.getTimeVisitante().getId()){
+                                JLabel lbltecnico = new JLabel(t.getNome());
+                                pnlJogadores2.add(lbltecnico);
+                            }
+                        }
                         for (Jogador j : jogadores) {
-                            System.out.println(j.getTime().getId() + " " + partida.getTimeVisitante().getId());
                             if (j.getTime().getId() == partida.getTimeVisitante().getId()) {
 
                                 JLabel lblJogador2 = new JLabel(j.getNome());
