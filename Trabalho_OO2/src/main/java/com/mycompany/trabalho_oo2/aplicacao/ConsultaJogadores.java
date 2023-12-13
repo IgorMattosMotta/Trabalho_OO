@@ -56,18 +56,20 @@ public class ConsultaJogadores extends JFrame {
             l.getJogador(jogadores, times);
 
 
-            pnlFormulario = new JPanel(new GridLayout(0, 5));
+            pnlFormulario = new JPanel(new GridLayout(0, 6));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblNumCamisa = new JLabel("Num Camisa");
             JLabel lblTime = new JLabel("Time");
             JLabel lblOverall = new JLabel("Overall");
+            JLabel lblEditar = new JLabel("Editar");
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblNumCamisa);
             pnlFormulario.add(lblTime);
             pnlFormulario.add(lblOverall);
+            pnlFormulario.add(lblEditar);
 
             for (Jogador j:jogadores) {
 
@@ -81,11 +83,14 @@ public class ConsultaJogadores extends JFrame {
 
                 JLabel lblOverall2 = new JLabel(String.valueOf(j.calculaNotaGeral(j)/10));
 
+                JButton btnEditar = new JButton("Editar");
+
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblNome2);
                 pnlFormulario.add(lblNumCamisa2);
                 pnlFormulario.add(lblTimes2);
                 pnlFormulario.add(lblOverall2);
+                pnlFormulario.add(btnEditar);
 
             }
         }

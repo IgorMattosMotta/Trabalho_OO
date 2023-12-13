@@ -183,35 +183,8 @@ public class EditaJson {
     }
 
     public void editaPartida(
-            List<Partida> partidasLista, List<Time> timesLista,
             String placar, String hora, int idTimeCasa, int idTimeVisitante, int idPartida
     ){
-
-        Time timeCasa = null;
-        for (Time time : timesLista){
-            if (time.getId() == idTimeCasa){
-                timeCasa = time;
-                break;
-            }
-        }
-
-        Time timeVisitante = null;
-        for (Time time : timesLista){
-            if (time.getId() == idTimeVisitante){
-                timeVisitante = time;
-                break;
-            }
-        }
-
-        for (Partida partida : partidasLista){
-            if (partida.getId() == idPartida){
-                partida.setPlacar(placar);
-                partida.setHorario(hora);
-                partida.setTimeCasa(timeCasa);
-                partida.setTimeVisitante(timeVisitante);
-                break;
-            }
-        }
 
         //edita o objeto partida no arquivo json
         try{
@@ -249,16 +222,13 @@ public class EditaJson {
     }
 
     public void editaTime(
-            List<Time> timesLista,
+            Time timeEdita,
             String nome, String cidade, int idTime
     ){
-        for (Time time : timesLista){
-            if (time.getId() == idTime){
-                time.setNomeTime(nome);
-                time.setCidade(cidade);
-                break;
-            }
-        }
+
+        timeEdita.setNomeTime(nome);
+        timeEdita.setCidade(cidade);
+
 
         try{
             JsonParser jsonParser = new JsonParser();

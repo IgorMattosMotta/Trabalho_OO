@@ -1,9 +1,6 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.Partida;
-import com.mycompany.trabalho_oo2.Session;
-import com.mycompany.trabalho_oo2.ValidaHora;
-import com.mycompany.trabalho_oo2.ValidaPlacar;
+import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 
 public class EdicaoPartida extends JFrame {
 
@@ -22,10 +20,19 @@ public class EdicaoPartida extends JFrame {
         private Partida tecnico;
         private Session session;
 
+        private Partida partida;
 
-        public EdicaoPartida(Session session){
+        private ArrayList<Time> times;
+
+
+        public EdicaoPartida(Session session, Partida partida){
             this.session = session;
+            this.partida = partida;
+
             inicializar(this.session);
+            LeJson leJson = new LeJson();
+            leJson.getTimes(this.times);
+            inicializar(session);
         }
 
         private void inicializar(Session session){
@@ -65,19 +72,24 @@ public class EdicaoPartida extends JFrame {
                 pnlFormulario.add(lblHora);
                 pnlFormulario.add(lblPlacar);
 
-                JLabel lblId2 = new JLabel("1");
+                JLabel lblId2 = new JLabel(String.valueOf(this.partida.getId()));
+
+                String[] timesArray = new String[times.size()];
+                for (Time time : times) {
+                    timesArray[times.indexOf(time)] = time.getId()+" - "+time.getNomeTime();
+                }
 
                 // Lista de times
-                String[] times = {"Varmengo", "Barcelona", "Manchester United", "Bayern Munich", "Liverpool"};
+                //String[] times = {"Varmengo", "Barcelona", "Manchester United", "Bayern Munich", "Liverpool"};
 
                 // Criar um modelo para a lista
-                DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(times);
+                DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(timesArray);
 
                 // Criar a lista com base no modelo
                 JComboBox<String> listaDeTimes1 = new JComboBox<>(lblTime2);
                 JComboBox<String> listaDeTimes2 = new JComboBox<>(lblTime2);
 
-                JTextField lblHora2 = new JTextField("1");
+                JTextField lblHora2 = new JTextField(this.partida.getHorario());
 
                 // Adicionar um ouvinte de foco para exibir a mensagem quando o campo perder o foco
                 lblHora2.addFocusListener(new FocusListener() {
@@ -95,7 +107,7 @@ public class EdicaoPartida extends JFrame {
                     }
                 });
 
-                JTextField lblPartida2 = new JTextField("1");
+                JTextField lblPartida2 = new JTextField(this.partida.getPlacar());
 
 
                 // Adicionar um ouvinte de foco para exibir a mensagem quando o campo perder o foco
@@ -113,12 +125,32 @@ public class EdicaoPartida extends JFrame {
                         }
                     }
                 });
+                JButton btnSalvar = new JButton("Salvar");
+
+                btnSalvar.addActionListener(e -> {
+                    String timeCasa = (String) listaDeTimes1.getSelectedItem();
+                    int idTimeCasa = Integer.parseInt(timeCasa.split(" - ")[0]);
+
+                    String timeVisitante = (String) listaDeTimes2.getSelectedItem();
+                    int idTimeVisitante = Integer.parseInt(timeVisitante.split(" - ")[0]);
+
+                    String hora = lblHora2.getText();
+                    String placar = lblPartida2.getText();
+                    if (timeCasa != null && timeVisitante != null && hora != null && placar != null) {
+                        EditaJson editaJson = new EditaJson();
+                        editaJson.editaPartida(placar,hora,idTimeCasa,idTimeVisitante,this.partida.getId());
+                        JOptionPane.showMessageDialog(null, "Partida editada com sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Erro ao editar partida.");
+                    }
+                });
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(listaDeTimes1);
                 pnlFormulario.add(listaDeTimes2);
                 pnlFormulario.add(lblHora2);
                 pnlFormulario.add(lblPartida2);
+                pnlFormulario.add(btnSalvar);
 
             }
             return pnlFormulario;
@@ -130,9 +162,7 @@ public class EdicaoPartida extends JFrame {
 
                 JButton btnVoltar = new JButton("Voltar");
                 JButton btnSair = new JButton("Sair");
-                JButton btnCadastro = new JButton("Salvar");
                 pnlRodape.add(btnVoltar);
-                pnlRodape.add(btnCadastro);
                 pnlRodape.add(btnSair);
             }
             return pnlRodape;

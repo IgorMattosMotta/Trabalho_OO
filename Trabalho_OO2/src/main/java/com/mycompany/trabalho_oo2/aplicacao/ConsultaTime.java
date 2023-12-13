@@ -48,14 +48,16 @@ public class ConsultaTime extends JFrame {
 
         public JPanel getPnlFormulario(){
             if(pnlFormulario == null){
-                pnlFormulario = new JPanel(new GridLayout(0,3));
+                pnlFormulario = new JPanel(new GridLayout(0,4));
                 JLabel lblId = new JLabel("ID");
                 JLabel lblNome = new JLabel("Nome");
                 JLabel lblCidade = new JLabel("Cidade");
+                JLabel lblEditar = new JLabel("Editar");
 
                 pnlFormulario.add(lblId);
                 pnlFormulario.add(lblNome);
                 pnlFormulario.add(lblCidade);
+                pnlFormulario.add(lblEditar);
 
                 ArrayList<Time> times = new ArrayList<>();
                 LeJson l = new LeJson();
@@ -66,10 +68,12 @@ public class ConsultaTime extends JFrame {
                     JLabel lblId2 = new JLabel(String.valueOf(t.getId()));
                     JLabel lblNome2 = new JLabel(t.getNomeTime());
                     JLabel lblCidade2 = new JLabel(t.getCidade());
+                    JButton btnEditar = new JButton("Editar");
 
                     pnlFormulario.add(lblId2);
                     pnlFormulario.add(lblNome2);
                     pnlFormulario.add(lblCidade2);
+                    pnlFormulario.add(btnEditar);
                 }
 
             }

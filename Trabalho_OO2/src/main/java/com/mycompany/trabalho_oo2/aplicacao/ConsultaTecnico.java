@@ -44,14 +44,16 @@ public class ConsultaTecnico extends JFrame{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,3));
+            pnlFormulario = new JPanel(new GridLayout(0,4));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblTime = new JLabel("Time");
+            JLabel lblEditar = new JLabel("Editar");
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblTime);
+            pnlFormulario.add(lblEditar);
 
             LeJson l = new LeJson();
             ArrayList<Tecnico> tecnicos = new ArrayList<>();
@@ -62,10 +64,12 @@ public class ConsultaTecnico extends JFrame{
                 JLabel lblId2 = new JLabel(t.getCpf());
                 JLabel lblNome2 = new JLabel(t.getNome());
                 JLabel lblTime2 = new JLabel(t.getTime().getNomeTime());
+                JButton btnEditar = new JButton("Editar");
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblNome2);
                 pnlFormulario.add(lblTime2);
+                pnlFormulario.add(btnEditar);
 
             }
 

@@ -1,6 +1,9 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
+import com.mycompany.trabalho_oo2.CPF;
+import com.mycompany.trabalho_oo2.Jogador;
 import com.mycompany.trabalho_oo2.Session;
+import com.mycompany.trabalho_oo2.Time;
 
 import javax.swing.*;
 
@@ -80,12 +83,7 @@ public class Aplicacao {
             };
             CadastroPartida.setVisible(true);
         });*/
-        SwingUtilities.invokeLater(() -> {
-            ConsultarPartidaEspecifica Consulta = new ConsultarPartidaEspecifica(new Session(1, "845.496.690-04", "Pablo Veggeti"), 1) {
-            };
-            Consulta.setVisible(true);
-        });
+
+
     }
-
-
 }

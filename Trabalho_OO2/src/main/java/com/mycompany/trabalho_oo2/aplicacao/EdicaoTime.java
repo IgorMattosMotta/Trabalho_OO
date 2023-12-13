@@ -1,6 +1,9 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
+import com.mycompany.trabalho_oo2.EditaJson;
 import com.mycompany.trabalho_oo2.Session;
+import com.mycompany.trabalho_oo2.Tecnico;
+import com.mycompany.trabalho_oo2.Time;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,16 +14,19 @@ public abstract class EdicaoTime extends JFrame{
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
     protected JPanel pnlFormulario;
+
     private Session session;
+    private Time time;
 
 
 
-    public EdicaoTime(){
+    public EdicaoTime(Session session, Time time){
         this.session = session;
-        inicializar(this.session);
+        this.time = time;
+        inicializar();
     }
 
-    private void inicializar(Session session){
+    private void inicializar(){
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
         this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);
@@ -52,8 +58,8 @@ public abstract class EdicaoTime extends JFrame{
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblCidade);
 
-            JLabel lblId2 = new JLabel("1");//tecnico.getCpf()
-            JTextField lblNome2 = new JTextField("MIIISSSSSTEEER");
+            JLabel lblId2 = new JLabel(String.valueOf(this.time.getId()));//tecnico.getCpf()
+            JTextField lblNome2 = new JTextField(this.time.getNomeTime());
             //Verifica String
             lblNome2.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -64,7 +70,7 @@ public abstract class EdicaoTime extends JFrame{
                 }
             });
 
-            JTextField lblCidade2 = new JTextField("Juiz de Fora");
+            JTextField lblCidade2 = new JTextField(this.time.getCidade());
 
             lblCidade2.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -74,9 +80,24 @@ public abstract class EdicaoTime extends JFrame{
                     }
                 }
             });
+            JButton btnSalvar = new JButton("Salvar");
+
             pnlFormulario.add(lblId2);
             pnlFormulario.add(lblNome2);
             pnlFormulario.add(lblCidade2);
+            pnlFormulario.add(btnSalvar);
+
+            btnSalvar.addActionListener(e ->{
+                if(lblNome2.getText().equals("") || lblCidade2.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+                    return;
+                }else {
+                    EditaJson editaJson = new EditaJson();
+                    editaJson.editaTime(this.time, lblNome2.getText(), lblCidade2.getText(), this.time.getId());
+                }
+            });
+
+
 
         }
         return pnlFormulario;
@@ -88,9 +109,7 @@ public abstract class EdicaoTime extends JFrame{
 
             JButton btnVoltar = new JButton("Voltar");
             JButton btnSair = new JButton("Sair");
-            JButton btnCadastro = new JButton("Salvar");
             pnlRodape.add(btnVoltar);
-            pnlRodape.add(btnCadastro);
             pnlRodape.add(btnSair);
         }
         return pnlRodape;

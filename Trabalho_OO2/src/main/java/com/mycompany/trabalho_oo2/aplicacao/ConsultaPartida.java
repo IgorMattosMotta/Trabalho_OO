@@ -48,13 +48,14 @@ public class ConsultaPartida extends JFrame{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,6));
+            pnlFormulario = new JPanel(new GridLayout(0,7));
             JLabel lblId = new JLabel("ID");
             JLabel lblTimeCasa = new JLabel("Time Casa");
             JLabel lblTimeVisitante = new JLabel("Time Visitante");
             JLabel lblHora = new JLabel("Hora");
             JLabel lblPlacar = new JLabel("Placar");
             JLabel lblAjuste = new JLabel("");
+            JLabel lblEditar = new JLabel("Editar");
 
 
 
@@ -64,6 +65,7 @@ public class ConsultaPartida extends JFrame{
             pnlFormulario.add(lblHora);
             pnlFormulario.add(lblPlacar);
             pnlFormulario.add(lblAjuste);
+            pnlFormulario.add(lblEditar);
 
             LeJson l = new LeJson();
             ArrayList<Time> times = new ArrayList<>();
@@ -82,6 +84,7 @@ public class ConsultaPartida extends JFrame{
                     new ConsultarPartidaEspecifica(this.session, p.getId()).setVisible(true);
                     dispose();
                 });
+                JButton btnEditar = new JButton("Editar");
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(listaDeTimes1);
@@ -89,6 +92,7 @@ public class ConsultaPartida extends JFrame{
                 pnlFormulario.add(lblHora2);
                 pnlFormulario.add(lblPartida2);
                 pnlFormulario.add(btnPartida);
+                pnlFormulario.add(btnEditar);
             }
         }
         return pnlFormulario;
@@ -125,7 +129,7 @@ public class ConsultaPartida extends JFrame{
     public JPanel getPnlTopo(){
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel(session.getNome() + "|" + Session.getNomeCargo(session.getCargo()));
+            JLabel lblTitulo = new JLabel(session.getNome() + " | " + Session.getNomeCargo(session.getCargo()));
             pnlTopo.add(lblTitulo);
         }
         return pnlTopo;

@@ -48,15 +48,17 @@ public class ConsultaAdmin extends JFrame{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,3));
+            pnlFormulario = new JPanel(new GridLayout(0,4));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblCargo = new JLabel("Cargo");
+            JLabel lblEditar = new JLabel("Editar");
 
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblCargo);
+            pnlFormulario.add(lblEditar);
 
 
             LeJson l = new LeJson();
@@ -67,10 +69,12 @@ public class ConsultaAdmin extends JFrame{
                 JLabel lblId2 = new JLabel(a.getCpf());
                 JLabel lblnome2 = new JLabel(a.getNome());
                 JLabel lblcargo2 = new JLabel(Session.getNomeCargo(a.getCargo()));
+                JButton btnEditar = new JButton("Editar");
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblnome2);
                 pnlFormulario.add(lblcargo2);
+                pnlFormulario.add(btnEditar);
             }
         }
         return pnlFormulario;

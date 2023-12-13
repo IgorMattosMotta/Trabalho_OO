@@ -1,12 +1,16 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 import com.mycompany.trabalho_oo2.Jogador;
+import com.mycompany.trabalho_oo2.LeJson;
 import com.mycompany.trabalho_oo2.Session;
+import com.mycompany.trabalho_oo2.Time;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class EdicaoJogador extends JFrame{
     protected JPanel pnlTopo;
@@ -17,9 +21,15 @@ public abstract class EdicaoJogador extends JFrame{
     private Jogador jogador;
     private Session session;
 
+    private ArrayList<Time> times;
 
-    public EdicaoJogador(Session session){
+
+    public EdicaoJogador(Session session, Jogador jogador){
         this.session = session;
+        this.jogador = jogador;
+
+        LeJson leJson = new LeJson();
+        leJson.getTimes(this.times);
         inicializar(session);
     }
 
@@ -38,7 +48,7 @@ public abstract class EdicaoJogador extends JFrame{
     public JPanel getPnlTitulo(){
         if(pnlTitulo == null){
             pnlTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel("Jogadores");
+            JLabel lblTitulo = new JLabel("Jogador");
             pnlTitulo.add(lblTitulo);
         }
         return pnlTitulo;
@@ -49,18 +59,16 @@ public abstract class EdicaoJogador extends JFrame{
             pnlFormulario = new JPanel(new GridLayout(0,5));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
-            JLabel lblNumGols = new JLabel("Num Gols");
             JLabel lblNumCamisa = new JLabel("Num Camisa");
             JLabel lblTime = new JLabel("Time");
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
-            pnlFormulario.add(lblNumGols);
             pnlFormulario.add(lblNumCamisa);
             pnlFormulario.add(lblTime);
 
-            JLabel lblId2 = new JLabel("1");//jogador.getCpf()
-            JTextField lblNome2 = new JTextField("Gabriel Barbosa");//jogador.nome
+            JLabel lblId2 = new JLabel(this.jogador.getCpf());//jogador.getCpf()
+            JTextField lblNome2 = new JTextField(this.jogador.getNome());//jogador.nome
             //Ve se é string
             lblNome2.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -70,16 +78,7 @@ public abstract class EdicaoJogador extends JFrame{
                     }
                 }
             });
-            JTextField lblNumGols2 = new JFormattedTextField("3");
-            lblNumGols2.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void keyTyped(java.awt.event.KeyEvent evt) {
-                    char ch = evt.getKeyChar();
-                    if (!Character.isDigit(ch) && ch != KeyEvent.VK_BACK_SPACE && ch != KeyEvent.VK_DELETE) {
-                        evt.consume(); // Ignora caracteres não numéricos
-                    }
-                }
-            });
-            JTextField lblNumCamisa2 = new JTextField("10");
+            JTextField lblNumCamisa2 = new JTextField(this.jogador.getNumCamisa());
             lblNumCamisa2.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyTyped(java.awt.event.KeyEvent evt) {
                     char ch = evt.getKeyChar();
@@ -88,11 +87,15 @@ public abstract class EdicaoJogador extends JFrame{
                     }
                 }
             });
+
             // Lista de times
-            String[] times = {"Varmengo", "Barcelona", "Manchester United", "Bayern Munich", "Liverpool"};
+            String[] timesArray = new String[times.size()];
+            for (Time time : times) {
+                timesArray[times.indexOf(time)] = time.getId()+" - "+time.getNomeTime();
+            }
 
             // Criar um modelo para a lista
-            DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(times);
+            DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(timesArray);
 
             // Criar a lista com base no modelo
             JComboBox<String> listaDeTimes = new JComboBox<>(lblTime2);
@@ -113,7 +116,6 @@ public abstract class EdicaoJogador extends JFrame{
             });
             pnlFormulario.add(lblId2);
             pnlFormulario.add(lblNome2);
-            pnlFormulario.add(lblNumGols2);
             pnlFormulario.add(lblNumCamisa2);
             pnlFormulario.add(listaDeTimes);
 
