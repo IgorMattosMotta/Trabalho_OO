@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class ValidaLogin2 {
 
-    public static boolean valida(String cpf, String senha, int cargo, ArrayList<Jogador> jogadoresLista, ArrayList<Tecnico> tecnicosLista, ArrayList<Admin> adminLista) {
+    public static boolean valida(String cpf, String senha, ArrayList<Jogador> jogadoresLista, ArrayList<Tecnico> tecnicosLista, ArrayList<Admin> adminLista) {
         return ehValido(cpf, senha, jogadoresLista, tecnicosLista, adminLista) > 0 && ehValido(cpf, senha, jogadoresLista, tecnicosLista, adminLista) < 4;
     }
 

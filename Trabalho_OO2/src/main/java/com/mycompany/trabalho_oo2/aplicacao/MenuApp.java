@@ -70,7 +70,12 @@ public class MenuApp extends JFrame{
                 new ConsultaAdmin(this.session).setVisible(true);
                 dispose();
             });
+
             btnConsultarGols = new JButton("Consultar Gols");
+            btnConsultarGols.addActionListener(e -> {
+                new ConsultaGol(this.session).setVisible(true);
+                dispose();
+            });
 
             if(session.getCargo() == 2 || session.getCargo() == 3){
                 pnlFormulario.add(btnConsultarJogadores);
