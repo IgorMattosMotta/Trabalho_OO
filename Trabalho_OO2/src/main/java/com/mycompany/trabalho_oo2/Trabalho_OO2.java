@@ -27,7 +27,8 @@ public class Trabalho_OO2 {
             };
             login.setVisible(true);*/
 
-        EdicaoJogador edicaoJogador = new EdicaoJogador(new Session(1,"",""), jogadoresLista.get(0));
+        //EdicaoJogador edicaoJogador = new EdicaoJogador(new Session(1,"",""), jogadoresLista.get(0));
+        RemoveJson removeJson = new RemoveJson();
     }
 }
         

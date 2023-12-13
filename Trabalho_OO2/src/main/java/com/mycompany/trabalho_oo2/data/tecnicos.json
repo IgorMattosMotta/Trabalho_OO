@@ -13,6 +13,13 @@
       "nome": "Dante Nogueira",
       "cargo": 2,
       "senha": "senha55"
+    },
+    {
+      "time": 2,
+      "cpf": "02355164657",
+      "nome": "Danilo",
+      "cargo": 2,
+      "senha": "senha55"
     }
   ]
 }
