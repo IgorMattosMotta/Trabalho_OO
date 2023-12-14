@@ -1,8 +1,10 @@
 package com.mycompany.trabalho_oo2;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import java.io.FileReader;
 import java.util.ArrayList;
 
@@ -10,15 +12,15 @@ public class LeJson {
     private String nomeArquivo;
 
 
-    public LeJson(){
-            this.nomeArquivo = System.getProperty("user.dir") + "\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+    public LeJson() {
+        this.nomeArquivo = System.getProperty("user.dir") + "\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
     }
 
-    public void getTimes(ArrayList<Time> timesLista){
+    public void getTimes(ArrayList<Time> timesLista) {
         //pego o caminho do arquivo
-        String nomeArquivo = this.nomeArquivo+"/times.json";
+        String nomeArquivo = this.nomeArquivo + "/times.json";
         //tento ler o arquivo pelo caminho dito anteriormente
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
+        try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
             JsonObject jsonObject = jsonElement.getAsJsonObject();
             //pego o array de pessoas
@@ -32,7 +34,7 @@ public class LeJson {
                 String nome = timeObject.get("nomeTime").getAsString();
                 String cidade = timeObject.get("cidade").getAsString();
                 //crio um novo time com os atributos pegos
-                Time novoTime = new Time(id,nome,cidade);
+                Time novoTime = new Time(id, nome, cidade);
                 timesLista.add(novoTime);
             }
         } catch (Exception e) {
@@ -40,11 +42,11 @@ public class LeJson {
         }
     }
 
-    public void getPartidas(ArrayList<Partida> partidasLista, ArrayList<Time> timesLista){
+    public void getPartidas(ArrayList<Partida> partidasLista, ArrayList<Time> timesLista) {
         //pego o caminho do arquivo
-        String nomeArquivo = this.nomeArquivo+"/partidas.json";
+        String nomeArquivo = this.nomeArquivo + "/partidas.json";
         //tento ler o arquivo pelo caminho dito anteriormente
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
+        try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
             JsonObject jsonObject = jsonElement.getAsJsonObject();
             //pego o array de partidas
@@ -63,17 +65,17 @@ public class LeJson {
                 Time timeCasa = null;
                 Time timeVisitante = null;
                 //acho o time da casa e o time visitante
-                for (Time time : timesLista){
-                    if (time.getId() == idTimeCasa){
+                for (Time time : timesLista) {
+                    if (time.getId() == idTimeCasa) {
                         timeCasa = time;
                     }
-                    if (time.getId() == idTimeVisitante){
+                    if (time.getId() == idTimeVisitante) {
                         timeVisitante = time;
                     }
                 }
 
                 //crio uma nova partida com os atributos pegos
-                Partida novaPartida = new Partida(id,timeCasa,timeVisitante,placar,horario);
+                Partida novaPartida = new Partida(id, timeCasa, timeVisitante, placar, horario);
                 partidasLista.add(novaPartida);
             }
         } catch (Exception e) {
@@ -81,11 +83,11 @@ public class LeJson {
         }
     }
 
-    public void getTecnico(ArrayList<Tecnico> tecnicosLista,ArrayList<Time> timesLista){
+    public void getTecnico(ArrayList<Tecnico> tecnicosLista, ArrayList<Time> timesLista) {
         //pego o caminho do arquivo
-        String nomeArquivo = this.nomeArquivo+"/tecnicos.json";
+        String nomeArquivo = this.nomeArquivo + "/tecnicos.json";
         //tento ler o arquivo pelo caminho dito anteriormente
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
+        try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
             JsonObject jsonObject = jsonElement.getAsJsonObject();
             //pego o array de partidas
@@ -103,8 +105,8 @@ public class LeJson {
 
                 //acho o time da casa e o time visitante
                 Time timeTecnico = null;
-                for (Time time : timesLista){
-                    if (time.getId() == idTime){
+                for (Time time : timesLista) {
+                    if (time.getId() == idTime) {
                         timeTecnico = time;
                     }
                 }
@@ -117,10 +119,10 @@ public class LeJson {
         }
     }
 
-    public void getJogador(ArrayList<Jogador> jogadoresLista,ArrayList<Time> timesLista){
-        String nomeArquivo = this.nomeArquivo+"/jogadores.json";
+    public void getJogador(ArrayList<Jogador> jogadoresLista, ArrayList<Time> timesLista) {
+        String nomeArquivo = this.nomeArquivo + "/jogadores.json";
         //tento ler o arquivo pelo caminho dito anteriormente
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
+        try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
             JsonObject jsonObject = jsonElement.getAsJsonObject();
             //pego o array de jogadores
@@ -145,15 +147,15 @@ public class LeJson {
 
                 //acho o time do jogador
                 Time timeJogador = null;
-                for (Time time : timesLista){
-                    if (time.getId() == idTime){
+                for (Time time : timesLista) {
+                    if (time.getId() == idTime) {
                         timeJogador = time;
                         break;
                     }
                 }
                 //crio um novo jogador com os atributos pegos
                 Jogador novoJogador;
-                switch (posicao){
+                switch (posicao) {
                     case "AT":
                         novoJogador = new Atacante(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
@@ -177,10 +179,10 @@ public class LeJson {
         }
     }
 
-    public void getAdministrdor(ArrayList<Admin> administradoresLista){
-        String nomeArquivo = this.nomeArquivo+"/administradores.json";
+    public void getAdministrdor(ArrayList<Admin> administradoresLista) {
+        String nomeArquivo = this.nomeArquivo + "/administradores.json";
         //tento ler o arquivo pelo caminho dito anteriormente
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
+        try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
             JsonObject jsonObject = jsonElement.getAsJsonObject();
             //pego o array de admins

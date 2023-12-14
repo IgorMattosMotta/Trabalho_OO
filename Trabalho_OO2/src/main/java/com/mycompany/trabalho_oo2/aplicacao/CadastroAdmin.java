@@ -68,7 +68,7 @@ public class CadastroAdmin extends JFrame implements InterfacePadrao{
                 }
             }
         });
-            JTextField lblNome2 = new JTextField("Escreva Nome:");//jogador.nome
+            JTextField lblNome2 = new JTextField("Escreva Nome:");
             //Ve se é string
                 lblNome2.addKeyListener(new java.awt.event.KeyAdapter() {
                     public void keyTyped(java.awt.event.KeyEvent evt) {

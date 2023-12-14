@@ -1,1 +1,25 @@
-{"tecnicos":[{"time":1,"cpf":"879.689.230-77","nome":"Tome Santo","cargo":2,"senha":"senha455","idTime":1},{"time":3,"cpf":"376.846.940-90","nome":"Dante Nogueira","cargo":2,"senha":"senha55"},{"time":2,"cpf":"02355164657","nome":"Danilo","cargo":2,"senha":"senha55"}]}
+{
+  "tecnicos": [
+    {
+      "time": 1,
+      "cpf": "87968923077",
+      "nome": "Tome Santo",
+      "cargo": 2,
+      "senha": "senha455",
+      "idTime": 1
+    },
+    {
+      "time": 3,
+      "cpf": "37684694090",
+      "nome": "Dante Nogueira",
+      "cargo": 2,
+      "senha": "senha55"
+    },{
+      "time": 3,
+      "cpf": "33497115029",
+      "nome": "Gleiph",
+      "cargo": 2,
+      "senha": "nota10"
+    }
+  ]
+}

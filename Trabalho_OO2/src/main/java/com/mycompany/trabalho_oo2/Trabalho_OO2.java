@@ -1,4 +1,8 @@
 package com.mycompany.trabalho_oo2;
+/* Igor Mattos - 202276006
+   Álvaro Davi -  202176037
+   Davi
+ */
 
 import com.mycompany.trabalho_oo2.aplicacao.Login;
 

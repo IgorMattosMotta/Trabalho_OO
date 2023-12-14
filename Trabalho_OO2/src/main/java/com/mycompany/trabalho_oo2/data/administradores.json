@@ -1,10 +1,22 @@
 {
   "administradores": [
     {
-      "cpf": "845.496.690-04",
+      "cpf": "84549669004",
       "nome": "Pablo Veggeti",
       "cargo": 1,
       "senha": "vasco"
+    },
+    {
+      "cpf": "02355164657",
+      "nome": "Igor Mattos",
+      "cargo": 1,
+      "senha": "123"
+    },
+    {
+      "cpf": "768.836.140-01",
+      "nome": "Gleiph",
+      "cargo": 1,
+      "senha": "nota10"
     }
   ]
 }

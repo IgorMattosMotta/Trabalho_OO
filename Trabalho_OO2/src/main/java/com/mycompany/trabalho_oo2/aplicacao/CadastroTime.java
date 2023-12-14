@@ -11,7 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class CadastroTime extends JFrame implements InterfacePadrao{
+public class CadastroTime extends JFrame implements InterfacePadrao {
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
@@ -19,12 +19,12 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
 
     private Session session;
 
-    public CadastroTime(Session session){
+    public CadastroTime(Session session) {
         this.session = session;
         inicializar();
     }
 
-    private void inicializar(){
+    private void inicializar() {
         this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.getContentPane().add(getPnlTopo());
         this.getContentPane().add(getPnlFormulario());
@@ -37,7 +37,7 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
     }
 
     public JPanel getPnlTitulo() {
-        if(pnlTitulo == null){
+        if (pnlTitulo == null) {
             pnlTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JLabel lblTitulo = new JLabel("Jogadores");
             pnlTitulo.add(lblTitulo);
@@ -47,8 +47,8 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
 
 
     public JPanel getPnlFormulario() {
-        if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,2));
+        if (pnlFormulario == null) {
+            pnlFormulario = new JPanel(new GridLayout(0, 2));
             JLabel lblNome = new JLabel("Nome");
             JLabel lblCidade = new JLabel("Cidade");
 
@@ -60,7 +60,7 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
             lblNome2.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyTyped(java.awt.event.KeyEvent evt) {
                     char ch = evt.getKeyChar();
-                    if (!Character.isAlphabetic(ch)  && !Character.isSpaceChar(ch)) {
+                    if (!Character.isAlphabetic(ch) && !Character.isSpaceChar(ch)) {
                         evt.consume();
                     }
                 }
@@ -79,17 +79,17 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
 
             JButton btnSalvar = new JButton("Salvar");
             btnSalvar.addActionListener(e -> {
-                try{
+                try {
                     JOptionPane.showMessageDialog(null, "Time cadastrado com sucesso!");
                     AdicionaJson ad = new AdicionaJson(session);
                     LeJson le = new LeJson();
                     ArrayList<Time> times = new ArrayList<>();
                     le.getTimes(times);
-                    ad.adicionaTime(times,lblNome2.getText(), lblCidade2.getText());
+                    ad.adicionaTime(times, lblNome2.getText(), lblCidade2.getText());
                     dispose();
                     MenuApp menu = new MenuApp(session);
                     menu.setVisible(true);
-                }catch (RuntimeException erro){
+                } catch (RuntimeException erro) {
                     JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
                     throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
                 }
@@ -124,7 +124,6 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
         });
 
 
-
         pnlRodape.add(btnVoltar);
         pnlRodape.add(btnSair);
 
@@ -132,9 +131,9 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
     }
 
     public JPanel getPnlTopo() {
-        if(pnlTopo == null){
+        if (pnlTopo == null) {
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+" | Cargo: "+ Session.getNomeCargo(session.getCargo()));
+            JLabel lblTitulo = new JLabel("Nome: " + session.getNome() + " | Cargo: " + Session.getNomeCargo(session.getCargo()));
             pnlTopo.add(lblTitulo);
         }
         return pnlTopo;
