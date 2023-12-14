@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public abstract class EdicaoTime extends JFrame implements InterfacePadrao{
+public class EdicaoTime extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
@@ -87,10 +87,9 @@ public abstract class EdicaoTime extends JFrame implements InterfacePadrao{
             pnlFormulario.add(btnSalvar);
 
             btnSalvar.addActionListener(e ->{
-                if(lblNome2.getText().equals("") || lblCidade2.getText().equals("")){
-                    JOptionPane.showMessageDialog(null, "Preencha todos os campos");
-                    return;
-                }else {
+                if(!lblNome2.getText().equals("") && !lblCidade2.getText().equals("") &&
+                JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION){
+
                     EditaJson editaJson = new EditaJson();
                     editaJson.editaTime(this.time, lblNome2.getText(), lblCidade2.getText(), this.time.getId());
                 }

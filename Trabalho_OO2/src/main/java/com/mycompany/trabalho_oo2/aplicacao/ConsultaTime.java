@@ -83,6 +83,11 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
                         }
                     });
 
+                    btnEditar.addActionListener(e -> {
+                        new EdicaoTime(this.session, t).setVisible(true);
+                        dispose();
+                    });
+
                     pnlFormulario.add(lblId2);
                     pnlFormulario.add(lblNome2);
                     pnlFormulario.add(lblCidade2);
