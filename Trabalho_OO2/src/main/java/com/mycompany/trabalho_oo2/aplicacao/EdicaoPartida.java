@@ -82,10 +82,11 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
                 // Lista de times
 
                 // Criar um modelo para a lista
+                DefaultComboBoxModel<String> lblTime1 = new DefaultComboBoxModel<>(timesArray);
                 DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(timesArray);
 
                 // Criar a lista com base no modelo
-                JComboBox<String> listaDeTimes1 = new JComboBox<>(lblTime2);
+                JComboBox<String> listaDeTimes1 = new JComboBox<>(lblTime1);
                 JComboBox<String> listaDeTimes2 = new JComboBox<>(lblTime2);
 
                 JTextField lblHora2 = new JTextField(this.partida.getHorario());
@@ -136,7 +137,7 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
                     String hora = lblHora2.getText();
                     String placar = lblPartida2.getText();
                     if (JOptionPane.showConfirmDialog(null, "Deseja realmente Editar?") == JOptionPane.YES_OPTION &&
-                            timeCasa != null && timeVisitante != null && hora != null && placar != null) {
+                            timeCasa != null && timeVisitante != null && hora != null && placar != null && idTimeVisitante != idTimeCasa){
                         EditaJson editaJson = new EditaJson();
                         editaJson.editaPartida(placar,hora,idTimeCasa,idTimeVisitante,this.partida.getId());
                         JOptionPane.showMessageDialog(null, "Partida editada com sucesso!");
