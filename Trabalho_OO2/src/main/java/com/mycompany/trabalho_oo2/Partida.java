@@ -4,10 +4,11 @@
  */
 package com.mycompany.trabalho_oo2;
 
-/**
- *
- * @author igorm
- */
+//Grupo:
+//Igor Mattos da Motta - 202276006
+//Álvaro Davi Carneiro dos Santos - 202176037
+//Davi Laranjo Villa - 202235025
+
 public class Partida {
     private int id;
     private Time timeCasa;
