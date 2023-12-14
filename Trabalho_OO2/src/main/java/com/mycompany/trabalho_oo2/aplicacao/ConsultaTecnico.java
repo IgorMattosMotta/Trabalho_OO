@@ -78,9 +78,7 @@ public class ConsultaTecnico extends JFrame implements InterfacePadrao{
                 btnExcluir.addActionListener(e -> {
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o técnico " + t.getNome() + "?") == JOptionPane.YES_OPTION){
                         RemoveJson r = new RemoveJson();
-                        StringBuilder cpfFormatado = new StringBuilder(t.getCpf());
-                        cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
-                        r.removeTecnico(cpfFormatado.toString());
+                        r.removeTecnico(t.getCpf());
                         new ConsultaTecnico(this.session).setVisible(true);
                         dispose();
                     }

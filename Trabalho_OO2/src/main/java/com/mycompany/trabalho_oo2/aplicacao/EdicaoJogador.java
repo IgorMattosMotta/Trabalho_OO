@@ -134,11 +134,8 @@ public class EdicaoJogador extends JFrame {
                 }
                 int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
 
-                StringBuilder cpfFormatado = new StringBuilder(this.jogador.getCpf());
-                cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
-
                 EditaJson editaJson = new EditaJson();
-                editaJson.editaJogador(this.jogadores, this.times, cpfFormatado.toString(), lblNome2.getText(), Integer.parseInt(lblNumCamisa2.getText()), idTime, titular);
+                editaJson.editaJogador(this.jogadores, this.times, this.jogador.getCpf(), lblNome2.getText(), Integer.parseInt(lblNumCamisa2.getText()), idTime, titular);
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
                 new MenuApp(this.session).setVisible(true);
                 dispose();
@@ -169,6 +166,10 @@ public class EdicaoJogador extends JFrame {
                 }
             });
             btnSair.addActionListener(e -> dispose());
+            btnVoltar.addActionListener(e -> {
+                new ConsultaJogadores(this.session).setVisible(true);
+                dispose();
+            });
 
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);

@@ -116,11 +116,8 @@ public class EdicaoTecnico extends JFrame implements InterfacePadrao{
                 if(JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION
                 && !lblNome2.getText().equals("") && listaDeTimes.getSelectedItem() != null){
                     int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
-                    StringBuilder cpfFormatado = new StringBuilder(this.tecnico.getCpf());
-                    cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
-
                     EditaJson editaJson = new EditaJson();
-                    editaJson.editaTecnico(this.tecnicos, this.times, cpfFormatado.toString(), lblNome2.getText(), idTime);
+                    editaJson.editaTecnico(this.tecnicos, this.times, this.tecnico.getCpf(), lblNome2.getText(), idTime);
                 }
             });
 
@@ -141,8 +138,12 @@ public class EdicaoTecnico extends JFrame implements InterfacePadrao{
                     dispose();
                 }
             });
-            btnSair.addActionListener(e -> dispose());
 
+            btnSair.addActionListener(e -> dispose());
+            btnVoltar.addActionListener(e -> {
+                new ConsultaTecnico(this.session).setVisible(true);
+                dispose();
+            });
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);
         }
