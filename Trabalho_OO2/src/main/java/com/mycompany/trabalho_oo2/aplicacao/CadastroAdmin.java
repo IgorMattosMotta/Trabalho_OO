@@ -115,6 +115,8 @@ public abstract class CadastroAdmin extends JFrame implements InterfacePadrao{
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
             pnlTopo.add(getPnlTitulo());
+            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+"|"+ Session.getNomeCargo(session.getCargo()));
+            pnlTopo.add(lblTitulo);
         }
         return pnlTopo;
     }

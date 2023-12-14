@@ -149,6 +149,8 @@ public abstract class CadastroPartida extends JFrame implements InterfacePadrao{
     public JPanel getPnlTopo(){
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+"|"+ Session.getNomeCargo(session.getCargo()));
+            pnlTopo.add(lblTitulo);
             pnlTopo.add(getPnlTitulo());
         }
         return pnlTopo;

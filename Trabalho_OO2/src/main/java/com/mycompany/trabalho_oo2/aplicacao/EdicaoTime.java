@@ -131,7 +131,7 @@ public class EdicaoTime extends JFrame implements InterfacePadrao{
     public JPanel getPnlTopo(){
         if(pnlTopo == null){
             pnlTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JLabel lblTitulo = new JLabel("Nome: Álvaro | Administrador");
+            JLabel lblTitulo = new JLabel("Nome: "+session.getNome()+" | Cargo: "+ Session.getNomeCargo(session.getCargo()));
             pnlTopo.add(lblTitulo);
         }
         return pnlTopo;
