@@ -19,8 +19,11 @@ public class MenuApp extends JFrame implements InterfacePadrao{
     protected JButton btnConsultarTimes;
     //consultar administradores
     protected JButton btnConsultarAdministradores;
-    //consultar gols
-    protected JButton btnConsultarGols;
+
+    protected JButton btnCadastrarJogadores;
+    protected JButton btnCadastroPartida;
+    protected JButton btnCadastroTecnicos;
+    protected JButton btnCadastroAdmin;
 
     private Session session;
 
@@ -70,6 +73,39 @@ public class MenuApp extends JFrame implements InterfacePadrao{
                 new ConsultaAdmin(this.session).setVisible(true);
                 dispose();
             });
+            btnCadastrarJogadores = new JButton("Cadastrar Jogadores");
+            btnCadastrarJogadores.addActionListener(e -> {
+                new CadastroJogadores(this.session).setVisible(true);
+                dispose();
+            });
+            btnCadastroPartida = new JButton("Cadastrar Partida");
+            btnCadastroPartida.addActionListener(e -> {
+                new CadastroPartida(this.session) {
+                    @Override
+                    public JPanel getPnlFormulario() {
+                        return null;
+                    }
+                }.setVisible(true);
+                dispose();
+            });
+            btnCadastroTecnicos = new JButton("Cadastrar Tecnico");
+            btnCadastroTecnicos.addActionListener(e -> {
+                new CadastroTecnico(this.session).setVisible(true);
+                dispose();
+            });
+
+            btnCadastroAdmin = new JButton("Cadastrar Administradores");
+            btnCadastroAdmin.addActionListener(e -> {
+                new CadastroAdmin(this.session).setVisible(true);
+                dispose();
+            });
+
+            if(this.session.getCargo() == 1){
+                pnlFormulario.add(btnCadastrarJogadores);
+                pnlFormulario.add(btnCadastroTecnicos);
+                pnlFormulario.add(btnCadastroAdmin);
+                pnlFormulario.add(btnCadastroPartida);
+            }
 
             pnlFormulario.add(btnConsultarJogadores);
             pnlFormulario.add(btnConsultarTecnicos);

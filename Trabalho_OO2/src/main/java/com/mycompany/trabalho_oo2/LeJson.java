@@ -108,7 +108,7 @@ public class LeJson {
                     }
                 }
                 //crio uma nova partida com os atributos pegos
-                Tecnico novoTecnico = new Tecnico(new CPF(cpf), nome, 3, senha, timeTecnico);
+                Tecnico novoTecnico = new Tecnico(new CPF(cpf), nome, 2, senha, timeTecnico);
                 tecnicosLista.add(novoTecnico);
             }
         } catch (Exception e) {
@@ -154,16 +154,16 @@ public class LeJson {
                 Jogador novoJogador;
                 switch (posicao){
                     case "AT":
-                        novoJogador = new Atacante(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                        novoJogador = new Atacante(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
                     case "MC":
-                        novoJogador = new Meia(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                        novoJogador = new Meia(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
                     case "ZG":
-                        novoJogador = new Zagueiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                        novoJogador = new Zagueiro(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
                     case "G":
-                        novoJogador = new Goleiro(new CPF(cpf), nome, 1, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                        novoJogador = new Goleiro(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
                         break;
                     default:
                         novoJogador = null;

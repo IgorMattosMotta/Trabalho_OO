@@ -80,7 +80,9 @@ public class Login extends JFrame {
                     String senha = String.valueOf(lblSenha2.getPassword());
 
                     if (cpf != null) {
-                        ValidaLogin2.valida(cpf, senha, jogadoresLista, tecnicosLista, adminLista);
+                        if(ValidaLogin2.valida(cpf, senha, jogadoresLista, tecnicosLista, adminLista)) {
+                            dispose();
+                        }
                     }
                 }
             });
