@@ -8,6 +8,10 @@ import javax.swing.*;
 
 import java.util.ArrayList;
 
+//Grupo:
+//Igor Mattos da Motta - 202276006
+//Álvaro Davi Carneiro dos Santos - 202176037
+//Davi Laranjo Villa - 202235025
 
 
 public class ValidaLogin2 {

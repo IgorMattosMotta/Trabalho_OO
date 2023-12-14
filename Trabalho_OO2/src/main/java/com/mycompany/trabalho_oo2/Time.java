@@ -4,12 +4,11 @@
  */
 package com.mycompany.trabalho_oo2;
 
-import java.util.ArrayList;
+//Grupo:
+//Igor Mattos da Motta - 202276006
+//Álvaro Davi Carneiro dos Santos - 202176037
+//Davi Laranjo Villa - 202235025
 
-/**
- *
- * @author igorm
- */
 public class Time {
     private int id;
     private String nomeTime;

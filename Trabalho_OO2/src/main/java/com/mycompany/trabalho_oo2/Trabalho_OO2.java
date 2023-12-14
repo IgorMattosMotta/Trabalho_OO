@@ -1,8 +1,9 @@
 package com.mycompany.trabalho_oo2;
-/* Igor Mattos - 202276006
-   Álvaro Davi -  202176037
-   Davi
- */
+
+//Grupo:
+//Igor Mattos da Motta - 202276006
+//Álvaro Davi Carneiro dos Santos - 202176037
+//Davi Laranjo Villa - 202235025
 
 import com.mycompany.trabalho_oo2.aplicacao.Login;
 
@@ -24,6 +25,7 @@ public class Trabalho_OO2 {
         Login login = new Login(jogadoresLista, adminLista, tecnicosLista) {
         };
         login.setVisible(true);
+
     }
 }
         

@@ -1,5 +1,9 @@
 package com.mycompany.trabalho_oo2;
 
+//Grupo:
+//Igor Mattos da Motta - 202276006
+//Álvaro Davi Carneiro dos Santos - 202176037
+//Davi Laranjo Villa - 202235025
 public class ValidaPlacar {
     public static boolean validarPlacar(String placar) {
         // Verificar se a string não é nula e tem o formato esperado

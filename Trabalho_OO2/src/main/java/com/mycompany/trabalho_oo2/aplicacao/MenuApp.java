@@ -1,4 +1,8 @@
 package com.mycompany.trabalho_oo2.aplicacao;
+//Grupo:
+//Igor Mattos da Motta - 202276006
+//Álvaro Davi Carneiro dos Santos - 202176037
+//Davi Laranjo Villa - 202235025
 import com.mycompany.trabalho_oo2.Session;
 
 import javax.swing.*;
@@ -138,6 +142,10 @@ public class MenuApp extends JFrame implements InterfacePadrao{
             btnSair = new JButton("Sair");
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
             pnlRodape.add(btnSair);
+
+            btnSair.addActionListener(e -> {
+                dispose();
+            });
         }
         return pnlRodape;
     }
