@@ -1,9 +1,6 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.Jogador;
-import com.mycompany.trabalho_oo2.LeJson;
-import com.mycompany.trabalho_oo2.Session;
-import com.mycompany.trabalho_oo2.Time;
+import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,13 +53,14 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
             l.getJogador(jogadores, times);
 
 
-            pnlFormulario = new JPanel(new GridLayout(0, 6));
+            pnlFormulario = new JPanel(new GridLayout(0, 7));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblNumCamisa = new JLabel("Num Camisa");
             JLabel lblTime = new JLabel("Time");
             JLabel lblOverall = new JLabel("Overall");
             JLabel lblEditar = new JLabel("Editar");
+            JLabel lblExcluir = new JLabel("Excluir");
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
@@ -70,6 +68,7 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
             pnlFormulario.add(lblTime);
             pnlFormulario.add(lblOverall);
             pnlFormulario.add(lblEditar);
+            pnlFormulario.add(lblExcluir);
 
             for (Jogador j:jogadores) {
 
@@ -85,16 +84,28 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
 
                 JButton btnEditar = new JButton("Editar");
 
+                JButton btnExcluir = new JButton("Excluir");
+
+
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblNome2);
                 pnlFormulario.add(lblNumCamisa2);
                 pnlFormulario.add(lblTimes2);
                 pnlFormulario.add(lblOverall2);
                 pnlFormulario.add(btnEditar);
+                pnlFormulario.add(btnExcluir);
 
                 btnEditar.addActionListener(e -> {
                     new EdicaoJogador(this.session, j).setVisible(true);
                     dispose();
+                });
+
+                btnExcluir.addActionListener(e -> {
+                    RemoveJson r = new RemoveJson();
+                    StringBuilder cpfFormatado = new StringBuilder(j.getCpf());
+                    cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
+                    r.removeJogador(cpfFormatado.toString());
+                    JOptionPane.showMessageDialog(null, "Jogador removido com sucesso!");
                 });
 
             }
