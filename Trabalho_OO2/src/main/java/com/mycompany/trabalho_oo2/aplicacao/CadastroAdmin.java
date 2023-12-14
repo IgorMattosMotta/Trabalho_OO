@@ -94,7 +94,7 @@ public abstract class CadastroAdmin extends JFrame implements InterfacePadrao{
                 l.getAdministrdor(admins);
                 AdicionaJson a = new AdicionaJson();
                 try {
-                    a.adicionaAdmin(admins, String.valueOf(lblId2.getText()), String.valueOf(lblNome2.getText()), 1, String.valueOf(lblSenha2.getPassword()));
+                    a.adicionaAdmin(admins, String.valueOf(lblId2.getText()), String.valueOf(lblNome2.getText()).replaceAll("[.]", "").replaceAll("-", ""), 1, String.valueOf(lblSenha2.getPassword()));
                     JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!", "Aviso", 1);
                     dispose();
                     MenuApp menu = new MenuApp(session);

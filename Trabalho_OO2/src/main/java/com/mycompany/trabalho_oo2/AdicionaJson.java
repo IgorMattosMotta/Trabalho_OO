@@ -121,11 +121,12 @@ public class AdicionaJson {
             JsonArray tecnicosArray = jsonObject.getAsJsonArray("tecnicos");
 
             JsonObject novoTecnico = new JsonObject();
+            novoTecnico.addProperty("time", idTime);
             novoTecnico.addProperty("cpf", cpf);
             novoTecnico.addProperty("nome", nome);
             novoTecnico.addProperty("cargo", cargo);
             novoTecnico.addProperty("senha", senha);
-            novoTecnico.addProperty("idTime", idTime);
+
 
             tecnicosArray.add(novoTecnico);
 
