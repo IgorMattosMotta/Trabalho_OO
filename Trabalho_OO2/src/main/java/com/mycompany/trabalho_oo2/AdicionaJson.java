@@ -273,10 +273,10 @@ public class AdicionaJson {
 
                 JsonObject novaPartida = new JsonObject();
                 novaPartida.addProperty("id", id);
-                novaPartida.addProperty("idTime1", idTime1);
-                novaPartida.addProperty("idTime2", idTime2);
+                novaPartida.addProperty("timeCasa", idTime1);
+                novaPartida.addProperty("timeVisitante", idTime2);
                 novaPartida.addProperty("hora", hora);
-                novaPartida.addProperty("placar", "0x0");
+                novaPartida.addProperty("placar", placar);
 
                 partidasArray.add(novaPartida);
 
