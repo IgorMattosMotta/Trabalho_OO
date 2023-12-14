@@ -104,6 +104,11 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
                         dispose();
                     }
                 });
+
+                btnEditar.addActionListener(e -> {
+                    new EdicaoPartida(this.session, p).setVisible(true);
+                    dispose();
+                });
             }
         }
         return pnlFormulario;

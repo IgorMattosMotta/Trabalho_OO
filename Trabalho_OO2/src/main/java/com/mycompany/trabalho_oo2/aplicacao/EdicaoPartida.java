@@ -24,16 +24,16 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
 
 
         public EdicaoPartida(Session session, Partida partida){
+            this.times = new ArrayList<>();
             this.session = session;
             this.partida = partida;
 
-            inicializar(this.session);
             LeJson leJson = new LeJson();
             leJson.getTimes(this.times);
-            inicializar(session);
+            inicializar();
         }
 
-        private void inicializar(Session session){
+        private void inicializar(){
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
             this.getContentPane().add(getPnlFormulario(), BorderLayout.CENTER);
@@ -72,13 +72,12 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
 
                 JLabel lblId2 = new JLabel(String.valueOf(this.partida.getId()));
 
-                String[] timesArray = new String[times.size()];
+                String[] timesArray = new String[this.times.size()];
                 for (Time time : times) {
                     timesArray[times.indexOf(time)] = time.getId()+" - "+time.getNomeTime();
                 }
 
                 // Lista de times
-                //String[] times = {"Varmengo", "Barcelona", "Manchester United", "Bayern Munich", "Liverpool"};
 
                 // Criar um modelo para a lista
                 DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(timesArray);
@@ -134,7 +133,8 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
 
                     String hora = lblHora2.getText();
                     String placar = lblPartida2.getText();
-                    if (timeCasa != null && timeVisitante != null && hora != null && placar != null) {
+                    if (JOptionPane.showConfirmDialog(null, "Deseja realmente Editar?") == JOptionPane.YES_OPTION &&
+                            timeCasa != null && timeVisitante != null && hora != null && placar != null) {
                         EditaJson editaJson = new EditaJson();
                         editaJson.editaPartida(placar,hora,idTimeCasa,idTimeVisitante,this.partida.getId());
                         JOptionPane.showMessageDialog(null, "Partida editada com sucesso!");
