@@ -170,7 +170,12 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
                             dispose();
                         }
                     });
+
                     btnSair.addActionListener(e -> dispose());
+                    btnVoltar.addActionListener(e -> {
+                        new ConsultaPartida(this.session).setVisible(true);
+                        dispose();
+                    });
 
                     pnlRodape.add(btnVoltar);
                     pnlRodape.add(btnSair);

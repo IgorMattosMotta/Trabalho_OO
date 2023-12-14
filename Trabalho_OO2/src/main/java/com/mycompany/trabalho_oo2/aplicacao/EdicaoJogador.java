@@ -169,6 +169,10 @@ public class EdicaoJogador extends JFrame {
                 }
             });
             btnSair.addActionListener(e -> dispose());
+            btnVoltar.addActionListener(e -> {
+                new ConsultaJogadores(this.session).setVisible(true);
+                dispose();
+            });
 
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);

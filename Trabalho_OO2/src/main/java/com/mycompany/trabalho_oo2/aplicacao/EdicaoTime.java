@@ -116,10 +116,14 @@ public class EdicaoTime extends JFrame implements InterfacePadrao{
                     dispose();
                 }
             });
-            btnSair.addActionListener(e -> dispose());
 
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);
+            btnSair.addActionListener(e -> dispose());
+            btnVoltar.addActionListener(e -> {
+                new ConsultaTime(this.session).setVisible(true);
+                dispose();
+            });
         }
         return pnlRodape;
     }

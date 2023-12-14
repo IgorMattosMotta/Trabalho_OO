@@ -141,8 +141,12 @@ public class EdicaoTecnico extends JFrame implements InterfacePadrao{
                     dispose();
                 }
             });
-            btnSair.addActionListener(e -> dispose());
 
+            btnSair.addActionListener(e -> dispose());
+            btnVoltar.addActionListener(e -> {
+                new ConsultaTecnico(this.session).setVisible(true);
+                dispose();
+            });
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);
         }
