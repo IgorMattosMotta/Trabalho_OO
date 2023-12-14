@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author davil
  */
-public abstract class CadastroTecnico extends JFrame implements InterfacePadrao{
+public class CadastroTecnico extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
