@@ -1,6 +1,6 @@
 package com.mycompany.trabalho_oo2;
 
-public final class  Session{
+public final class Session{
     private static int cargo;
     private static String cpf;
     private static String nome;
