@@ -3,6 +3,8 @@ import com.mycompany.trabalho_oo2.Session;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public abstract class JogadoresApp extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
@@ -76,12 +78,19 @@ public abstract class JogadoresApp extends JFrame implements InterfacePadrao{
     public JPanel getPnlRodape(){
         if(pnlRodape == null){
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
             JButton btnVoltar = new JButton("Voltar");
+
             JButton btnSair = new JButton("Sair");
-            JButton btnCadastro = new JButton("Cadastrar Jogador");
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    // Chama dispose() para fechar a janela
+                    dispose();
+                }
+            });
+            btnSair.addActionListener(e -> dispose());
+
             pnlRodape.add(btnVoltar);
-            pnlRodape.add(btnCadastro);
             pnlRodape.add(btnSair);
         }
         return pnlRodape;

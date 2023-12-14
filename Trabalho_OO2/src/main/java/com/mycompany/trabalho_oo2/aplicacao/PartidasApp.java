@@ -3,6 +3,8 @@ import com.mycompany.trabalho_oo2.Session;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public abstract class PartidasApp extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
@@ -76,14 +78,27 @@ public abstract class PartidasApp extends JFrame implements InterfacePadrao{
     public JPanel getPnlRodape(){
         if(pnlRodape == null){
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JButton btnNovo = new JButton("Nova Partida");
             JButton btnVoltar = new JButton("Voltar");
+
             JButton btnSair = new JButton("Sair");
-            pnlRodape.add(btnNovo);
+            JButton btnNovo = new JButton("Nova Partida");
+
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    // Chama dispose() para fechar a janela
+                    dispose();
+                }
+            });
+            btnSair.addActionListener(e -> dispose());
+
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);
+            pnlRodape.add(btnNovo);
         }
         return pnlRodape;
+
+
     }
 
     public JPanel getPnlTopo(){

@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class EdicaoPartida extends JFrame implements InterfacePadrao{
@@ -155,15 +157,25 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
         }
 
         public JPanel getPnlRodape(){
-            if(pnlRodape == null){
-                pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-                JButton btnVoltar = new JButton("Voltar");
-                JButton btnSair = new JButton("Sair");
-                pnlRodape.add(btnVoltar);
-                pnlRodape.add(btnSair);
-            }
-            return pnlRodape;
+                if(pnlRodape == null){
+                    pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+                    JButton btnVoltar = new JButton("Voltar");
+
+                    JButton btnSair = new JButton("Sair");
+                    addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosing(WindowEvent e) {
+                            // Chama dispose() para fechar a janela
+                            dispose();
+                        }
+                    });
+                    btnSair.addActionListener(e -> dispose());
+
+                    pnlRodape.add(btnVoltar);
+                    pnlRodape.add(btnSair);
+                }
+                return pnlRodape;
         }
 
         public JPanel getPnlTopo(){

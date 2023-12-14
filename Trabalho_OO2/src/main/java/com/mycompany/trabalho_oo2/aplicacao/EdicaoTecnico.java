@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class EdicaoTecnico extends JFrame implements InterfacePadrao{
@@ -129,9 +131,18 @@ public class EdicaoTecnico extends JFrame implements InterfacePadrao{
     public JPanel getPnlRodape(){
         if(pnlRodape == null){
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
             JButton btnVoltar = new JButton("Voltar");
+
             JButton btnSair = new JButton("Sair");
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    // Chama dispose() para fechar a janela
+                    dispose();
+                }
+            });
+            btnSair.addActionListener(e -> dispose());
+
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);
         }

@@ -73,13 +73,9 @@ public class Aplicacao {
 
        */
         SwingUtilities.invokeLater(() -> {
-            CadastroPartida CadastroPartida = new CadastroPartida(new Session(1, "845.496.690-04", "Pablo Veggeti")) {
-                @Override
-                public JPanel getPnlFormulario() {
-                    return null;
-                }
+            CadastroAdmin CadastroAdmin = new CadastroAdmin(new Session(1, "845.496.690-04", "Pablo Veggeti")) {
             };
-            CadastroPartida.setVisible(true);
+            CadastroAdmin.setVisible(true);
         });
     /*
         SwingUtilities.invokeLater(() -> {

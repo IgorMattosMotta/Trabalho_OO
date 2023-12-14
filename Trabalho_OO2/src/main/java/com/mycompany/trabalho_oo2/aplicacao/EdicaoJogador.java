@@ -4,9 +4,7 @@ import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class EdicaoJogador extends JFrame {
@@ -158,11 +156,20 @@ public class EdicaoJogador extends JFrame {
     }
 
     public JPanel getPnlRodape() {
-        if (pnlRodape == null) {
+        if(pnlRodape == null){
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
             JButton btnVoltar = new JButton("Voltar");
+
             JButton btnSair = new JButton("Sair");
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    // Chama dispose() para fechar a janela
+                    dispose();
+                }
+            });
+            btnSair.addActionListener(e -> dispose());
+
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);
         }

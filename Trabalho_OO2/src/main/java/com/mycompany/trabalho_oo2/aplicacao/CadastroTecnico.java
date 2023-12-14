@@ -7,9 +7,8 @@ import com.mycompany.trabalho_oo2.Session;
 import com.mycompany.trabalho_oo2.Tecnico;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
+
 /**
  *
  * @author davil
@@ -123,12 +122,19 @@ public abstract class CadastroTecnico extends JFrame implements InterfacePadrao{
     public JPanel getPnlRodape(){
         if(pnlRodape == null){
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
             JButton btnVoltar = new JButton("Voltar");
+
             JButton btnSair = new JButton("Sair");
-            JButton btnCadastro = new JButton("Salvar");
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    // Chama dispose() para fechar a janela
+                    dispose();
+                }
+            });
+            btnSair.addActionListener(e -> dispose());
+
             pnlRodape.add(btnVoltar);
-            pnlRodape.add(btnCadastro);
             pnlRodape.add(btnSair);
         }
         return pnlRodape;

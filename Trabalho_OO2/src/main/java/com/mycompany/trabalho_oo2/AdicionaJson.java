@@ -160,6 +160,7 @@ public class AdicionaJson {
             novoAdmin.addProperty("cpf", cpf);
             novoAdmin.addProperty("nome", nome);
             novoAdmin.addProperty("cargo", cargo);
+            novoAdmin.addProperty("senha", senha);
 
             administradoresArray.add(novoAdmin);
 
