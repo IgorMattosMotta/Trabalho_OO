@@ -12,19 +12,14 @@
       "cidade": "Belo Horizonte"
     },
     {
-      "id": 3,
-      "nomeTime": "São Paulo Futebol Clube",
-      "cidade": "São Paulo"
-    },
-    {
-      "id": 997,
-      "nomeTime": "Botafogo ",
-      "cidade": "Cidade"
-    },
-    {
       "id": 1178524458,
-      "nomeTime": "Botafogo De Futebol e Regatas",
+      "nomeTime": "Botafogo De Futebol e Regata",
       "cidade": "Cidade"
+    },
+    {
+      "id": 3,
+      "nomeTime": "Sem time",
+      "cidade": "Sem Time"
     }
   ]
 }

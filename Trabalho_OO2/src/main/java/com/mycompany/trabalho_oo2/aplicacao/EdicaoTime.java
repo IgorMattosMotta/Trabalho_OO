@@ -92,11 +92,16 @@ public class EdicaoTime extends JFrame implements InterfacePadrao{
             pnlFormulario.add(btnSalvar);
 
             btnSalvar.addActionListener(e ->{
-                if(!lblNome2.getText().equals("") && !lblCidade2.getText().equals("") &&
-                JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION){
+                try {
+                    if (!lblNome2.getText().equals("") && !lblCidade2.getText().equals("") &&
+                            JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION) {
 
-                    EditaJson editaJson = new EditaJson(session);
-                    editaJson.editaTime(this.time, lblNome2.getText(), lblCidade2.getText(), this.time.getId());
+                        EditaJson editaJson = new EditaJson(session);
+                        editaJson.editaTime(this.time, lblNome2.getText(), lblCidade2.getText(), this.time.getId());
+                    }
+                }catch (RuntimeException erro){
+                    JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
                 }
             });
 

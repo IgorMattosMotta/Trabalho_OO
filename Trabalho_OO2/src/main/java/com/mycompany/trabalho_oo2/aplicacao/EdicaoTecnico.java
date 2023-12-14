@@ -99,12 +99,17 @@ public class EdicaoTecnico extends JFrame implements InterfacePadrao{
             botao.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    // Obter a seleção da lista
-                    String selecionado = (String) listaDeTimes.getSelectedItem();
-                    if (selecionado != null) {
-                        JOptionPane.showMessageDialog(null, "Time selecionado: " + selecionado);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Nenhum time selecionado.");
+                    try {
+                        // Obter a seleção da lista
+                        String selecionado = (String) listaDeTimes.getSelectedItem();
+                        if (selecionado != null) {
+                            JOptionPane.showMessageDialog(null, "Time selecionado: " + selecionado);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Nenhum time selecionado.");
+                        }
+                    }catch (RuntimeException erro){
+                        JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
                     }
                 }
             });
@@ -117,11 +122,16 @@ public class EdicaoTecnico extends JFrame implements InterfacePadrao{
             pnlFormulario.add(btnSalvar);
 
             btnSalvar.addActionListener(e -> {
-                if(JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION
-                && !lblNome2.getText().equals("") && listaDeTimes.getSelectedItem() != null){
-                    int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
-                    EditaJson editaJson = new EditaJson(session);
-                    editaJson.editaTecnico(this.tecnicos, this.times, this.tecnico.getCpf(), lblNome2.getText(), idTime);
+                try {
+                    if (JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION
+                            && !lblNome2.getText().equals("") && listaDeTimes.getSelectedItem() != null) {
+                        int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
+                        EditaJson editaJson = new EditaJson(session);
+                        editaJson.editaTecnico(this.tecnicos, this.times, this.tecnico.getCpf(), lblNome2.getText(), idTime);
+                    }
+                }catch (RuntimeException erro){
+                    JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
                 }
             });
 

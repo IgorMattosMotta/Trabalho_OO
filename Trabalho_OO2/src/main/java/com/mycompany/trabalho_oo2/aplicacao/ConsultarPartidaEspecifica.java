@@ -196,16 +196,23 @@ public class ConsultarPartidaEspecifica extends JFrame implements InterfacePadra
                 for (Partida partida : partidas) {
                     if (partida.getId() == this.id) {
                             for(Tecnico t: tecnicos) {
-                                if(t.getTime().getId() == partida.getTimeCasa().getId()){
-                                    JLabel lbltecnico = new JLabel(t.getNome());
-                                    pnlJogadores1.add(lbltecnico);
-                                }
+                                try {
+                                    if (t.getTime().getId() == partida.getTimeCasa().getId()) {
+                                        JLabel lbltecnico = new JLabel(t.getNome());
+                                        pnlJogadores1.add(lbltecnico);
+                                    }
+                                }catch (RuntimeException e){}
                             }
-                            for (Jogador j : jogadores) {
-                                if (j.getTime().getId() == partida.getTimeCasa().getId()) {
 
-                                    JLabel lblJogador1 = new JLabel(j.getNome());
-                                    pnlJogadores1.add(lblJogador1);
+                            for (Jogador j : jogadores) {
+                                try{
+                                    if (j.getTime().getId() == partida.getTimeCasa().getId()) {
+
+                                        JLabel lblJogador1 = new JLabel(j.getNome());
+                                        pnlJogadores1.add(lblJogador1);
+                                    }
+                                }catch (RuntimeException e){
+
                                 }
                             }
                         }
@@ -230,16 +237,23 @@ public class ConsultarPartidaEspecifica extends JFrame implements InterfacePadra
                 for (Partida partida : partidas) {
                     if (partida.getId() == this.id) {
                         for(Tecnico t: tecnicos) {
-                            if(t.getTime().getId() == partida.getTimeVisitante().getId()){
-                                JLabel lbltecnico = new JLabel(t.getNome());
-                                pnlJogadores2.add(lbltecnico);
+                            try {
+                                if (t.getTime().getId() == partida.getTimeVisitante().getId()) {
+                                    JLabel lbltecnico = new JLabel(t.getNome());
+                                    pnlJogadores2.add(lbltecnico);
+                                }
+                            }catch (RuntimeException e){
+
                             }
                         }
                         for (Jogador j : jogadores) {
+                            try{
                             if (j.getTime().getId() == partida.getTimeVisitante().getId()) {
-
                                 JLabel lblJogador2 = new JLabel(j.getNome());
                                 pnlJogadores2.add(lblJogador2);
+                            }
+                            }catch (RuntimeException e){
+
                             }
                         }
                         break;

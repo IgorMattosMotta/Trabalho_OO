@@ -80,8 +80,13 @@ public class LeJson {
                 }
 
                 //crio uma nova partida com os atributos pegos
-                Partida novaPartida = new Partida(id, timeCasa, timeVisitante, placar, horario);
-                partidasLista.add(novaPartida);
+                if (timeCasa != null && timeVisitante != null) {
+                    Partida novaPartida = new Partida(id, timeCasa, timeVisitante, placar, horario);
+                    partidasLista.add(novaPartida);
+                } else {
+                    RemoveJson r = new RemoveJson(new Session(1, "669.272.660-38", "Editor"));
+                    r.removePartida(id); // remove partida com time null;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,8 +121,24 @@ public class LeJson {
                     }
                 }
                 //crio uma nova partida com os atributos pegos
-                Tecnico novoTecnico = new Tecnico(new CPF(cpf), nome, 2, senha, timeTecnico);
-                tecnicosLista.add(novoTecnico);
+
+                if (timeTecnico != null) {
+                    Tecnico novoTecnico = new Tecnico(new CPF(cpf), nome, 2, senha, timeTecnico);
+                    tecnicosLista.add(novoTecnico);
+                } else {
+                    RemoveJson r = new RemoveJson(new Session(1, "669.272.660-38", "Editor"));
+                    r.removeTime(idTime);
+                    for (Time time : timesLista) {
+                        if (time.getId() == 3) {
+                            timeTecnico = time;
+                            break;
+                        }
+                    }
+                    Tecnico novoTecnico = new Tecnico(new CPF(cpf), nome, 2, senha, timeTecnico);
+                    tecnicosLista.add(novoTecnico);
+                }
+
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,25 +180,57 @@ public class LeJson {
                     }
                 }
                 //crio um novo jogador com os atributos pegos
-                Jogador novoJogador;
-                switch (posicao) {
-                    case "AT":
-                        novoJogador = new Atacante(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
-                        break;
-                    case "MC":
-                        novoJogador = new Meia(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
-                        break;
-                    case "ZG":
-                        novoJogador = new Zagueiro(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
-                        break;
-                    case "G":
-                        novoJogador = new Goleiro(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
-                        break;
-                    default:
-                        novoJogador = null;
-                        throw new RuntimeException("Jogador vazio ou posicao não reconhecida!!");
+                if (timeJogador != null) {
+                    Jogador novoJogador;
+                    switch (posicao) {
+                        case "AT":
+                            novoJogador = new Atacante(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                            break;
+                        case "MC":
+                            novoJogador = new Meia(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                            break;
+                        case "ZG":
+                            novoJogador = new Zagueiro(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                            break;
+                        case "G":
+                            novoJogador = new Goleiro(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                            break;
+                        default:
+                            novoJogador = null;
+                            throw new RuntimeException("Jogador vazio ou posicao não reconhecida!!");
+                    }
+                    jogadoresLista.add(novoJogador);
+                } else {
+                    RemoveJson r = new RemoveJson(new Session(1, "669.272.660-38", "Editor"));
+                    r.removeTime(idTime); // remove partida com time null;
+                    for (Time time : timesLista) {
+                        if (time.getId() == 3) {
+                            timeJogador = time;
+                            break;
+                        }
+                    }
+                    Jogador novoJogador;
+                    switch (posicao) {
+                        case "AT":
+                            novoJogador = new Atacante(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                            break;
+                        case "MC":
+                            novoJogador = new Meia(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                            break;
+                        case "ZG":
+                            novoJogador = new Zagueiro(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                            break;
+                        case "G":
+                            novoJogador = new Goleiro(new CPF(cpf), nome, 3, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                            break;
+                        default:
+                            novoJogador = null;
+                            throw new RuntimeException("Jogador vazio ou posicao não reconhecida!!");
+                    }
+                    jogadoresLista.add(novoJogador);
+
+
                 }
-                jogadoresLista.add(novoJogador);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -125,6 +125,7 @@ public class CadastroTecnico extends JFrame implements InterfacePadrao{
 
                 }catch (RuntimeException erro) {
                     JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+
                     throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
                 }
             });

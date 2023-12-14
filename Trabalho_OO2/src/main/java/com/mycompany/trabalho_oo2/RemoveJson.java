@@ -20,15 +20,15 @@ public class RemoveJson {
 
     protected Session session;
 
-    public RemoveJson(Session session){
+    public RemoveJson(Session session) {
         this.session = session;
-        if(session.getCargo() ==1) {
+        if (session.getCargo() == 1) {
             this.nomeArquivo = System.getProperty("user.dir") + "\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
         }
     }
 
-    public void removeTime(int idTimeParaExcluir){
-        String nomeArquivo = this.nomeArquivo+"\\times.json";
+    public void removeTime(int idTimeParaExcluir) {
+        String nomeArquivo = this.nomeArquivo + "\\times.json";
         try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonParser jsonParser = new JsonParser();
             JsonElement jsonElement = jsonParser.parse(fileReader);
@@ -66,8 +66,8 @@ public class RemoveJson {
         }
     }
 
-    public void removeTecnico(String cpf){
-        String nomeArquivo = this.nomeArquivo+"\\tecnicos.json";
+    public void removeTecnico(String cpf) {
+        String nomeArquivo = this.nomeArquivo + "\\tecnicos.json";
         try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonParser jsonParser = new JsonParser();
             JsonElement jsonElement = jsonParser.parse(fileReader);
@@ -81,7 +81,7 @@ public class RemoveJson {
                 JsonObject time = tecnicosArray.get(i).getAsJsonObject();
                 String cpfTecnico = time.get("cpf").getAsString();
 
-                if (cpfTecnico.equals(cpf)){
+                if (cpfTecnico.equals(cpf)) {
                     indiceParaExcluir = i;
                     break;
                 }
@@ -105,8 +105,8 @@ public class RemoveJson {
         }
     }
 
-    public void removePartida(int id){
-        String nomeArquivo = this.nomeArquivo+"\\partidas.json";
+    public void removePartida(int id) {
+        String nomeArquivo = this.nomeArquivo + "\\partidas.json";
         try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonParser jsonParser = new JsonParser();
             JsonElement jsonElement = jsonParser.parse(fileReader);
@@ -120,7 +120,7 @@ public class RemoveJson {
                 JsonObject time = partidaArray.get(i).getAsJsonObject();
                 int idPartida = time.get("id").getAsInt();
 
-                if (id == idPartida){
+                if (id == idPartida) {
                     indiceParaExcluir = i;
                     break;
                 }
@@ -144,8 +144,8 @@ public class RemoveJson {
 
     }
 
-    public void removeJogador(String cpf){
-        String nomeArquivo = this.nomeArquivo+"\\jogadores.json";
+    public void removeJogador(String cpf) {
+        String nomeArquivo = this.nomeArquivo + "\\jogadores.json";
         try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonParser jsonParser = new JsonParser();
             JsonElement jsonElement = jsonParser.parse(fileReader);
@@ -159,7 +159,7 @@ public class RemoveJson {
                 JsonObject time = jogadoresArray.get(i).getAsJsonObject();
                 String cpfTecnico = time.get("cpf").getAsString();
 
-                if (cpfTecnico.equals(cpf)){
+                if (cpfTecnico.equals(cpf)) {
                     indiceParaExcluir = i;
                     break;
                 }
@@ -182,8 +182,8 @@ public class RemoveJson {
         }
     }
 
-    public void removeGol(int id){
-        String nomeArquivo = this.nomeArquivo+"\\gols.json";
+    public void removeGol(int id) {
+        String nomeArquivo = this.nomeArquivo + "\\gols.json";
         try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonParser jsonParser = new JsonParser();
             JsonElement jsonElement = jsonParser.parse(fileReader);
@@ -197,7 +197,7 @@ public class RemoveJson {
                 JsonObject gol = golArray.get(i).getAsJsonObject();
                 int idGol = gol.get("id").getAsInt();
 
-                if (id == idGol){
+                if (id == idGol) {
                     indiceParaExcluir = i;
                     break;
                 }
@@ -221,8 +221,8 @@ public class RemoveJson {
 
     }
 
-    public void removeAdmin(String cpf){
-        String nomeArquivo = this.nomeArquivo+"\\administradores.json";
+    public void removeAdmin(String cpf) {
+        String nomeArquivo = this.nomeArquivo + "\\administradores.json";
         try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonParser jsonParser = new JsonParser();
             JsonElement jsonElement = jsonParser.parse(fileReader);
@@ -236,7 +236,7 @@ public class RemoveJson {
                 JsonObject administrador = administradoresArray.get(i).getAsJsonObject();
                 String cpfAdministrador = administrador.get("cpf").getAsString();
 
-                if (cpfAdministrador.equals(cpf)){
+                if (cpfAdministrador.equals(cpf)) {
                     indiceParaExcluir = i;
                     break;
                 }

@@ -17,6 +17,12 @@
       "nome": "Gleiph",
       "cargo": 1,
       "senha": "nota10"
+    },
+    {
+      "cpf": "02355164657",
+      "nome": "igor",
+      "cargo": 1,
+      "senha": "123"
     }
   ]
 }

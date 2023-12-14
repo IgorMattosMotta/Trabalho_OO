@@ -125,13 +125,18 @@ public class EdicaoJogador extends JFrame {
 
             JButton btnSalvar = new JButton("Salvar");
             btnSalvar.addActionListener(e -> {
-                int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
+                try {
+                    int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
 
-                EditaJson editaJson = new EditaJson(session);
-                editaJson.editaJogador(this.jogadores, this.times, this.jogador.getCpf(), lblNome2.getText(), Integer.parseInt(lblNumCamisa2.getText()), idTime, lblTitular.getState());
-                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
-                new MenuApp(this.session).setVisible(true);
-                dispose();
+                    EditaJson editaJson = new EditaJson(session);
+                    editaJson.editaJogador(this.jogadores, this.times, this.jogador.getCpf(), lblNome2.getText(), Integer.parseInt(lblNumCamisa2.getText()), idTime, lblTitular.getState());
+                    JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                    new MenuApp(this.session).setVisible(true);
+                    dispose();
+                }catch (RuntimeException erro){
+                    JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
+                }
             });
 
             pnlFormulario.add(lblId2);

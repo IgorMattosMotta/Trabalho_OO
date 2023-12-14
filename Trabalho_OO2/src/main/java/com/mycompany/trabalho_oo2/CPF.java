@@ -21,7 +21,7 @@ public class CPF {
      public static String validacpf(String cpf){
          if(!ehValido(cpf)){
              JOptionPane.showMessageDialog(null, "CPF INVÁLIDO!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
-             return null;
+             throw new RuntimeException("CPF inválido!");
          }else{
              return retiraCaracEspecial(cpf);
          }

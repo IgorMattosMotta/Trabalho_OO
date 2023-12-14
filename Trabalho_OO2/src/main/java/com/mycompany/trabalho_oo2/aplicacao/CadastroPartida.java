@@ -115,23 +115,27 @@ public abstract class CadastroPartida extends JFrame implements InterfacePadrao{
 
             btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
-                    String hora = lblHora2.getText();
-                    String placar = txtPlacar.getText();
-                    Time visitante = (Time) txtTimeVisitante.getSelectedItem();
-                    Time casa = (Time) txtTimeCasa.getSelectedItem();
-                    if(visitante.getId() != casa.getId()) {
-                        if (ValidaHora.validarHora(hora) && ValidaPlacar.validarPlacar(placar)) {
-                            AdicionaJson add = new AdicionaJson(session);
-                            add.adicionaPartida(p, t, p.size() + 1, casa.getId(), visitante.getId(), placar, hora);
-                            for (Partida p2 : p) {
-                                System.out.println(p2.getTimeCasa() + "x" + p2.getTimeVisitante());
+                    try {
+                        String hora = lblHora2.getText();
+                        String placar = txtPlacar.getText();
+                        Time visitante = (Time) txtTimeVisitante.getSelectedItem();
+                        Time casa = (Time) txtTimeCasa.getSelectedItem();
+                        if (visitante.getId() != casa.getId()) {
+                            if (ValidaHora.validarHora(hora) && ValidaPlacar.validarPlacar(placar)) {
+                                AdicionaJson add = new AdicionaJson(session);
+                                add.adicionaPartida(p, t, p.size() + 1, casa.getId(), visitante.getId(), placar, hora);
+                                dispose();
+                                MenuApp menu = new MenuApp(session);
+                                menu.setVisible(true);
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "PLACAR OU HORA INVÁLIDOS!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
                             }
-                            System.out.printf("\n\n");
                         } else {
-                            JOptionPane.showMessageDialog(null, "PLACAR OU HORA INVÁLIDOS!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "TIMES NÃO PODEM SER IGUAIS!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
                         }
-                    }else {
-                        JOptionPane.showMessageDialog(null, "TIMES NÃO PODEM SER IGUAIS!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    }catch (RuntimeException erro){
+                        throw new RuntimeException("Cadastro inválido!");
                     }
                 }
             });

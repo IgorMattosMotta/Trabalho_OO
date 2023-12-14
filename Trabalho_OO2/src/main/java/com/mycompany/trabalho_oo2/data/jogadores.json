@@ -228,20 +228,6 @@
     {
       "posicao": "AT",
       "numCamisa": 10,
-      "idTime": 2,
-      "titular": true,
-      "cpf": "69324152084",
-      "nome": "Jogador Teste",
-      "cargo": 3,
-      "senha": "123456",
-      "reflexo": 70,
-      "chute": 80,
-      "marcacao": 72,
-      "passe": 78,
-      "velocidade": 82
-    },{
-      "posicao": "AT",
-      "numCamisa": 10,
       "idTime": 1,
       "titular": true,
       "cpf": "36499546054",
@@ -254,6 +240,5 @@
       "passe": 78,
       "velocidade": 82
     }
-
   ]
 }

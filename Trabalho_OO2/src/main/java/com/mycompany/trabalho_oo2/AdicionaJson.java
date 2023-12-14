@@ -3,6 +3,7 @@ package com.mycompany.trabalho_oo2;
 //Igor Mattos da Motta - 202276006
 //Álvaro Davi Carneiro dos Santos - 202176037
 //Davi Laranjo Villa - 202235025
+
 import com.google.gson.*;
 
 import javax.swing.*;
@@ -20,51 +21,54 @@ public class AdicionaJson {
 
     public AdicionaJson(Session session) {
         this.session = session;
-        if(session.getCargo() ==1) {
+        if (session.getCargo() == 1) {
             this.nomeArquivo = System.getProperty("user.dir") + "\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
         }
     }
 
     public void adicionaJogador(
             List<Jogador> jogadoresLista, List<Time> timesLista,
-            String cpf,String nome,int cargo,String senha,String posicao, int numCamisa,int idTime, boolean titular, int reflexo, int chute, int marcacao, int passe, int velocidade
-    ){
+            String cpf, String nome, int cargo, String senha, String posicao, int numCamisa, int idTime, boolean titular, int reflexo, int chute, int marcacao, int passe, int velocidade
+    ) {
         Time timeJogador = null;
-        for (Time time : timesLista){
-            if (time.getId() == idTime){
+        for (Time time : timesLista) {
+            if (time.getId() == idTime) {
                 timeJogador = time;
                 break;
             }
         }
-        for(Jogador j: jogadoresLista){
-            if (j.getCpf() == cpf){
+        for (Jogador j : jogadoresLista) {
+            if (j.getCpf().equals(cpf)) {
                 JOptionPane.showMessageDialog(null, "Jogador já cadastrado", "Aviso", JOptionPane.WARNING_MESSAGE);
                 throw new RuntimeException("Jogador já cadastrado!!!");
             }
         }
-        CPF classCpf = new CPF(cpf);
-        Jogador jogador;
-        switch (posicao){
-            case "AT":
-                jogador = new Atacante(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
-                break;
-            case "MC":
-                jogador = new Meia(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
-                break;
-            case "ZG":
-                jogador = new Zagueiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
-                break;
-            case "G":
-                jogador = new Goleiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
-                break;
-            default:
-                jogador = null;
-                throw new RuntimeException("Jogador vazio!");
+        try {
+            CPF classCpf = new CPF(cpf);
+            Jogador jogador;
+            switch (posicao) {
+                case "AT":
+                    jogador = new Atacante(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                    break;
+                case "MC":
+                    jogador = new Meia(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                    break;
+                case "ZG":
+                    jogador = new Zagueiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                    break;
+                case "G":
+                    jogador = new Goleiro(classCpf, nome, cargo, senha, posicao, numCamisa, timeJogador, titular, reflexo, chute, marcacao, passe, velocidade);
+                    break;
+                default:
+                    jogador = null;
+                    throw new RuntimeException("Jogador vazio!");
+            }
+            jogadoresLista.add(jogador);
+        } catch (RuntimeException erro) {
+            throw new RuntimeException("Dados inválidos!");
         }
-        jogadoresLista.add(jogador);
 
-
-        String nomeArquivo = this.nomeArquivo+"/jogadores.json";
+        String nomeArquivo = this.nomeArquivo + "/jogadores.json";
 
         try (FileReader fileReader = new FileReader(nomeArquivo)) {
             // Ler o JSON existente
@@ -107,101 +111,108 @@ public class AdicionaJson {
     }
 
     public void adicionaTecnico(
-            List<Tecnico> tecnicosLista,List<Time> timesLista,
-            String cpf,String nome,int cargo,String senha, int idTime
-    ){
+            List<Tecnico> tecnicosLista, List<Time> timesLista,
+            String cpf, String nome, int cargo, String senha, int idTime
+    ) {
         Time timeTecnico = null;
-        for (Time time : timesLista){
-            if (time.getId() == idTime){
+        for (Time time : timesLista) {
+            if (time.getId() == idTime) {
                 timeTecnico = time;
                 break;
             }
         }
-        for(Tecnico j: tecnicosLista){
-            if (j.getCpf().equals(cpf)){
+        for (Tecnico j : tecnicosLista) {
+            if (j.getCpf().equals(cpf)) {
                 JOptionPane.showMessageDialog(null, "Tecnico já cadastrado", "Aviso", JOptionPane.WARNING_MESSAGE);
                 throw new RuntimeException("Técnico já cadastrado!!!");
             }
         }
+        try {
+            CPF classCpf = new CPF(cpf);
+            Tecnico tecnico = new Tecnico(classCpf, nome, cargo, senha, timeTecnico);
+            tecnicosLista.add(tecnico);
 
-        CPF classCpf = new CPF(cpf);
-        Tecnico tecnico = new Tecnico(classCpf, nome, cargo, senha, timeTecnico);
-        tecnicosLista.add(tecnico);
+            String nomeArquivo = this.nomeArquivo + "/tecnicos.json";
 
-        String nomeArquivo = this.nomeArquivo+"/tecnicos.json";
+            try (FileReader fileReader = new FileReader(nomeArquivo)) {
+                JsonElement jsonElement = JsonParser.parseReader(fileReader);
+                JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
-            JsonElement jsonElement = JsonParser.parseReader(fileReader);
-            JsonObject jsonObject = jsonElement.getAsJsonObject();
+                JsonArray tecnicosArray = jsonObject.getAsJsonArray("tecnicos");
 
-            JsonArray tecnicosArray = jsonObject.getAsJsonArray("tecnicos");
-
-            JsonObject novoTecnico = new JsonObject();
-            novoTecnico.addProperty("time", idTime);
-            novoTecnico.addProperty("cpf", cpf);
-            novoTecnico.addProperty("nome", nome);
-            novoTecnico.addProperty("cargo", cargo);
-            novoTecnico.addProperty("senha", senha);
+                JsonObject novoTecnico = new JsonObject();
+                novoTecnico.addProperty("time", idTime);
+                novoTecnico.addProperty("cpf", cpf);
+                novoTecnico.addProperty("nome", nome);
+                novoTecnico.addProperty("cargo", cargo);
+                novoTecnico.addProperty("senha", senha);
 
 
-            tecnicosArray.add(novoTecnico);
+                tecnicosArray.add(novoTecnico);
 
-            jsonObject.add("tecnicos", tecnicosArray);
+                jsonObject.add("tecnicos", tecnicosArray);
 
-            try(FileWriter fileWriter = new FileWriter(nomeArquivo)){
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(jsonObject, fileWriter);
+                try (FileWriter fileWriter = new FileWriter(nomeArquivo)) {
+                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                    gson.toJson(jsonObject, fileWriter);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (RuntimeException erro) {
+            throw new RuntimeException("Dados inválidos!");
         }
     }
 
     public void adicionaAdmin(
             List<Admin> administradoresLista,
-            String cpf,String nome,int cargo,String senha
-    ){
-        for(Admin j: administradoresLista){
-            if (j.getCpf() == cpf){
+            String cpf, String nome, int cargo, String senha
+    ) {
+        for (Admin j : administradoresLista) {
+            if (j.getCpf().equals(cpf)) {
                 JOptionPane.showMessageDialog(null, "Administrador já cadastrado", "Aviso", JOptionPane.WARNING_MESSAGE);
                 throw new RuntimeException("Administrador já cadastrado!!!");
             }
         }
-        CPF classCpf = new CPF(cpf);
-        Admin admin = new Admin(classCpf, nome, cargo, senha);
-        administradoresLista.add(admin);
+        try {
+            CPF classCpf = new CPF(cpf);
+            Admin admin = new Admin(classCpf, nome, cargo, senha);
+            administradoresLista.add(admin);
 
-        String nomeArquivo = this.nomeArquivo+"/administradores.json";
-        try(FileReader fileReader = new FileReader(nomeArquivo)) {
-            JsonElement jsonElement = JsonParser.parseReader(fileReader);
-            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            String nomeArquivo = this.nomeArquivo + "/administradores.json";
+            try (FileReader fileReader = new FileReader(nomeArquivo)) {
+                JsonElement jsonElement = JsonParser.parseReader(fileReader);
+                JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            JsonArray administradoresArray = jsonObject.getAsJsonArray("administradores");
+                JsonArray administradoresArray = jsonObject.getAsJsonArray("administradores");
 
-            JsonObject novoAdmin = new JsonObject();
-            novoAdmin.addProperty("cpf", cpf);
-            novoAdmin.addProperty("nome", nome);
-            novoAdmin.addProperty("cargo", cargo);
-            novoAdmin.addProperty("senha", senha);
+                JsonObject novoAdmin = new JsonObject();
+                novoAdmin.addProperty("cpf", cpf);
+                novoAdmin.addProperty("nome", nome);
+                novoAdmin.addProperty("cargo", cargo);
+                novoAdmin.addProperty("senha", senha);
 
-            administradoresArray.add(novoAdmin);
+                administradoresArray.add(novoAdmin);
 
-            jsonObject.add("administradores", administradoresArray);
+                jsonObject.add("administradores", administradoresArray);
 
-            try(FileWriter fileWriter = new FileWriter(nomeArquivo)){
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(jsonObject, fileWriter);
+                try (FileWriter fileWriter = new FileWriter(nomeArquivo)) {
+                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                    gson.toJson(jsonObject, fileWriter);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (RuntimeException erro) {
+            throw new RuntimeException("Dados inválidos!");
         }
     }
 
     public void adicionaTime(
             ArrayList<Time> timesLista,
             String nome, String cidade
-    ){
+    ) {
         //cria um id para o time
         boolean idExiste = true;
         int id = 0;
@@ -223,9 +234,9 @@ public class AdicionaJson {
             }
         }
 
-        String nomeArquivo = this.nomeArquivo+"/times.json";
+        String nomeArquivo = this.nomeArquivo + "/times.json";
 
-        try(FileReader fileReader = new FileReader(nomeArquivo)){
+        try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonElement jsonElement = JsonParser.parseReader(fileReader);
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
@@ -240,7 +251,7 @@ public class AdicionaJson {
 
             jsonObject.add("times", timesArray);
 
-            try(FileWriter fileWriter = new FileWriter(nomeArquivo)){
+            try (FileWriter fileWriter = new FileWriter(nomeArquivo)) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(jsonObject, fileWriter);
             }
@@ -250,31 +261,28 @@ public class AdicionaJson {
     }
 
 
-
-
-
     public void adicionaPartida(
             List<Partida> partidasLista, List<Time> timesLista,
             int id, int idTime1, int idTime2, String placar, String hora
-    ){
+    ) {
         Time time1 = null;
         Time time2 = null;
-        for(Time time : timesLista){
-            if(time.getId() == idTime1){
+        for (Time time : timesLista) {
+            if (time.getId() == idTime1) {
                 time1 = time;
                 break;
             }
         }
 
-        for(Time time : timesLista){
-            if(time.getId() == idTime2){
+        for (Time time : timesLista) {
+            if (time.getId() == idTime2) {
                 time2 = time;
                 break;
             }
         }
-        if(time1.getId() == time2.getId()){
+        if (time1.getId() == time2.getId()) {
             throw new RuntimeException("Times não podem ser iguais");
-        }else {
+        } else {
             Partida partida = new Partida(id, time1, time2, placar, hora);
             partidasLista.add(partida);
             String nomeArquivo = this.nomeArquivo + "/partidas.json";
@@ -288,7 +296,7 @@ public class AdicionaJson {
                 novaPartida.addProperty("id", id);
                 novaPartida.addProperty("timeCasa", idTime1);
                 novaPartida.addProperty("timeVisitante", idTime2);
-                novaPartida.addProperty("hora", hora);
+                novaPartida.addProperty("horario", hora);
                 novaPartida.addProperty("placar", placar);
 
                 partidasArray.add(novaPartida);

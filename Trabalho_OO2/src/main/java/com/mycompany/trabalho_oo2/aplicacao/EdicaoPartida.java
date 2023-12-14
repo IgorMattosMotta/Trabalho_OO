@@ -131,21 +131,26 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
                 JButton btnSalvar = new JButton("Salvar");
 
                 btnSalvar.addActionListener(e -> {
-                    String timeCasa = (String) listaDeTimes1.getSelectedItem();
-                    int idTimeCasa = Integer.parseInt(timeCasa.split(" - ")[0]);
+                    try {
+                        String timeCasa = (String) listaDeTimes1.getSelectedItem();
+                        int idTimeCasa = Integer.parseInt(timeCasa.split(" - ")[0]);
 
-                    String timeVisitante = (String) listaDeTimes2.getSelectedItem();
-                    int idTimeVisitante = Integer.parseInt(timeVisitante.split(" - ")[0]);
+                        String timeVisitante = (String) listaDeTimes2.getSelectedItem();
+                        int idTimeVisitante = Integer.parseInt(timeVisitante.split(" - ")[0]);
 
-                    String hora = lblHora2.getText();
-                    String placar = lblPartida2.getText();
-                    if (JOptionPane.showConfirmDialog(null, "Deseja realmente Editar?") == JOptionPane.YES_OPTION &&
-                            timeCasa != null && timeVisitante != null && hora != null && placar != null && idTimeVisitante != idTimeCasa){
-                        EditaJson editaJson = new EditaJson(session);
-                        editaJson.editaPartida(placar,hora,idTimeCasa,idTimeVisitante,this.partida.getId());
-                        JOptionPane.showMessageDialog(null, "Partida editada com sucesso!");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Erro ao editar partida.");
+                        String hora = lblHora2.getText();
+                        String placar = lblPartida2.getText();
+                        if (JOptionPane.showConfirmDialog(null, "Deseja realmente Editar?") == JOptionPane.YES_OPTION &&
+                                timeCasa != null && timeVisitante != null && hora != null && placar != null && idTimeVisitante != idTimeCasa) {
+                            EditaJson editaJson = new EditaJson(session);
+                            editaJson.editaPartida(placar, hora, idTimeCasa, idTimeVisitante, this.partida.getId());
+                            JOptionPane.showMessageDialog(null, "Partida editada com sucesso!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Erro ao editar partida.");
+                        }
+                    }catch (RuntimeException erro){
+                        JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
                     }
                 });
 

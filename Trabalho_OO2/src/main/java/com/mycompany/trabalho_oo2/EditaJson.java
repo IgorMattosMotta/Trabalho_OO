@@ -126,7 +126,7 @@ public class EditaJson {
             JsonObject primeiroJogador = tecnicosArray.get(indiceTecnico).getAsJsonObject();
 
             primeiroJogador.addProperty("nome", nome);
-            primeiroJogador.addProperty("idTime", idTimeTecnico);
+            primeiroJogador.addProperty("time", idTimeTecnico);
 
             try (FileWriter fileWriter = new FileWriter(this.nomeArquivo+"\\tecnicos.json")) {
                 Gson gson = new Gson();
@@ -251,7 +251,7 @@ public class EditaJson {
             JsonObject primeiroJogador = timesArray.get(indicetime).getAsJsonObject();
 
             primeiroJogador.addProperty("nomeTime", nome);
-            primeiroJogador.addProperty("nomeCidade", cidade);
+            primeiroJogador.addProperty("cidade", cidade);
 
             try (FileWriter fileWriter = new FileWriter(this.nomeArquivo+"\\times.json")) {
                 Gson gson = new Gson();
