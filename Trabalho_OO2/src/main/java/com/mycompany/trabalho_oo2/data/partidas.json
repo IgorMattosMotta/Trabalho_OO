@@ -1,1 +1,18 @@
-{"partidas":[{"id":1,"timeCasa":1,"timeVisitante":1,"placar":"1x2","horario":"15:30"},{"id":2,"timeCasa":1,"timeVisitante":2,"placar":"1x2","horario":"15:00"}]}
+{
+  "partidas": [
+    {
+      "id": 1,
+      "timeCasa": 1,
+      "timeVisitante": 1,
+      "placar": "1x2",
+      "horario": "15:30"
+    },
+    {
+      "id": 2,
+      "timeCasa": 1,
+      "timeVisitante": 2,
+      "placar": "1x2",
+      "horario": "15:00"
+    }
+  ]
+}
