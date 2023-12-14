@@ -49,18 +49,16 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,5));
+            pnlFormulario = new JPanel(new GridLayout(0,4));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblCargo = new JLabel("Cargo");
-            JLabel lblEditar = new JLabel("Editar");
             JLabel lblExcluir = new JLabel("Excluir");
 
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblCargo);
-            pnlFormulario.add(lblEditar);
             pnlFormulario.add(lblExcluir);
 
 
@@ -72,13 +70,11 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
                 JLabel lblId2 = new JLabel(a.getCpf());
                 JLabel lblnome2 = new JLabel(a.getNome());
                 JLabel lblcargo2 = new JLabel(Session.getNomeCargo(a.getCargo()));
-                JButton btnEditar = new JButton("Editar");
                 JButton btnExcluir = new JButton("Excluir");
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblnome2);
                 pnlFormulario.add(lblcargo2);
-                pnlFormulario.add(btnEditar);
                 pnlFormulario.add(btnExcluir);
 
                 btnExcluir.addActionListener(e -> {
@@ -91,6 +87,7 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
                         dispose();
                     }
                 });
+
             }
         }
         return pnlFormulario;

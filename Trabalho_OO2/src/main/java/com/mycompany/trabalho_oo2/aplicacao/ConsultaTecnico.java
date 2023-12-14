@@ -86,6 +86,11 @@ public class ConsultaTecnico extends JFrame implements InterfacePadrao{
                     }
                 });
 
+                btnEditar.addActionListener(e -> {
+                    new EdicaoTecnico(this.session, t).setVisible(true);
+                    dispose();
+                });
+
             }
 
         }

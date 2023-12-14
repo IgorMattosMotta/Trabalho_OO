@@ -1,13 +1,13 @@
 package com.mycompany.trabalho_oo2.aplicacao;
-import com.mycompany.trabalho_oo2.Session;
-import com.mycompany.trabalho_oo2.Tecnico;
+import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public abstract class EdicaoTecnico extends JFrame implements InterfacePadrao{
+public class EdicaoTecnico extends JFrame implements InterfacePadrao{
     protected JPanel pnlTopo;
     protected JPanel pnlRodape;
     protected JPanel pnlTitulo;
@@ -17,9 +17,19 @@ public abstract class EdicaoTecnico extends JFrame implements InterfacePadrao{
 
     private Session session;
 
+    private ArrayList<Time> times;
 
-    public EdicaoTecnico(Session session){
+    private ArrayList<Tecnico> tecnicos;
+
+
+    public EdicaoTecnico(Session session, Tecnico tecnico){
+        this.times = new ArrayList<>();
+        this.tecnicos = new ArrayList<>();
+        this.tecnico = tecnico;
         this.session = session;
+        LeJson leJson = new LeJson();
+        leJson.getTimes(this.times);
+        leJson.getTecnico(this.tecnicos, this.times);
         inicializar(this.session);
     }
 
@@ -55,8 +65,8 @@ public abstract class EdicaoTecnico extends JFrame implements InterfacePadrao{
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblTime);
 
-            JLabel lblId2 = new JLabel("1");//tecnico.getCpf()
-            JTextField lblNome2 = new JTextField("MIIISSSSSTEEER");
+            JLabel lblId2 = new JLabel(this.tecnico.getCpf());//tecnico.getCpf()
+            JTextField lblNome2 = new JTextField(this.tecnico.getNome());//tecnico.getNome()
             //Verifica String
             lblNome2.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -67,10 +77,13 @@ public abstract class EdicaoTecnico extends JFrame implements InterfacePadrao{
                 }
             });
             // Lista de times
-            String[] times = {"Varmengo", "Barcelona", "Manchester United", "Bayern Munich", "Liverpool"};
+            String[] timesArray = new String[this.times.size()];
+            for (Time time : this.times) {
+                timesArray[this.times.indexOf(time)] = time.getId() + " - " + time.getNomeTime();
+            }
 
             // Criar um modelo para a lista
-            DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(times);
+            DefaultComboBoxModel<String> lblTime2 = new DefaultComboBoxModel<>(timesArray);
 
             // Criar a lista com base no modelo
             JComboBox<String> listaDeTimes = new JComboBox<>(lblTime2);
@@ -90,9 +103,24 @@ public abstract class EdicaoTecnico extends JFrame implements InterfacePadrao{
                 }
             });
 
+            JButton btnSalvar = new JButton("Salvar");
+
             pnlFormulario.add(lblId2);
             pnlFormulario.add(lblNome2);
             pnlFormulario.add(listaDeTimes);
+            pnlFormulario.add(btnSalvar);
+
+            btnSalvar.addActionListener(e -> {
+                if(JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION
+                && !lblNome2.getText().equals("") && listaDeTimes.getSelectedItem() != null){
+                    int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
+                    StringBuilder cpfFormatado = new StringBuilder(this.tecnico.getCpf());
+                    cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
+
+                    EditaJson editaJson = new EditaJson();
+                    editaJson.editaTecnico(this.tecnicos, this.times, cpfFormatado.toString(), lblNome2.getText(), idTime);
+                }
+            });
 
         }
         return pnlFormulario;
@@ -104,9 +132,7 @@ public abstract class EdicaoTecnico extends JFrame implements InterfacePadrao{
 
             JButton btnVoltar = new JButton("Voltar");
             JButton btnSair = new JButton("Sair");
-            JButton btnCadastro = new JButton("Salvar");
             pnlRodape.add(btnVoltar);
-            pnlRodape.add(btnCadastro);
             pnlRodape.add(btnSair);
         }
         return pnlRodape;
