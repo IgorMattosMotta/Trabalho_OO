@@ -103,9 +103,7 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
                 btnExcluir.addActionListener(e -> {
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o técnico?") == JOptionPane.YES_OPTION) {
                         RemoveJson r = new RemoveJson();
-                        StringBuilder cpfFormatado = new StringBuilder(j.getCpf());
-                        cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
-                        r.removeJogador(cpfFormatado.toString());
+                        r.removeJogador(j.getCpf());
                         new ConsultaJogadores(this.session).setVisible(true);
                         dispose();
                     }

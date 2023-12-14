@@ -80,9 +80,7 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
                 btnExcluir.addActionListener(e -> {
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o admin?") == JOptionPane.YES_OPTION) {
                         RemoveJson r = new RemoveJson();
-                        StringBuilder cpfFormatado = new StringBuilder(a.getCpf());
-                        cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
-                        r.removeJogador(cpfFormatado.toString());
+                        r.removeJogador(a.getCpf());
                         new ConsultaJogadores(this.session).setVisible(true);
                         dispose();
                     }
