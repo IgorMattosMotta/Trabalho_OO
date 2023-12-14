@@ -101,11 +101,14 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
                 });
 
                 btnExcluir.addActionListener(e -> {
-                    RemoveJson r = new RemoveJson();
-                    StringBuilder cpfFormatado = new StringBuilder(j.getCpf());
-                    cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
-                    r.removeJogador(cpfFormatado.toString());
-                    JOptionPane.showMessageDialog(null, "Jogador removido com sucesso!");
+                    if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o técnico?") == JOptionPane.YES_OPTION) {
+                        RemoveJson r = new RemoveJson();
+                        StringBuilder cpfFormatado = new StringBuilder(j.getCpf());
+                        cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
+                        r.removeJogador(cpfFormatado.toString());
+                        new ConsultaJogadores(this.session).setVisible(true);
+                        dispose();
+                    }
                 });
 
             }

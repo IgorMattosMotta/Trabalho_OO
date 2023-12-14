@@ -2,6 +2,7 @@ package com.mycompany.trabalho_oo2.aplicacao;
 
 import com.mycompany.trabalho_oo2.Admin;
 import com.mycompany.trabalho_oo2.LeJson;
+import com.mycompany.trabalho_oo2.RemoveJson;
 import com.mycompany.trabalho_oo2.Session;
 
 import javax.swing.*;
@@ -48,17 +49,19 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,4));
+            pnlFormulario = new JPanel(new GridLayout(0,5));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblCargo = new JLabel("Cargo");
             JLabel lblEditar = new JLabel("Editar");
+            JLabel lblExcluir = new JLabel("Excluir");
 
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblCargo);
             pnlFormulario.add(lblEditar);
+            pnlFormulario.add(lblExcluir);
 
 
             LeJson l = new LeJson();
@@ -70,11 +73,24 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
                 JLabel lblnome2 = new JLabel(a.getNome());
                 JLabel lblcargo2 = new JLabel(Session.getNomeCargo(a.getCargo()));
                 JButton btnEditar = new JButton("Editar");
+                JButton btnExcluir = new JButton("Excluir");
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblnome2);
                 pnlFormulario.add(lblcargo2);
                 pnlFormulario.add(btnEditar);
+                pnlFormulario.add(btnExcluir);
+
+                btnExcluir.addActionListener(e -> {
+                    if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o admin?") == JOptionPane.YES_OPTION) {
+                        RemoveJson r = new RemoveJson();
+                        StringBuilder cpfFormatado = new StringBuilder(a.getCpf());
+                        cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
+                        r.removeJogador(cpfFormatado.toString());
+                        new ConsultaJogadores(this.session).setVisible(true);
+                        dispose();
+                    }
+                });
             }
         }
         return pnlFormulario;

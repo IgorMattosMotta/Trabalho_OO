@@ -75,10 +75,12 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
                     JButton btnExcluir = new JButton("Excluir");
 
                     btnExcluir.addActionListener(e -> {
-                        RemoveJson r = new RemoveJson();
-                        r.removeTime(t.getId());
-                        new ConsultaTime(this.session).setVisible(true);
-                        dispose();
+                        if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o time?") == JOptionPane.YES_OPTION){
+                            RemoveJson r = new RemoveJson();
+                            r.removeTime(t.getId());
+                            new ConsultaTime(this.session).setVisible(true);
+                            dispose();
+                        }
                     });
 
                     pnlFormulario.add(lblId2);

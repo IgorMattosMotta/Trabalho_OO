@@ -44,16 +44,18 @@ public class ConsultaTecnico extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,4));
+            pnlFormulario = new JPanel(new GridLayout(0,5));
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblTime = new JLabel("Time");
             JLabel lblEditar = new JLabel("Editar");
+            JLabel lblExcluir = new JLabel("Excluir");
 
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblTime);
             pnlFormulario.add(lblEditar);
+            pnlFormulario.add(lblExcluir);
 
             LeJson l = new LeJson();
             ArrayList<Tecnico> tecnicos = new ArrayList<>();
@@ -65,11 +67,24 @@ public class ConsultaTecnico extends JFrame implements InterfacePadrao{
                 JLabel lblNome2 = new JLabel(t.getNome());
                 JLabel lblTime2 = new JLabel(t.getTime().getNomeTime());
                 JButton btnEditar = new JButton("Editar");
+                JButton btnExcluir = new JButton("Excluir");
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblNome2);
                 pnlFormulario.add(lblTime2);
                 pnlFormulario.add(btnEditar);
+                pnlFormulario.add(btnExcluir);
+
+                btnExcluir.addActionListener(e -> {
+                    if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o técnico " + t.getNome() + "?") == JOptionPane.YES_OPTION){
+                        RemoveJson r = new RemoveJson();
+                        StringBuilder cpfFormatado = new StringBuilder(t.getCpf());
+                        cpfFormatado.insert(9, '-').insert(6, '.').insert(3, '.');
+                        r.removeTecnico(cpfFormatado.toString());
+                        new ConsultaTecnico(this.session).setVisible(true);
+                        dispose();
+                    }
+                });
 
             }
 

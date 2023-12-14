@@ -1,9 +1,6 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.LeJson;
-import com.mycompany.trabalho_oo2.Partida;
-import com.mycompany.trabalho_oo2.Session;
-import com.mycompany.trabalho_oo2.Time;
+import com.mycompany.trabalho_oo2.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,7 +46,7 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,7));
+            pnlFormulario = new JPanel(new GridLayout(0,8));
             JLabel lblId = new JLabel("ID");
             JLabel lblTimeCasa = new JLabel("Time Casa");
             JLabel lblTimeVisitante = new JLabel("Time Visitante");
@@ -57,6 +54,7 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
             JLabel lblPlacar = new JLabel("Placar");
             JLabel lblAjuste = new JLabel("");
             JLabel lblEditar = new JLabel("Editar");
+            JLabel lblExcluir = new JLabel("Excluir");
 
 
 
@@ -67,6 +65,7 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
             pnlFormulario.add(lblPlacar);
             pnlFormulario.add(lblAjuste);
             pnlFormulario.add(lblEditar);
+            pnlFormulario.add(lblExcluir);
 
             LeJson l = new LeJson();
             ArrayList<Time> times = new ArrayList<>();
@@ -86,6 +85,7 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
                     dispose();
                 });
                 JButton btnEditar = new JButton("Editar");
+                JButton btnExcluir = new JButton("Excluir");
 
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(listaDeTimes1);
@@ -94,6 +94,16 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblPartida2);
                 pnlFormulario.add(btnPartida);
                 pnlFormulario.add(btnEditar);
+                pnlFormulario.add(btnExcluir);
+
+                btnExcluir.addActionListener(e -> {
+                    if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir a partida?") == JOptionPane.YES_OPTION){
+                        RemoveJson r = new RemoveJson();
+                        r.removeTime(p.getId());
+                        new ConsultaTime(this.session).setVisible(true);
+                        dispose();
+                    }
+                });
             }
         }
         return pnlFormulario;

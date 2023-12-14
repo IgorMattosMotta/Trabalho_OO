@@ -44,7 +44,7 @@ public class MenuApp extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(Session session){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(6,1));
+            pnlFormulario = new JPanel(new GridLayout(5,1));
             btnConsultarJogadores = new JButton("Consultar Jogadores");
             btnConsultarJogadores.addActionListener(e -> {
                 new ConsultaJogadores(this.session).setVisible(true);
@@ -71,14 +71,11 @@ public class MenuApp extends JFrame implements InterfacePadrao{
                 dispose();
             });
 
-            btnConsultarGols = new JButton("Consultar Gols");
-
             pnlFormulario.add(btnConsultarJogadores);
             pnlFormulario.add(btnConsultarTecnicos);
             pnlFormulario.add(btnConsultarPartidas);
             pnlFormulario.add(btnConsultarTimes);
             pnlFormulario.add(btnConsultarAdministradores);
-            pnlFormulario.add(btnConsultarGols);
         }
         return pnlFormulario;
     }
