@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -177,7 +178,7 @@ public class AdicionaJson {
     }
 
     public void adicionaTime(
-            List<Time> timesLista,
+            ArrayList<Time> timesLista,
             String nome, String cidade
     ){
         //cria um id para o time
