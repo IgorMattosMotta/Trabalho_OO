@@ -36,6 +36,12 @@ public class AdicionaJson {
                 break;
             }
         }
+        for(Jogador j: jogadoresLista){
+            if (j.getCpf() == cpf){
+                JOptionPane.showMessageDialog(null, "Jogador já cadastrado", "Aviso", JOptionPane.WARNING_MESSAGE);
+                throw new RuntimeException("Jogador já cadastrado!!!");
+            }
+        }
         CPF classCpf = new CPF(cpf);
         Jogador jogador;
         switch (posicao){
@@ -56,12 +62,7 @@ public class AdicionaJson {
                 throw new RuntimeException("Jogador vazio!");
         }
         jogadoresLista.add(jogador);
-        for(Jogador j: jogadoresLista){
-            if (j.getCpf() == cpf){
-                JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
-                new RuntimeException("Jogador já cadastrado!!!");
-            }
-        }
+
 
         String nomeArquivo = this.nomeArquivo+"/jogadores.json";
 
@@ -116,6 +117,12 @@ public class AdicionaJson {
                 break;
             }
         }
+        for(Tecnico j: tecnicosLista){
+            if (j.getCpf().equals(cpf)){
+                JOptionPane.showMessageDialog(null, "Tecnico já cadastrado", "Aviso", JOptionPane.WARNING_MESSAGE);
+                throw new RuntimeException("Técnico já cadastrado!!!");
+            }
+        }
 
         CPF classCpf = new CPF(cpf);
         Tecnico tecnico = new Tecnico(classCpf, nome, cargo, senha, timeTecnico);
@@ -155,6 +162,12 @@ public class AdicionaJson {
             List<Admin> administradoresLista,
             String cpf,String nome,int cargo,String senha
     ){
+        for(Admin j: administradoresLista){
+            if (j.getCpf() == cpf){
+                JOptionPane.showMessageDialog(null, "Administrador já cadastrado", "Aviso", JOptionPane.WARNING_MESSAGE);
+                throw new RuntimeException("Administrador já cadastrado!!!");
+            }
+        }
         CPF classCpf = new CPF(cpf);
         Admin admin = new Admin(classCpf, nome, cargo, senha);
         administradoresLista.add(admin);

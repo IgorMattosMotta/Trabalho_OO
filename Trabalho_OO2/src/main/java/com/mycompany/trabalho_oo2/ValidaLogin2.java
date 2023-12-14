@@ -26,6 +26,22 @@ public class ValidaLogin2 {
         int cargo = -1;
 
         if (CPF.ehValido(cpf)) {
+            for (Admin j : adminLista) {
+                if (j.getCpf().equals(cpf)) {
+                    if (!j.getSenha().equals(senha)) {
+                        JOptionPane.showMessageDialog(null, "SENHA INCORRETA!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        passouCPF = true;
+                        break;
+                    } else {
+                        Session session = new Session(j.getCargo(), j.getCpf(), j.getNome());
+                        MenuApp m = new MenuApp(session);
+                        m.setVisible(true);
+                        passouCPF = true;
+                        cargo = 1;
+                        return cargo;
+                    }
+                }
+            }
                     for (Jogador j : jogadoresLista) {
                         if (j.getCpf().equals(cpf)) {
                             if (!j.getSenha().equals(senha)) {
@@ -59,22 +75,7 @@ public class ValidaLogin2 {
                         }
                         System.out.println(cpf + "   " + j.getCpf());
                     }
-                    for (Admin j : adminLista) {
-                        if (j.getCpf().equals(cpf)) {
-                            if (!j.getSenha().equals(senha)) {
-                                JOptionPane.showMessageDialog(null, "SENHA INCORRETA!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
-                                passouCPF = true;
-                                break;
-                            } else {
-                                Session session = new Session(j.getCargo(), j.getCpf(), j.getNome());
-                                    MenuApp m = new MenuApp(session);
-                                    m.setVisible(true);
-                                passouCPF = true;
-                                cargo = 1;
-                                return cargo;
-                            }
-                        }
-                    }
+
             }
 
             if (!passouCPF) {
