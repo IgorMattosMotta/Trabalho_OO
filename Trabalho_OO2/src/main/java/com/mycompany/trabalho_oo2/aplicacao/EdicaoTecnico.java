@@ -116,7 +116,7 @@ public class EdicaoTecnico extends JFrame implements InterfacePadrao{
                 if(JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION
                 && !lblNome2.getText().equals("") && listaDeTimes.getSelectedItem() != null){
                     int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
-                    EditaJson editaJson = new EditaJson();
+                    EditaJson editaJson = new EditaJson(session);
                     editaJson.editaTecnico(this.tecnicos, this.times, this.tecnico.getCpf(), lblNome2.getText(), idTime);
                 }
             });

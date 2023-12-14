@@ -59,15 +59,19 @@ public class Login extends JFrame {
             pnlFormulario.add(lblSenha);
 
 
-            JTextField lblId2 = new JTextField("");//jogador.getCpf()
-            lblId2.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void keyTyped(java.awt.event.KeyEvent evt) {
-                    char ch = evt.getKeyChar();
-                    if (!Character.isDigit(ch) && ch != KeyEvent.VK_BACK_SPACE && ch != KeyEvent.VK_DELETE) {
-                        evt.consume(); // Ignora caracteres não numéricos
+            JTextField lblId2 = new JTextField("");
+            try {
+                lblId2.addKeyListener(new KeyAdapter() {
+                    public void keyTyped(KeyEvent evt) {
+                        char ch = evt.getKeyChar();
+                        if (!Character.isDigit(ch) && ch != KeyEvent.VK_BACK_SPACE && ch != KeyEvent.VK_DELETE) {
+                            evt.consume(); // Ignora caracteres não numéricos
+                        }
                     }
-                }
-            });
+                });
+            }catch (Exception e){
+                new RuntimeException("Esse erro se deve ao listener, mas não causa alteração no desenvolvimento do código!");
+            }
             JPasswordField lblSenha2 = new JPasswordField();//jogador.nome
 
             pnlFormulario.add(lblId2);

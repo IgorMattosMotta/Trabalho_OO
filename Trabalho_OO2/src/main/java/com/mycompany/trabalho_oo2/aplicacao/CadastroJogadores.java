@@ -224,7 +224,7 @@ public class CadastroJogadores extends JFrame implements InterfacePadrao{
                 l.getJogador(jogadores, Listatimes);
 
                 Time time1 = (Time) lblTime2.getSelectedItem();
-                AdicionaJson a = new AdicionaJson();
+                AdicionaJson a = new AdicionaJson(session);
                 try {
                     a.adicionaJogador(jogadores, Listatimes, String.valueOf(lblId2.getText()), String.valueOf(lblNome2.getText()).replaceAll("[.]", "").replaceAll("-", ""), 3, String.valueOf(lblSenha2.getPassword()), lblPosicao2.getSelectedItem().toString(), Integer.parseInt(String.valueOf(lblNumCamisa2.getText())), time1.getId(), lblTitular.isSelected(), Integer.parseInt(String.valueOf(lblReflexo2.getText())), Integer.parseInt(String.valueOf(lblChute2.getText())), Integer.parseInt(String.valueOf(lblMarcacao2.getText())), Integer.parseInt(String.valueOf(lblPasse2.getText())), Integer.parseInt(String.valueOf(lblVelocidade2.getText())));
                 }catch (RuntimeException erro) {

@@ -92,7 +92,7 @@ public class EdicaoTime extends JFrame implements InterfacePadrao{
                 if(!lblNome2.getText().equals("") && !lblCidade2.getText().equals("") &&
                 JOptionPane.showConfirmDialog(null, "Deseja realmente editar o técnico " + lblNome2.getText() + "?") == JOptionPane.YES_OPTION){
 
-                    EditaJson editaJson = new EditaJson();
+                    EditaJson editaJson = new EditaJson(session);
                     editaJson.editaTime(this.time, lblNome2.getText(), lblCidade2.getText(), this.time.getId());
                 }
             });

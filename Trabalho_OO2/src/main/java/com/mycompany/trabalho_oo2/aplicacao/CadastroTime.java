@@ -60,7 +60,7 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
             lblNome2.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyTyped(java.awt.event.KeyEvent evt) {
                     char ch = evt.getKeyChar();
-                    if (!Character.isAlphabetic(ch)) {
+                    if (!Character.isAlphabetic(ch)  && !Character.isSpaceChar(ch)) {
                         evt.consume();
                     }
                 }
@@ -79,14 +79,19 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
 
             JButton btnSalvar = new JButton("Salvar");
             btnSalvar.addActionListener(e -> {
-                if(lblNome2.getText().isEmpty() || lblCidade2.getText().isEmpty()){
+                try{
                     JOptionPane.showMessageDialog(null, "Time cadastrado com sucesso!");
-                    AdicionaJson ad = new AdicionaJson();
+                    AdicionaJson ad = new AdicionaJson(session);
                     LeJson le = new LeJson();
                     ArrayList<Time> times = new ArrayList<>();
                     le.getTimes(times);
-                    ad.adicionaTime(times,lblNome2.getText(), lblCidade.getText());
-                    this.dispose();
+                    ad.adicionaTime(times,lblNome2.getText(), lblCidade2.getText());
+                    dispose();
+                    MenuApp menu = new MenuApp(session);
+                    menu.setVisible(true);
+                }catch (RuntimeException erro){
+                    JOptionPane.showMessageDialog(null, "Algum campo não está preenchido de forma correta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    throw new RuntimeException("Algum campo não está preenchido de forma correta!" + erro.getMessage());
                 }
             });
 
@@ -100,27 +105,29 @@ public class CadastroTime extends JFrame implements InterfacePadrao{
 
 
     public JPanel getPnlRodape() {
-        if(pnlRodape == null){
-            pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JButton btnVoltar = new JButton("Voltar");
+        pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-            JButton btnSair = new JButton("Sair");
-            addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    // Chama dispose() para fechar a janela
-                    dispose();
-                }
-            });
+        JButton btnVoltar = new JButton("Voltar");
+        JButton btnSair = new JButton("Sair");
 
-            pnlRodape.add(btnVoltar);
-            pnlRodape.add(btnSair);
-            btnSair.addActionListener(e -> dispose());
-            btnVoltar.addActionListener(e -> {
-                new ConsultaTime(this.session).setVisible(true);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Chama dispose() para fechar a janela
                 dispose();
-            });
-        }
+            }
+        });
+        btnSair.addActionListener(e -> dispose());
+        btnVoltar.addActionListener(e -> {
+            new MenuApp(this.session).setVisible(true);
+            dispose();
+        });
+
+
+
+        pnlRodape.add(btnVoltar);
+        pnlRodape.add(btnSair);
+
         return pnlRodape;
     }
 

@@ -24,6 +24,7 @@ public class MenuApp extends JFrame implements InterfacePadrao{
     protected JButton btnCadastroPartida;
     protected JButton btnCadastroTecnicos;
     protected JButton btnCadastroAdmin;
+    protected JButton btnCadastroTime;
 
     private Session session;
 
@@ -99,12 +100,18 @@ public class MenuApp extends JFrame implements InterfacePadrao{
                 new CadastroAdmin(this.session).setVisible(true);
                 dispose();
             });
+            btnCadastroTime = new JButton("Cadastro Time");
+            btnCadastroTime.addActionListener(e -> {
+                new CadastroTime(this.session).setVisible(true);
+                dispose();
+            });
 
             if(this.session.getCargo() == 1){
                 pnlFormulario.add(btnCadastrarJogadores);
                 pnlFormulario.add(btnCadastroTecnicos);
                 pnlFormulario.add(btnCadastroAdmin);
                 pnlFormulario.add(btnCadastroPartida);
+                pnlFormulario.add(btnCadastroTime);
             }
 
             pnlFormulario.add(btnConsultarJogadores);

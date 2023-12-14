@@ -115,7 +115,7 @@ public class CadastroTecnico extends JFrame implements InterfacePadrao{
                 ArrayList<Time> times1 = new ArrayList<>();
                 l.getTimes(times1);
                 l.getTecnico(tecnico, times1);
-                AdicionaJson a = new AdicionaJson();
+                AdicionaJson a = new AdicionaJson(session);
                 try {
                     Time time1 = (Time) time.getSelectedItem();
                     String nome = lblNome2.getText().replaceAll("-", "");
@@ -138,23 +138,29 @@ public class CadastroTecnico extends JFrame implements InterfacePadrao{
     }
 
     public JPanel getPnlRodape(){
-        if(pnlRodape == null){
-            pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JButton btnVoltar = new JButton("Voltar");
+        pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-            JButton btnSair = new JButton("Sair");
-            addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    // Chama dispose() para fechar a janela
-                    dispose();
-                }
-            });
-            btnSair.addActionListener(e -> dispose());
+        JButton btnVoltar = new JButton("Voltar");
+        JButton btnSair = new JButton("Sair");
 
-            pnlRodape.add(btnVoltar);
-            pnlRodape.add(btnSair);
-        }
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Chama dispose() para fechar a janela
+                dispose();
+            }
+        });
+        btnSair.addActionListener(e -> dispose());
+        btnVoltar.addActionListener(e -> {
+            new MenuApp(this.session).setVisible(true);
+            dispose();
+        });
+
+
+
+        pnlRodape.add(btnVoltar);
+        pnlRodape.add(btnSair);
+
         return pnlRodape;
     }
 

@@ -49,7 +49,11 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,4));
+            if(session.getCargo() == 1) {
+                pnlFormulario = new JPanel(new GridLayout(0, 4));
+            }else{
+                pnlFormulario = new JPanel(new GridLayout(0, 3));
+            }
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblCargo = new JLabel("Cargo");
@@ -59,7 +63,9 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblCargo);
-            pnlFormulario.add(lblExcluir);
+            if(session.getCargo() == 1) {
+                pnlFormulario.add(lblExcluir);
+            }
 
 
             LeJson l = new LeJson();
@@ -75,11 +81,13 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblnome2);
                 pnlFormulario.add(lblcargo2);
-                pnlFormulario.add(btnExcluir);
+                if(session.getCargo() == 1) {
+                    pnlFormulario.add(btnExcluir);
+                }
 
                 btnExcluir.addActionListener(e -> {
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o admin?") == JOptionPane.YES_OPTION) {
-                        RemoveJson r = new RemoveJson();
+                        RemoveJson r = new RemoveJson(session);
                         r.removeJogador(a.getCpf());
                         new ConsultaJogadores(this.session).setVisible(true);
                         dispose();

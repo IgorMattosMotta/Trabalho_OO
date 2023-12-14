@@ -8,10 +8,13 @@ import java.util.List;
 
 public class EditaJson {
     private String nomeArquivo;
+    protected Session session;
 
-    public EditaJson(){
-        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
-        //this.nomeArquivo = "C:\\Programas\\UFJF\\OO\\trabalho\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+    public EditaJson(Session session){
+        this.session = session;
+        if(session.getCargo() ==1) {
+            this.nomeArquivo = System.getProperty("user.dir") + "\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+        }
     }
 
     public void editaJogador(

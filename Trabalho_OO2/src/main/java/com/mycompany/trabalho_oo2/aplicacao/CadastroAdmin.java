@@ -59,27 +59,25 @@ public class CadastroAdmin extends JFrame implements InterfacePadrao{
             pnlFormulario.add(lblSenha);
 
 
-            JTextField lblId2 = new JTextField("Escreva CPF:");//jogador.getCpf()
-            lblId2.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void keyTyped(java.awt.event.KeyEvent evt) {
-                    char ch = evt.getKeyChar();
-                    if (!Character.isDigit(ch)) {
-                        evt.consume();
-                    }
+        JTextField lblId2 = new JTextField("Escreva CPF:");//jogador.getCpf()
+        lblId2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char ch = evt.getKeyChar();
+                if (!Character.isDigit(ch)) {
+                    evt.consume();
                 }
-            });
-
+            }
+        });
             JTextField lblNome2 = new JTextField("Escreva Nome:");//jogador.nome
             //Ve se é string
-            lblNome2.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void keyTyped(java.awt.event.KeyEvent evt) {
-                    char ch = evt.getKeyChar();
-                    if (!Character.isAlphabetic(ch) && !Character.isSpaceChar(ch)) {
-                        evt.consume();
+                lblNome2.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        char ch = evt.getKeyChar();
+                        if (!Character.isAlphabetic(ch) && !Character.isSpaceChar(ch)) {
+                            evt.consume();
+                        }
                     }
-                }
-            });
-
+                });
             LeJson l = new LeJson();
             pnlFormulario.add(lblId2);
             pnlFormulario.add(lblNome2);
@@ -92,7 +90,7 @@ public class CadastroAdmin extends JFrame implements InterfacePadrao{
             btnCadastro.addActionListener(e -> {
                 ArrayList<Admin> admins = new ArrayList<>();
                 l.getAdministrdor(admins);
-                AdicionaJson a = new AdicionaJson();
+                AdicionaJson a = new AdicionaJson(session);
                 try {
                     a.adicionaAdmin(admins, String.valueOf(lblId2.getText()), String.valueOf(lblNome2.getText()).replaceAll("[.]", "").replaceAll("-", ""), 1, String.valueOf(lblSenha2.getPassword()));
                     JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!", "Aviso", 1);

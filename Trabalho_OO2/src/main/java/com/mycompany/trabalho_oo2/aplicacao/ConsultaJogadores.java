@@ -53,7 +53,11 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
             l.getJogador(jogadores, times);
 
 
-            pnlFormulario = new JPanel(new GridLayout(0, 7));
+            if(session.getCargo() == 1) {
+                pnlFormulario = new JPanel(new GridLayout(0, 7));
+            }else{
+                pnlFormulario = new JPanel(new GridLayout(0, 5));
+            }
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblNumCamisa = new JLabel("Num Camisa");
@@ -67,8 +71,10 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
             pnlFormulario.add(lblNumCamisa);
             pnlFormulario.add(lblTime);
             pnlFormulario.add(lblOverall);
-            pnlFormulario.add(lblEditar);
-            pnlFormulario.add(lblExcluir);
+            if(session.getCargo() == 1) {
+                pnlFormulario.add(lblEditar);
+                pnlFormulario.add(lblExcluir);
+            }
 
             for (Jogador j:jogadores) {
 
@@ -92,8 +98,10 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblNumCamisa2);
                 pnlFormulario.add(lblTimes2);
                 pnlFormulario.add(lblOverall2);
-                pnlFormulario.add(btnEditar);
-                pnlFormulario.add(btnExcluir);
+                if(session.getCargo() == 1) {
+                    pnlFormulario.add(btnEditar);
+                    pnlFormulario.add(btnExcluir);
+                }
 
                 btnEditar.addActionListener(e -> {
                     new EdicaoJogador(this.session, j).setVisible(true);
@@ -102,7 +110,7 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
 
                 btnExcluir.addActionListener(e -> {
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o técnico?") == JOptionPane.YES_OPTION) {
-                        RemoveJson r = new RemoveJson();
+                        RemoveJson r = new RemoveJson(session);
                         r.removeJogador(j.getCpf());
                         new ConsultaJogadores(this.session).setVisible(true);
                         dispose();

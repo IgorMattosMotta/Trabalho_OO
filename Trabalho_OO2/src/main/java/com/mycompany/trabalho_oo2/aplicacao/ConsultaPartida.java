@@ -46,7 +46,11 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,8));
+            if(session.getCargo() == 1) {
+                pnlFormulario = new JPanel(new GridLayout(0, 8));
+            }else{
+                pnlFormulario = new JPanel(new GridLayout(0, 6));
+            }
             JLabel lblId = new JLabel("ID");
             JLabel lblTimeCasa = new JLabel("Time Casa");
             JLabel lblTimeVisitante = new JLabel("Time Visitante");
@@ -64,8 +68,10 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
             pnlFormulario.add(lblHora);
             pnlFormulario.add(lblPlacar);
             pnlFormulario.add(lblAjuste);
-            pnlFormulario.add(lblEditar);
-            pnlFormulario.add(lblExcluir);
+            if(session.getCargo() == 1) {
+                pnlFormulario.add(lblEditar);
+                pnlFormulario.add(lblExcluir);
+            }
 
             LeJson l = new LeJson();
             ArrayList<Time> times = new ArrayList<>();
@@ -93,12 +99,14 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblHora2);
                 pnlFormulario.add(lblPartida2);
                 pnlFormulario.add(btnPartida);
-                pnlFormulario.add(btnEditar);
-                pnlFormulario.add(btnExcluir);
+                if(session.getCargo() == 1) {
+                    pnlFormulario.add(btnEditar);
+                    pnlFormulario.add(btnExcluir);
+                }
 
                 btnExcluir.addActionListener(e -> {
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir a partida?") == JOptionPane.YES_OPTION){
-                        RemoveJson r = new RemoveJson();
+                        RemoveJson r = new RemoveJson(session);
                         r.removeTime(p.getId());
                         new ConsultaTime(this.session).setVisible(true);
                         dispose();

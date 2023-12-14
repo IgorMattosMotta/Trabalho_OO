@@ -13,8 +13,13 @@ import java.io.IOException;
 public class RemoveJson {
     private String nomeArquivo;
 
-    public RemoveJson(){
-        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+    protected Session session;
+
+    public RemoveJson(Session session){
+        this.session = session;
+        if(session.getCargo() ==1) {
+            this.nomeArquivo = System.getProperty("user.dir") + "\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+        }
     }
 
     public void removeTime(int idTimeParaExcluir){

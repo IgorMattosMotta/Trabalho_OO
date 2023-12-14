@@ -13,8 +13,13 @@ import java.util.Random;
 public class AdicionaJson {
     private String nomeArquivo;
 
-    public AdicionaJson() {
-        this.nomeArquivo = System.getProperty("user.dir")+"\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+    protected Session session;
+
+    public AdicionaJson(Session session) {
+        this.session = session;
+        if(session.getCargo() ==1) {
+            this.nomeArquivo = System.getProperty("user.dir") + "\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
+        }
     }
 
     public void adicionaJogador(
@@ -184,10 +189,18 @@ public class AdicionaJson {
         //cria um id para o time
         boolean idExiste = true;
         int id = 0;
-        while(idExiste){
-            id = new Random().nextInt(1000);
-            for (Time time : timesLista){
-                if (time.getId() == id){
+        for (Time time : timesLista) {
+            if (time.getNomeTime().equals(nome) && time.getCidade().equals(cidade)) {
+                JOptionPane.showMessageDialog(null, "Time já cadastrado!!! [Mude nome]", "Aviso", JOptionPane.WARNING_MESSAGE);
+                new RuntimeException("Esse time já foi criado");
+            }
+        }
+        while (idExiste) {
+            id = new Random().nextInt(Integer.MAX_VALUE);
+            idExiste = false;
+
+            for (Time time : timesLista) {
+                if (time.getId() == id) {
                     idExiste = true;
                     break;
                 }
@@ -204,7 +217,7 @@ public class AdicionaJson {
 
             JsonObject novoTime = new JsonObject();
             novoTime.addProperty("id", id);
-            novoTime.addProperty("nome", nome);
+            novoTime.addProperty("nomeTime", nome);
             novoTime.addProperty("cidade", cidade);
 
             timesArray.add(novoTime);

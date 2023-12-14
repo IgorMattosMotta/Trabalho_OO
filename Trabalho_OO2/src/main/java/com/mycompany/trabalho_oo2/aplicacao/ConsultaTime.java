@@ -49,7 +49,11 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
 
         public JPanel getPnlFormulario(){
             if(pnlFormulario == null){
-                pnlFormulario = new JPanel(new GridLayout(0,5));
+                if(session.getCargo() == 1) {
+                    pnlFormulario = new JPanel(new GridLayout(0, 5));
+                }else{
+                    pnlFormulario = new JPanel(new GridLayout(0, 3));
+                }
                 JLabel lblId = new JLabel("ID");
                 JLabel lblNome = new JLabel("Nome");
                 JLabel lblCidade = new JLabel("Cidade");
@@ -59,8 +63,10 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblId);
                 pnlFormulario.add(lblNome);
                 pnlFormulario.add(lblCidade);
-                pnlFormulario.add(lblEditar);
-                pnlFormulario.add(lblExcluir);
+                if(session.getCargo() == 1) {
+                    pnlFormulario.add(lblEditar);
+                    pnlFormulario.add(lblExcluir);
+                }
 
                 ArrayList<Time> times = new ArrayList<>();
                 LeJson l = new LeJson();
@@ -76,7 +82,7 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
 
                     btnExcluir.addActionListener(e -> {
                         if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o time?") == JOptionPane.YES_OPTION){
-                            RemoveJson r = new RemoveJson();
+                            RemoveJson r = new RemoveJson(session);
                             r.removeTime(t.getId());
                             new ConsultaTime(this.session).setVisible(true);
                             dispose();
@@ -91,8 +97,10 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
                     pnlFormulario.add(lblId2);
                     pnlFormulario.add(lblNome2);
                     pnlFormulario.add(lblCidade2);
-                    pnlFormulario.add(btnEditar);
-                    pnlFormulario.add(btnExcluir);
+                    if(session.getCargo() == 1) {
+                        pnlFormulario.add(btnEditar);
+                        pnlFormulario.add(btnExcluir);
+                    }
                 }
 
             }

@@ -138,7 +138,7 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
                     String placar = lblPartida2.getText();
                     if (JOptionPane.showConfirmDialog(null, "Deseja realmente Editar?") == JOptionPane.YES_OPTION &&
                             timeCasa != null && timeVisitante != null && hora != null && placar != null && idTimeVisitante != idTimeCasa){
-                        EditaJson editaJson = new EditaJson();
+                        EditaJson editaJson = new EditaJson(session);
                         editaJson.editaPartida(placar,hora,idTimeCasa,idTimeVisitante,this.partida.getId());
                         JOptionPane.showMessageDialog(null, "Partida editada com sucesso!");
                     } else {

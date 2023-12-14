@@ -102,11 +102,8 @@ public class EdicaoJogador extends JFrame {
             // Criar a lista com base no modelo
             JComboBox<String> listaDeTimes = new JComboBox<>(lblTime2);
 
-            String[] titularArray = new String[2];
-            titularArray[0] = "Titular";
-            titularArray[1] = "Reserva";
-            DefaultComboBoxModel<String> lblTitular = new DefaultComboBoxModel<>(titularArray);
-            JComboBox<String> listaDeTitular = new JComboBox<>(lblTitular);
+
+            Checkbox lblTitular = new Checkbox("Marque se o jogador for titular");
 
             // Criar um botão para obter a seleção
             JButton botao = new JButton("Obter Seleção");
@@ -125,17 +122,10 @@ public class EdicaoJogador extends JFrame {
 
             JButton btnSalvar = new JButton("Salvar");
             btnSalvar.addActionListener(e -> {
-                //Salvar
-                boolean titular = false;
-                if (listaDeTitular.getSelectedItem().toString().equals("Titular")) {
-                    titular = true;
-                } else if (listaDeTitular.getSelectedItem().toString().equals("Reserva")) {
-                    titular = false;
-                }
                 int idTime = Integer.parseInt(listaDeTimes.getSelectedItem().toString().split(" - ")[0]);
 
-                EditaJson editaJson = new EditaJson();
-                editaJson.editaJogador(this.jogadores, this.times, this.jogador.getCpf(), lblNome2.getText(), Integer.parseInt(lblNumCamisa2.getText()), idTime, titular);
+                EditaJson editaJson = new EditaJson(session);
+                editaJson.editaJogador(this.jogadores, this.times, this.jogador.getCpf(), lblNome2.getText(), Integer.parseInt(lblNumCamisa2.getText()), idTime, lblTitular.getState());
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
                 new MenuApp(this.session).setVisible(true);
                 dispose();
@@ -145,7 +135,7 @@ public class EdicaoJogador extends JFrame {
             pnlFormulario.add(lblNome2);
             pnlFormulario.add(lblNumCamisa2);
             pnlFormulario.add(listaDeTimes);
-            pnlFormulario.add(listaDeTitular);
+            pnlFormulario.add(lblTitular);
             pnlFormulario.add(btnSalvar);
 
         }

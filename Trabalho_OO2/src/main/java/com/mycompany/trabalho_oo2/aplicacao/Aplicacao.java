@@ -1,9 +1,5 @@
 package com.mycompany.trabalho_oo2.aplicacao;
 
-import com.mycompany.trabalho_oo2.Session;
-
-import javax.swing.*;
-
 public class Aplicacao {
     public static void main(String[] args) {
       /*  SwingUtilities.invokeLater(() -> {
@@ -71,11 +67,11 @@ public class Aplicacao {
             Login.setVisible(true);
         });
 
-       */
+
         SwingUtilities.invokeLater(() -> {
-            CadastroAdmin CadastroAdmin = new CadastroAdmin(new Session(1, "845.496.690-04", "Pablo Veggeti")) {
+            CadastroTecnico CadastroTecnico = new CadastroTecnico(new Session(1, "845.496.690-04", "Pablo Veggeti")) {
             };
-            CadastroAdmin.setVisible(true);
+            CadastroTecnico.setVisible(true);
         });
     /*
         SwingUtilities.invokeLater(() -> {

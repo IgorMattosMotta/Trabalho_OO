@@ -118,7 +118,7 @@ public abstract class CadastroPartida extends JFrame implements InterfacePadrao{
                     Time casa = (Time) txtTimeCasa.getSelectedItem();
                     if(visitante.getId() != casa.getId()) {
                         if (ValidaHora.validarHora(hora) && ValidaPlacar.validarPlacar(placar)) {
-                            AdicionaJson add = new AdicionaJson();
+                            AdicionaJson add = new AdicionaJson(session);
                             add.adicionaPartida(p, t, p.size() + 1, casa.getId(), visitante.getId(), placar, hora);
                             for (Partida p2 : p) {
                                 System.out.println(p2.getTimeCasa() + "x" + p2.getTimeVisitante());
@@ -157,11 +157,11 @@ public abstract class CadastroPartida extends JFrame implements InterfacePadrao{
     }
 
     public JPanel getPnlRodape(){
-        if(pnlRodape == null){
             pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JButton btnVoltar = new JButton("Voltar");
 
+            JButton btnVoltar = new JButton("Voltar");
             JButton btnSair = new JButton("Sair");
+
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
@@ -170,10 +170,16 @@ public abstract class CadastroPartida extends JFrame implements InterfacePadrao{
                 }
             });
             btnSair.addActionListener(e -> dispose());
+            btnVoltar.addActionListener(e -> {
+                new MenuApp(this.session).setVisible(true);
+                dispose();
+            });
+
+
 
             pnlRodape.add(btnVoltar);
             pnlRodape.add(btnSair);
-        }
-        return pnlRodape;
+
+            return pnlRodape;
     }
 }

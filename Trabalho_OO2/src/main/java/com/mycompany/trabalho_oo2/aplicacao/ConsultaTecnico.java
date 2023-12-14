@@ -44,7 +44,11 @@ public class ConsultaTecnico extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null){
-            pnlFormulario = new JPanel(new GridLayout(0,5));
+            if(session.getCargo() == 1) {
+                pnlFormulario = new JPanel(new GridLayout(0, 5));
+            }else{
+                pnlFormulario = new JPanel(new GridLayout(0, 3));
+            }
             JLabel lblId = new JLabel("CPF");
             JLabel lblNome = new JLabel("Nome");
             JLabel lblTime = new JLabel("Time");
@@ -54,8 +58,10 @@ public class ConsultaTecnico extends JFrame implements InterfacePadrao{
             pnlFormulario.add(lblId);
             pnlFormulario.add(lblNome);
             pnlFormulario.add(lblTime);
-            pnlFormulario.add(lblEditar);
-            pnlFormulario.add(lblExcluir);
+            if(session.getCargo() == 1) {
+                pnlFormulario.add(lblEditar);
+                pnlFormulario.add(lblExcluir);
+            }
 
             LeJson l = new LeJson();
             ArrayList<Tecnico> tecnicos = new ArrayList<>();
@@ -72,12 +78,14 @@ public class ConsultaTecnico extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblId2);
                 pnlFormulario.add(lblNome2);
                 pnlFormulario.add(lblTime2);
-                pnlFormulario.add(btnEditar);
-                pnlFormulario.add(btnExcluir);
+                if(session.getCargo() == 1) {
+                    pnlFormulario.add(btnEditar);
+                    pnlFormulario.add(btnExcluir);
+                }
 
                 btnExcluir.addActionListener(e -> {
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o técnico " + t.getNome() + "?") == JOptionPane.YES_OPTION){
-                        RemoveJson r = new RemoveJson();
+                        RemoveJson r = new RemoveJson(session);
                         r.removeTecnico(t.getCpf());
                         new ConsultaTecnico(this.session).setVisible(true);
                         dispose();
