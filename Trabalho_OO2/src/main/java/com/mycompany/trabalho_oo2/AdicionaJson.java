@@ -219,6 +219,10 @@ public class AdicionaJson {
         //cria um id para o time
         boolean idExiste = true;
         int id = 0;
+        if(nome.isBlank() || cidade.isBlank()){
+            JOptionPane.showMessageDialog(null, "Nome ou Cidade vazia!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            throw new RuntimeException("Nome ou Cidade vazia!!!");
+        }
         for (Time time : timesLista) {
             if (time.getNomeTime().equals(nome) && time.getCidade().equals(cidade)) {
                 JOptionPane.showMessageDialog(null, "Time já cadastrado!!! [Mude nome]", "Aviso", JOptionPane.WARNING_MESSAGE);
@@ -238,6 +242,8 @@ public class AdicionaJson {
         }
 
         String nomeArquivo = this.nomeArquivo + "/times.json";
+
+
 
         try (FileReader fileReader = new FileReader(nomeArquivo)) {
             JsonElement jsonElement = JsonParser.parseReader(fileReader);

@@ -83,12 +83,12 @@ public class CadastroTime extends JFrame implements InterfacePadrao {
             JButton btnSalvar = new JButton("Salvar");
             btnSalvar.addActionListener(e -> {
                 try {
-                    JOptionPane.showMessageDialog(null, "Time cadastrado com sucesso!");
                     AdicionaJson ad = new AdicionaJson(session);
                     LeJson le = new LeJson(session);
                     ArrayList<Time> times = new ArrayList<>();
                     le.getTimes(times);
                     ad.adicionaTime(times, lblNome2.getText(), lblCidade2.getText());
+                    JOptionPane.showMessageDialog(null, "Time cadastrado com sucesso!");
                     dispose();
                     MenuApp menu = new MenuApp(session);
                     menu.setVisible(true);
