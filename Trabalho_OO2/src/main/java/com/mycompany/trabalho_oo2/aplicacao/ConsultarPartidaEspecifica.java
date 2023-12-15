@@ -181,45 +181,45 @@ public class ConsultarPartidaEspecifica extends JFrame implements InterfacePadra
     }
 
     public JPanel getPnlJogadores1(){
-            pnlJogadores1 = new JPanel(new GridLayout(0, 1));
-                LeJson l = new LeJson(session);
-                ArrayList<Time> times = new ArrayList<>();
-                ArrayList<Partida> partidas = new ArrayList<>();
-                l.getTimes(times);
-                l.getPartidas(partidas, times);
-                ArrayList<Jogador> jogadores = new ArrayList<>();
-                l.getTimes(times);
-                ArrayList<Tecnico> tecnicos = new ArrayList<>();
-                l.getTecnico(tecnicos, times);
-                l.getJogador(jogadores, times);
-                l.getPartidas(partidas, times);
-                for (Partida partida : partidas) {
-                    if (partida.getId() == this.id) {
-                            for(Tecnico t: tecnicos) {
-                                try {
-                                    if (t.getTime().getId() == partida.getTimeCasa().getId()) {
-                                        JLabel lbltecnico = new JLabel(t.getNome());
-                                        pnlJogadores1.add(lbltecnico);
-                                    }
-                                }catch (RuntimeException e){}
-                            }
-
-                            for (Jogador j : jogadores) {
-                                try{
-                                    if (j.getTime().getId() == partida.getTimeCasa().getId()) {
-
-                                        JLabel lblJogador1 = new JLabel(j.getNome());
-                                        pnlJogadores1.add(lblJogador1);
-                                    }
-                                }catch (RuntimeException e){
-
-                                }
-                            }
+        // Corrigir o nome da variável para pnlJogadores2
+        pnlJogadores1 = new JPanel(new GridLayout(0, 1));
+        LeJson l = new LeJson(session);
+        ArrayList<Time> times = new ArrayList<>();
+        ArrayList<Partida> partidas = new ArrayList<>();
+        l.getTimes(times);
+        l.getPartidas(partidas, times);
+        ArrayList<Jogador> jogadores = new ArrayList<>();
+        l.getTimes(times);
+        ArrayList<Tecnico> tecnicos = new ArrayList<>();
+        l.getTecnico(tecnicos, times);
+        l.getJogador(jogadores, times);
+        for (Partida partida : partidas) {
+            if (partida.getId() == this.id) {
+                for(Tecnico t: tecnicos) {
+                    try {
+                        if (t.getTime().getId() == partida.getTimeVisitante().getId()) {
+                            JLabel lbltecnico = new JLabel(t.getNome());
+                            pnlJogadores1.add(lbltecnico);
                         }
-                        break;
+                    }catch (RuntimeException e){
+
                     }
-            return pnlJogadores1;
+                }
+                for (Jogador j : jogadores) {
+                    try{
+                        if (j.getTime().getId() == partida.getTimeVisitante().getId()) {
+                            JLabel lblJogador2 = new JLabel(j.getNome());
+                            pnlJogadores1.add(lblJogador2);
+                        }
+                    }catch (RuntimeException e){
+
+                    }
+                }
+                break;
+            }
         }
+        return pnlJogadores1;
+    }
 
         public JPanel getPnlJogadores2(){
             // Corrigir o nome da variável para pnlJogadores2
