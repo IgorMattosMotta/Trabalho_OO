@@ -3,23 +3,27 @@
     {
       "id": 1,
       "nomeTime": "Vasco da Gama",
-      "cidade": "Rio de Janeiro",
-      "nomeCidade": "Rio de Janeiro"
-    },
-    {
-      "id": 2,
-      "nomeTime": "Cruzeiro Esporte Clube",
-      "cidade": "Belo Horizonte"
-    },
-    {
-      "id": 1178524458,
-      "nomeTime": "Botafogo De Futebol e Regata",
-      "cidade": "Cidade"
+      "cidade": "Rio de Janeiro"
     },
     {
       "id": 3,
       "nomeTime": "Sem time",
       "cidade": "Sem Time"
+    },
+    {
+      "id": 491240258,
+      "nomeTime": "Flamengo",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": 1581684109,
+      "nomeTime": "Botafogo",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": 1983707222,
+      "nomeTime": "Fluminense",
+      "cidade": "Rio de Janeiro"
     }
   ]
 }

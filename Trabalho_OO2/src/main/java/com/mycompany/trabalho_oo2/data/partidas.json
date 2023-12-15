@@ -2,31 +2,17 @@
   "partidas": [
     {
       "id": 1,
-      "timeCasa": 2,
+      "timeCasa": 491240258,
       "timeVisitante": 1,
-      "placar": "2x2",
-      "horario": "15:35"
+      "horario": "10:00",
+      "placar": "0x10"
     },
     {
       "id": 2,
-      "timeCasa": 1,
-      "timeVisitante": 2,
-      "placar": "1x2",
-      "horario": "15:00"
-    },
-    {
-      "id": 3,
-      "timeCasa": 1178524458,
-      "timeVisitante": 1,
-      "horario": "11:40",
-      "placar": "1X1"
-    },
-    {
-      "id": 4,
-      "timeCasa": 2,
-      "timeVisitante": 1,
-      "horario": "11:30",
-      "placar": "1x1"
+      "timeCasa": 1983707222,
+      "timeVisitante": 1581684109,
+      "horario": "10:00",
+      "placar": "0x5"
     }
   ]
 }
