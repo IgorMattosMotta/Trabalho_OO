@@ -110,19 +110,29 @@ public class MenuApp extends JFrame implements InterfacePadrao{
                 dispose();
             });
 
-            if(this.session.getCargo() == 1){
+            if(this.session.getCargo() == 1) {
                 pnlFormulario.add(btnCadastrarJogadores);
+            }
+            pnlFormulario.add(btnConsultarJogadores);
+            if(this.session.getCargo() == 1) {
                 pnlFormulario.add(btnCadastroTecnicos);
+            }
+            pnlFormulario.add(btnConsultarTecnicos);
+            if(this.session.getCargo() == 1) {
                 pnlFormulario.add(btnCadastroAdmin);
+            }
+            pnlFormulario.add(btnConsultarAdministradores);
+            if(this.session.getCargo() == 1) {
                 pnlFormulario.add(btnCadastroPartida);
+            }
+            pnlFormulario.add(btnConsultarPartidas);
+
+            if(this.session.getCargo() == 1) {
                 pnlFormulario.add(btnCadastroTime);
             }
-
-            pnlFormulario.add(btnConsultarJogadores);
-            pnlFormulario.add(btnConsultarTecnicos);
-            pnlFormulario.add(btnConsultarPartidas);
             pnlFormulario.add(btnConsultarTimes);
-            pnlFormulario.add(btnConsultarAdministradores);
+
+
         }
         return pnlFormulario;
     }
