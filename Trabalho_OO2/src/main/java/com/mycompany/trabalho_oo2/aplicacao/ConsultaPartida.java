@@ -111,7 +111,7 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir a partida?") == JOptionPane.YES_OPTION){
                         RemoveJson r = new RemoveJson(session);
                         r.removePartida(p.getId());
-                        new ConsultaTime(this.session).setVisible(true);
+                        new ConsultaPartida(this.session).setVisible(true);
                         dispose();
                     }
                 });

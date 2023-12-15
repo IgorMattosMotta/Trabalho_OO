@@ -157,9 +157,9 @@ public class RemoveJson {
 
             for (int i = 0; i < jogadoresArray.size(); i++) {
                 JsonObject time = jogadoresArray.get(i).getAsJsonObject();
-                String cpfTecnico = time.get("cpf").getAsString();
+                String cpfJogador = time.get("cpf").getAsString();
 
-                if (cpfTecnico.equals(cpf)) {
+                if (cpfJogador.equals(cpf)) {
                     indiceParaExcluir = i;
                     break;
                 }

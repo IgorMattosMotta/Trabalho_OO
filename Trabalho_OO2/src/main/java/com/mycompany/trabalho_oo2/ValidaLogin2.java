@@ -22,6 +22,7 @@ public class ValidaLogin2 {
     }
 
     private static int ehValido(String cpf, String senha, ArrayList<Jogador> jogadoresLista, ArrayList<Tecnico> tecnicosLista, ArrayList<Admin> adminLista) {
+        cpf = cpf.replaceAll("[^0-9]", "");
         boolean passouCPF = false;
         int cargo = -1;
 

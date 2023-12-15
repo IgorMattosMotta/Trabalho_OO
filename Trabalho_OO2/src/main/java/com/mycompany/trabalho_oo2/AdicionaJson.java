@@ -30,6 +30,7 @@ public class AdicionaJson {
             List<Jogador> jogadoresLista, List<Time> timesLista,
             String cpf, String nome, int cargo, String senha, String posicao, int numCamisa, int idTime, boolean titular, int reflexo, int chute, int marcacao, int passe, int velocidade
     ) {
+        cpf = cpf.replaceAll("[^0-9]", "");
         Time timeJogador = null;
         for (Time time : timesLista) {
             if (time.getId() == idTime) {
@@ -114,6 +115,7 @@ public class AdicionaJson {
             List<Tecnico> tecnicosLista, List<Time> timesLista,
             String cpf, String nome, int cargo, String senha, int idTime
     ) {
+        cpf = cpf.replaceAll("[^0-9]", "");
         Time timeTecnico = null;
         for (Time time : timesLista) {
             if (time.getId() == idTime) {
@@ -169,6 +171,7 @@ public class AdicionaJson {
             List<Admin> administradoresLista,
             String cpf, String nome, int cargo, String senha
     ) {
+        cpf = cpf.replaceAll("[^0-9]", "");
         for (Admin j : administradoresLista) {
             if (j.getCpf().equals(cpf)) {
                 JOptionPane.showMessageDialog(null, "Administrador já cadastrado", "Aviso", JOptionPane.WARNING_MESSAGE);
