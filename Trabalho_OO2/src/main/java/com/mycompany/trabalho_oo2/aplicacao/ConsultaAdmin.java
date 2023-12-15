@@ -91,7 +91,7 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
                 btnExcluir.addActionListener(e -> {
                     if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o admin?") == JOptionPane.YES_OPTION) {
                         RemoveJson r = new RemoveJson(session);
-                        r.removeJogador(a.getCpf());
+                        r.removeAdmin(a.getCpf());
                         new ConsultaAdmin(this.session).setVisible(true);
                         dispose();
                     }
