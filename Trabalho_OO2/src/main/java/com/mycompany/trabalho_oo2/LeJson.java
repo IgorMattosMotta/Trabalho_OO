@@ -228,8 +228,6 @@ public class LeJson {
                             throw new RuntimeException("Jogador vazio ou posicao não reconhecida!!");
                     }
                     jogadoresLista.add(novoJogador);
-
-
                 }
             }
         } catch (Exception e) {

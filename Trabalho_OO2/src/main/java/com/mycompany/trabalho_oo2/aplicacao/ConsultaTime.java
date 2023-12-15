@@ -76,33 +76,36 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
                 l.getTimes(times);
                 for (Time t: times) {
 
+                    if (t.getId() == 3) {
 
-                    JLabel lblId2 = new JLabel(String.valueOf(t.getId()));
-                    JLabel lblNome2 = new JLabel(t.getNomeTime());
-                    JLabel lblCidade2 = new JLabel(t.getCidade());
-                    JButton btnEditar = new JButton("Editar");
-                    JButton btnExcluir = new JButton("Excluir");
+                    } else {
+                        JLabel lblId2 = new JLabel(String.valueOf(t.getId()));
+                        JLabel lblNome2 = new JLabel(t.getNomeTime());
+                        JLabel lblCidade2 = new JLabel(t.getCidade());
+                        JButton btnEditar = new JButton("Editar");
+                        JButton btnExcluir = new JButton("Excluir");
 
-                    btnExcluir.addActionListener(e -> {
-                        if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o time?") == JOptionPane.YES_OPTION){
-                            RemoveJson r = new RemoveJson(session);
-                            r.removeTime(t.getId());
-                            new ConsultaTime(this.session).setVisible(true);
+                        btnExcluir.addActionListener(e -> {
+                            if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o time?") == JOptionPane.YES_OPTION) {
+                                RemoveJson r = new RemoveJson(session);
+                                r.removeTime(t.getId());
+                                new ConsultaTime(this.session).setVisible(true);
+                                dispose();
+                            }
+                        });
+
+                        btnEditar.addActionListener(e -> {
+                            new EdicaoTime(this.session, t).setVisible(true);
                             dispose();
+                        });
+
+                        pnlFormulario.add(lblId2);
+                        pnlFormulario.add(lblNome2);
+                        pnlFormulario.add(lblCidade2);
+                        if (session.getCargo() == 1) {
+                            pnlFormulario.add(btnEditar);
+                            pnlFormulario.add(btnExcluir);
                         }
-                    });
-
-                    btnEditar.addActionListener(e -> {
-                        new EdicaoTime(this.session, t).setVisible(true);
-                        dispose();
-                    });
-
-                    pnlFormulario.add(lblId2);
-                    pnlFormulario.add(lblNome2);
-                    pnlFormulario.add(lblCidade2);
-                    if(session.getCargo() == 1) {
-                        pnlFormulario.add(btnEditar);
-                        pnlFormulario.add(btnExcluir);
                     }
                 }
 
