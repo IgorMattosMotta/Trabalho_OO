@@ -84,7 +84,7 @@ public class ConsultarPartidaEspecifica extends JFrame implements InterfacePadra
             pnlFormulario.add(lblHora);
             pnlFormulario.add(lblPlacar);
 
-            LeJson l = new LeJson();
+            LeJson l = new LeJson(session);
             ArrayList<Time> times = new ArrayList<>();
             ArrayList<Partida> partidas =  new ArrayList<>();
             l.getTimes(times);
@@ -117,7 +117,7 @@ public class ConsultarPartidaEspecifica extends JFrame implements InterfacePadra
                 pnlFormulario2.add(lblTimeCasa);
                 pnlFormulario2.add(lblTimeVisitante);
 
-                LeJson l = new LeJson();
+                LeJson l = new LeJson(session);
                 ArrayList<Time> times = new ArrayList<>();
                 ArrayList<Partida> partidas = new ArrayList<>();
                 l.getTimes(times);
@@ -182,7 +182,7 @@ public class ConsultarPartidaEspecifica extends JFrame implements InterfacePadra
 
     public JPanel getPnlJogadores1(){
             pnlJogadores1 = new JPanel(new GridLayout(0, 1));
-                LeJson l = new LeJson();
+                LeJson l = new LeJson(session);
                 ArrayList<Time> times = new ArrayList<>();
                 ArrayList<Partida> partidas = new ArrayList<>();
                 l.getTimes(times);
@@ -224,7 +224,7 @@ public class ConsultarPartidaEspecifica extends JFrame implements InterfacePadra
         public JPanel getPnlJogadores2(){
             // Corrigir o nome da variável para pnlJogadores2
             pnlJogadores2 = new JPanel(new GridLayout(0, 1));
-                LeJson l = new LeJson();
+                LeJson l = new LeJson(session);
                 ArrayList<Time> times = new ArrayList<>();
                 ArrayList<Partida> partidas = new ArrayList<>();
                 l.getTimes(times);

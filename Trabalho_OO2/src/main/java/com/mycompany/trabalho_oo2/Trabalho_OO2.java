@@ -17,7 +17,7 @@ public class Trabalho_OO2 {
         ArrayList<Tecnico> tecnicosLista = new ArrayList<>();
         ArrayList<Jogador> jogadoresLista = new ArrayList<>();
         ArrayList<Admin> adminLista = new ArrayList<>();
-        LeJson leJson = new LeJson();
+        LeJson leJson = new LeJson(new Session(1, "669.272.660-38", "Editor"));
         leJson.getTimes(timesLista);
         leJson.getTecnico(tecnicosLista, timesLista);
         leJson.getJogador(jogadoresLista, timesLista);

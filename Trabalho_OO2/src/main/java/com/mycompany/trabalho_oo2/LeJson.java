@@ -15,9 +15,10 @@ import java.util.ArrayList;
 
 public class LeJson {
     private String nomeArquivo;
+    private Session session;
 
-
-    public LeJson() {
+    public LeJson(Session session) {
+        this.session = session;
         this.nomeArquivo = System.getProperty("user.dir") + "\\Trabalho_OO2\\src\\main\\java\\com\\mycompany\\trabalho_oo2\\data";
     }
 
@@ -84,7 +85,7 @@ public class LeJson {
                     Partida novaPartida = new Partida(id, timeCasa, timeVisitante, placar, horario);
                     partidasLista.add(novaPartida);
                 } else {
-                    RemoveJson r = new RemoveJson(new Session(1, "669.272.660-38", "Editor"));
+                    RemoveJson r = new RemoveJson(session);
                     r.removePartida(id); // remove partida com time null;
                 }
             }
@@ -126,7 +127,7 @@ public class LeJson {
                     Tecnico novoTecnico = new Tecnico(new CPF(cpf), nome, 2, senha, timeTecnico);
                     tecnicosLista.add(novoTecnico);
                 } else {
-                    RemoveJson r = new RemoveJson(new Session(1, "669.272.660-38", "Editor"));
+                    RemoveJson r = new RemoveJson(session);
                     r.removeTime(idTime);
                     for (Time time : timesLista) {
                         if (time.getId() == 3) {
@@ -201,7 +202,7 @@ public class LeJson {
                     }
                     jogadoresLista.add(novoJogador);
                 } else {
-                    RemoveJson r = new RemoveJson(new Session(1, "669.272.660-38", "Editor"));
+                    RemoveJson r = new RemoveJson(session);
                     r.removeTime(idTime); // remove partida com time null;
                     for (Time time : timesLista) {
                         if (time.getId() == 3) {

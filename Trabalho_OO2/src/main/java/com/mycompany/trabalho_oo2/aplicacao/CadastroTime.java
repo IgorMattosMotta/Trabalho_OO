@@ -85,7 +85,7 @@ public class CadastroTime extends JFrame implements InterfacePadrao {
                 try {
                     JOptionPane.showMessageDialog(null, "Time cadastrado com sucesso!");
                     AdicionaJson ad = new AdicionaJson(session);
-                    LeJson le = new LeJson();
+                    LeJson le = new LeJson(session);
                     ArrayList<Time> times = new ArrayList<>();
                     le.getTimes(times);
                     ad.adicionaTime(times, lblNome2.getText(), lblCidade2.getText());

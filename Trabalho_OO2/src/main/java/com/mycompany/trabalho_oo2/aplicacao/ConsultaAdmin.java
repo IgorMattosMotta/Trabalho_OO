@@ -71,7 +71,7 @@ public class ConsultaAdmin extends JFrame implements InterfacePadrao{
             }
 
 
-            LeJson l = new LeJson();
+            LeJson l = new LeJson(session);
             ArrayList<Admin> admin = new ArrayList<>();
             l.getAdministrdor(admin);
 

@@ -33,7 +33,7 @@ public class EdicaoTecnico extends JFrame implements InterfacePadrao{
         this.tecnicos = new ArrayList<>();
         this.tecnico = tecnico;
         this.session = session;
-        LeJson leJson = new LeJson();
+        LeJson leJson = new LeJson(session);
         leJson.getTimes(this.times);
         leJson.getTecnico(this.tecnicos, this.times);
         inicializar(this.session);

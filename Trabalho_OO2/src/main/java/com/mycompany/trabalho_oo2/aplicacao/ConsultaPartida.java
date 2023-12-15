@@ -76,7 +76,7 @@ public class ConsultaPartida extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblExcluir);
             }
 
-            LeJson l = new LeJson();
+            LeJson l = new LeJson(session);
             ArrayList<Time> times = new ArrayList<>();
             ArrayList<Partida> partidas =  new ArrayList<>();
             l.getTimes(times);

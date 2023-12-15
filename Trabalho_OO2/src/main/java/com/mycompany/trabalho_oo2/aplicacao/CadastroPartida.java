@@ -29,7 +29,7 @@ public abstract class CadastroPartida extends JFrame implements InterfacePadrao{
     private void inicializar(Session session){
 
 
-        LeJson l = new LeJson();
+        LeJson l = new LeJson(session);
         ArrayList<Time> t = new ArrayList<>();
         ArrayList<Partida> p = new ArrayList<>();
         l.getTimes(t);

@@ -65,7 +65,7 @@ public class CadastroTecnico extends JFrame implements InterfacePadrao{
 
             // Lista de times
             ArrayList<Time> t = new ArrayList<>();
-            LeJson l = new LeJson();
+            LeJson l = new LeJson(session);
             l.getTimes(t);
             Time[] times = new Time[t.size()];
             int i = 0;

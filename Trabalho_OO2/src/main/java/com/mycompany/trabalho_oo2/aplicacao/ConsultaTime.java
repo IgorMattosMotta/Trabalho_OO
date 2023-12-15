@@ -72,7 +72,7 @@ public class ConsultaTime extends JFrame implements InterfacePadrao{
                 }
 
                 ArrayList<Time> times = new ArrayList<>();
-                LeJson l = new LeJson();
+                LeJson l = new LeJson(session);
                 l.getTimes(times);
                 for (Time t: times) {
 

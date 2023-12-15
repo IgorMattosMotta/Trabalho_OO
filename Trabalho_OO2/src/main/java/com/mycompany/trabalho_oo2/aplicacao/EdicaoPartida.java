@@ -33,7 +33,7 @@ public class EdicaoPartida extends JFrame implements InterfacePadrao{
             this.session = session;
             this.partida = partida;
 
-            LeJson leJson = new LeJson();
+            LeJson leJson = new LeJson(session);
             leJson.getTimes(this.times);
             inicializar();
         }

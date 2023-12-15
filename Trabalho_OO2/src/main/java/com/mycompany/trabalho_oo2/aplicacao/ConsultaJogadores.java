@@ -49,7 +49,7 @@ public class ConsultaJogadores extends JFrame implements InterfacePadrao{
 
     public JPanel getPnlFormulario(){
         if(pnlFormulario == null) {
-            LeJson l = new LeJson();
+            LeJson l = new LeJson(session);
             ArrayList<Jogador> jogadores = new ArrayList<>();
             ArrayList<Time> times = new ArrayList<>();
             l.getTimes(times);

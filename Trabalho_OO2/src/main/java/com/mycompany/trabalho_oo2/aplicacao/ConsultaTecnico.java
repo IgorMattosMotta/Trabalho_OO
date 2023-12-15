@@ -67,7 +67,7 @@ public class ConsultaTecnico extends JFrame implements InterfacePadrao{
                 pnlFormulario.add(lblExcluir);
             }
 
-            LeJson l = new LeJson();
+            LeJson l = new LeJson(session);
             ArrayList<Tecnico> tecnicos = new ArrayList<>();
             ArrayList<Time> times = new ArrayList<>();
             l.getTimes(times);

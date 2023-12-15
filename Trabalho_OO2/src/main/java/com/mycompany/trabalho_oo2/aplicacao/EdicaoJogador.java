@@ -29,7 +29,7 @@ public class EdicaoJogador extends JFrame {
 
         this.times = new ArrayList<>();
         this.jogadores = new ArrayList<>();
-        LeJson leJson = new LeJson();
+        LeJson leJson = new LeJson(session);
         leJson.getTimes(this.times);
         leJson.getJogador(this.jogadores, this.times);
         inicializar(session);

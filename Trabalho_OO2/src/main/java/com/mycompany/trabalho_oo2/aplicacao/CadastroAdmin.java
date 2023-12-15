@@ -26,7 +26,7 @@ public class CadastroAdmin extends JFrame implements InterfacePadrao{
     private void inicializar(Session session){
 
 
-        LeJson l = new LeJson();
+        LeJson l = new LeJson(session);
 
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getPnlTopo(), BorderLayout.PAGE_START);
@@ -81,7 +81,7 @@ public class CadastroAdmin extends JFrame implements InterfacePadrao{
                         }
                     }
                 });
-            LeJson l = new LeJson();
+            LeJson l = new LeJson(session);
             pnlFormulario.add(lblId2);
             pnlFormulario.add(lblNome2);
 
